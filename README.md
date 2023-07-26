@@ -1,16 +1,16 @@
 # one_day_one_something
 
-A new Flutter project.
+![Frame 1](https://github.com/NOGUEN/1D1S/assets/65299607/66b25e7c-1765-4937-8276-42d8548a42eb)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 실행 방법
 
-A few resources to get you started if this is your first Flutter project:
+먼저 flutter 패키지들을 설치해준 뒤, (컴파일된 파일은 올리지 않았습니다.)
+``` bash
+flutter pub get
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+아래의 main_dev.dart로 실행해주시면 됩니다.
+``` bash
+flutter run lib/main_dev.dart
+```
