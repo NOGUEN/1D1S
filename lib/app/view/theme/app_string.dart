@@ -37,14 +37,4 @@ abstract class AppString {
 
   // Get 라우팅 argument의 key로 사용
   static const roomName = "roomName";
-
-  // SVG Path
-  static const back = "images/ic_back.svg";
-  static const chat = "images/ic_chat.svg";
-  static const matching = "images/ic_matching.svg";
-  static const search = "images/ic_search.svg";
-  static const setting = "images/ic_setting.svg";
-  static const people = "images/ic_people.svg";
-  static const send = "images/ic_send.svg";
-  static const plus = "images/ic_plus.svg";
 }
