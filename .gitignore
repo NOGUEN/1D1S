@@ -21,3 +21,5 @@ unlinked.ds
 unlinked_spec.ds
 .flutter-plugins
 .flutter-plugins-dependencies
+macos/
+ios/
