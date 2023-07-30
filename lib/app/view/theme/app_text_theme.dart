@@ -21,6 +21,12 @@ const TextStyle inputContentTextStyle = TextStyle(
   fontWeight: AppFontWeights.regular,
 );
 
+const TextStyle subButtonTextStyle = TextStyle(
+  color: AppColors.gray500,
+  fontSize: 20,
+  fontWeight: AppFontWeights.regular,
+);
+
 const TextStyle labelTextStyle = TextStyle(
   color: AppColors.black,
   fontSize: 15,
