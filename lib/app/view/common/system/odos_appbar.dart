@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 
 class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ODOSAppBar({super.key});
@@ -13,7 +14,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
         "1D1S",
         style: TextStyle(
           fontSize: 24,
-          fontWeight: FontWeight.bold,
+          fontWeight: AppFontWeights.heavy,
           color: Colors.black,
         ),
       ),

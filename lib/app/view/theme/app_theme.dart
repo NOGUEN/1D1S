@@ -5,7 +5,7 @@ import 'app_colors.dart';
 final ThemeData appThemeData = ThemeData(
   primaryColor: AppColors.primaryColor,
   highlightColor: AppColors.gray100,
-  fontFamily: 'Pretendard',
+  fontFamily: 'SUITE',
   textTheme: const TextTheme(
     displayLarge: TextStyle(
         fontSize: 30, fontWeight: FontWeight.bold, color: AppColors.black),

@@ -3,8 +3,8 @@ abstract class AppValues {
   static const double screenPadding = 20;
   static const double margin = 16;
 
-  static const double buttonRadius = 10;
-  static const double buttonHeight = 48;
+  static const double buttonRadius = 8;
+  static const double buttonHeight = 50;
 
   static const double iconDefaultSize = 24;
   static const double floatButtonSize = 72;
