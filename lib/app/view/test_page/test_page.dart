@@ -1,8 +1,7 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/preferred_size.dart';
+import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/controller/testpage/testpage_controller.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
+import 'package:one_day_one_something/app/view/common/system/common_appbar.dart';
 
 class TestPage extends BaseView<TestPageController> {
   @override
@@ -12,13 +11,11 @@ class TestPage extends BaseView<TestPageController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    // TODO: implement appBar
-    throw UnimplementedError();
+    return const ODOSAppBar();
   }
 
   @override
   Widget body(BuildContext context) {
-    // TODO: implement body
     throw UnimplementedError();
   }
 }
