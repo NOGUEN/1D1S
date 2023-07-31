@@ -3,7 +3,10 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
 class ODOSMyGoal extends StatelessWidget {
-  const ODOSMyGoal({super.key});
+  final int consecutive_days;
+  final String my_goal;
+  final String imoji;
+  const ODOSMyGoal({super.key, required this.consecutive_days, required this.my_goal, required this.imoji});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +20,9 @@ class ODOSMyGoal extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               color: AppColors.black.withOpacity(0.1),
-              spreadRadius: 2,
+              offset: Offset(0, 0),
+              spreadRadius: 0.1,
               blurRadius: 20
-          ),
-          BoxShadow(
-              color: AppColors.black.withOpacity(0.25),
-              offset: Offset(0, 4),
-              spreadRadius: 0,
-              blurRadius: 4
           )
         ],
       ),
@@ -37,21 +35,21 @@ class ODOSMyGoal extends StatelessWidget {
               Container(
                 margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
                 child: Image.asset(
-                  'images/icon_fire.png',
+                  imoji,
                   width: 25,
                   height: 25,
                   fit: BoxFit.cover,
                 ),
               ),
               Text(
-                "내 목표",
+                my_goal,
                 style: trackCardHead,
               ),
             ]
           ),
           Container(
               margin: EdgeInsets.fromLTRB(2, 0, 0, 0),
-              child: Text('20일 연속!', style: trackCardHead,))
+              child: Text('$consecutive_days일 연속!', style: trackCardHead,))
         ],
       ),
     );
