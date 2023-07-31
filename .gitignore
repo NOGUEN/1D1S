@@ -1,7 +1,25 @@
 .DS_Store
-
 ._.DS_Store
 
 **/.DS_Store
 
 **/._.DS_Store
+
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
+.packages
+.pub-preload-cache/
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+.idea
+macos/
+ios/
+windows/
