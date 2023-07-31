@@ -4,6 +4,8 @@ import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_week_button.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 import '../controller/main/main_controller.dart';
@@ -21,6 +23,14 @@ class MainPage extends BaseView<MainController> {
         ODOSConfirmButton(buttonColor: AppColors.black),
         ODOSTextField(),
         ODOSSubButton(),
+        ODOSProgressCircle(
+          circleColor: AppColors.black,
+          percent: 0.754,
+        ),
+        ODOSWeekButton(
+          circleColor: AppColors.black,
+          doneWeek: [true, false, true, false, false, true, true],
+        )
       ],
     );
   }
