@@ -70,7 +70,8 @@ flutter:
     - images/icon_pen.svg
     - images/icon_person.svg
     - images/image_user_profile_gorani.jpg
-    - images/icon_bluebook.jpg
+    - images/icon_blue_book.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

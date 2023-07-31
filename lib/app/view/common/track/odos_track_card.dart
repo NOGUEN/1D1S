@@ -19,7 +19,7 @@ class ODOSTrackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
       padding: EdgeInsets.all(10),
       width: 150,
       height: 100,
@@ -28,15 +28,15 @@ class ODOSTrackCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-              color: AppColors.gray300,
-              spreadRadius: 3,
-              blurRadius: 10
+              color: AppColors.black.withOpacity(0.1),
+              spreadRadius: 2,
+              blurRadius: 20
           ),
           BoxShadow(
-              color: AppColors.gray500.withOpacity(0.7),
-              offset: Offset(0, 5),
-              spreadRadius: -1,
-              blurRadius: 3
+              color: AppColors.black.withOpacity(0.25),
+              offset: Offset(0, 4),
+              spreadRadius: 0,
+              blurRadius: 4
           )
         ]
       ),
@@ -48,7 +48,7 @@ class ODOSTrackCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
                 child: Image.asset(
                   trackIcon,
                   width: 25,

@@ -24,7 +24,7 @@ class MainPage extends BaseView<MainController> {
         ODOSSubButton(),
         ODOSTrackCard(
           trackColor: Color(0xffD8E3FF),
-          trackIcon: 'images/icon_bluebook.jpg',
+          trackIcon: 'images/icon_blue_book.png',
           userProfileImage: 'images/image_user_profile_gorani.jpg',
           userName: '고라니',
         ),
