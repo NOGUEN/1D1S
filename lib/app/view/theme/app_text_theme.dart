@@ -62,3 +62,9 @@ const TextStyle trackCardContent = TextStyle(
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
+
+const TextStyle trackCardProfile = TextStyle(
+  color: AppColors.black,
+  fontSize: 16,
+  fontWeight: AppFontWeights.medium,
+);

@@ -1,5 +1,4 @@
 .DS_Store
-
 ._.DS_Store
 
 **/.DS_Store
@@ -9,7 +8,7 @@
 **/doc/api/
 .dart_tool/
 .flutter-plugins
-.flutter-plugins-dependencies\
+.flutter-plugins-dependencies
 **/generated_plugin_registrant.dart
 .packages
 .pub-preload-cache/
