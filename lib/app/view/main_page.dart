@@ -3,6 +3,7 @@ import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
+import 'package:one_day_one_something/app/view/common/system/odos_system_list.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_week_button.dart';
