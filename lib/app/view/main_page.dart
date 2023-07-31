@@ -37,7 +37,7 @@ class MainPage extends BaseView<MainController> {
         ODOSGoalList(
           imoji: "images/icon_fire.png",
           circleColor: AppColors.gray700,
-        my_goal: "내 목표",
+          my_goal: "내 목표",
           percent: 0.5,
         ),
         ODOSAddButton(buttonColor: AppColors.gray500),
