@@ -33,14 +33,14 @@ class ODOSWeekButton extends StatelessWidget {
           height: 35,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: isDone ? circleColor : Colors.grey,
+            color: isDone ? circleColor : circleColor.withOpacity(0.4),
           ),
           child: isDone
               ? Center(
                   child: SvgPicture.asset(
                     'assets/check_icon.svg', // 체크 아이콘 이미지 파일 경로
-                    width: 13.56,
-                    height: 9.79,
+                    width: 16,
+                    height: 12.79,
                     color: Colors.white,
                   ),
                 )
