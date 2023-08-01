@@ -19,13 +19,13 @@ class ODOSProgressCircle extends StatelessWidget {
       children: [
         CircularStepProgressIndicator(
           totalSteps: 100,
-          currentStep: (100 * percent).toInt(),
-          stepSize: 5,
+          currentStep: (percent * 100).toInt(),
+          stepSize: 10,
           selectedColor: circleColor,
           unselectedColor: Colors.grey[200],
           padding: 0,
-          width: 50,
-          height: 50,
+          width: 100,
+          height: 100,
           // selectedStepSize: 15,
           roundedCap: (_, __) => true,
         ),
@@ -33,7 +33,7 @@ class ODOSProgressCircle extends StatelessWidget {
           '${(100 * percent)}%',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 8,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
