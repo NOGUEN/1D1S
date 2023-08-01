@@ -62,3 +62,15 @@ const TextStyle trackCardContent = TextStyle(
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
+
+const TextStyle trackCardProfile = TextStyle(
+  color: AppColors.black,
+  fontSize: 16,
+  fontWeight: AppFontWeights.medium,
+);
+
+const TextStyle goalListHead = TextStyle(
+  color: AppColors.black,
+  fontSize: 20,
+  fontWeight: AppFontWeights.bold,
+);
