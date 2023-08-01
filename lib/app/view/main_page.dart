@@ -11,6 +11,8 @@ import 'package:one_day_one_something/app/view/common/goal/odos_week_button.dart
 import 'package:one_day_one_something/app/view/common/goal/odos_add_button.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_list.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 import '../controller/main/main_controller.dart';
@@ -25,23 +27,22 @@ class MainPage extends BaseView<MainController> {
   Widget body(BuildContext context) {
     return Column(
       children: const [
-        ODOSConfirmButton(buttonColor: AppColors.black),
-        ODOSTextField(),
-        ODOSSubButton(),
-        ODOSTrackCard(
-          trackColor: Color(0xffD8E3FF),
-          trackIcon: 'images/icon_blue_book.png',
-          userProfileImage: 'images/image_user_profile_gorani.jpg',
-          userName: '고라니',
-        ),
-        ODOSGoalList(
-          imoji: "images/icon_fire.png",
-          circleColor: AppColors.gray700,
+        ODOSMyGoal(
+          consecutive_days: 20,
           my_goal: "내 목표",
-          percent: 0.5,
+          imoji: "images/icon_fire.png",
         ),
-        ODOSAddButton(buttonColor: AppColors.gray500),
-        ODOSMyGoal(consecutive_days: 20,my_goal: "내 목표",imoji: "images/icon_fire.png",),
+        ODOSGoalCard(
+            goalColor: Color(0xFF237CE8),
+            doneWeek: [true, false, true, false, false, true, true],
+            consecutive_days: 3,
+            my_goal: "목표이름",
+            imoji: "images/icon_fire.png",
+            totalDay: 25),
+        ODOSWeekButton(
+          circleColor: Color(0xFF237CE8),
+          doneWeek: [true, false, true, false, false, true, true],
+        ),
       ],
     );
   }
