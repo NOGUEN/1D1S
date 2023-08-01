@@ -74,3 +74,19 @@ const TextStyle goalListHead = TextStyle(
   fontSize: 20,
   fontWeight: AppFontWeights.bold,
 );
+const TextStyle goalCardmainTitle = TextStyle(
+  color: AppColors.black,
+  fontSize: 24,
+  fontWeight: AppFontWeights.bold,
+);
+
+const TextStyle goalCardsubTitle = TextStyle(
+  color: AppColors.black,
+  fontSize: 16,
+  fontWeight: AppFontWeights.bold,
+);
+const TextStyle goalCardconsecutive = TextStyle(
+  color: AppColors.black,
+  fontSize: 35,
+  fontWeight: AppFontWeights.bold,
+);
