@@ -23,26 +23,17 @@ class MainPage extends BaseView<MainController> {
 
   @override
   Widget body(BuildContext context) {
-    return Column(
-      children: const [
-        ODOSConfirmButton(buttonColor: AppColors.black),
-        ODOSTextField(),
-        ODOSSubButton(),
-        ODOSTrackCard(
-          trackColor: Color(0xffD8E3FF),
-          trackIcon: 'images/icon_blue_book.png',
-          userProfileImage: 'images/image_user_profile_gorani.jpg',
-          userName: '고라니',
-        ),
-        ODOSGoalList(
-          imoji: "images/icon_fire.png",
-          circleColor: AppColors.gray700,
-          my_goal: "내 목표",
-          percent: 0.5,
-        ),
-        ODOSAddButton(buttonColor: AppColors.gray500),
-        ODOSMyGoal(consecutive_days: 20,my_goal: "내 목표",imoji: "images/icon_fire.png",),
-      ],
+    return SingleChildScrollView(
+      child: Column(children: [
+        ODOSSystemList(list: [
+          ODOSSystemListCell(menuString: "설정"),
+          ODOSSystemListCell(menuString: "설정"),
+          ODOSSystemListCell(menuString: "설정"),
+          ODOSSystemListCell(menuString: "설정"),
+          ODOSSystemListCell(menuString: "설정"),
+          ODOSSystemListCell(menuString: "설정"),
+        ], categoryString: "설정")
+      ]),
     );
   }
 
