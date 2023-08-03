@@ -42,6 +42,7 @@ class MainPage extends BaseView<MainController> {
         ),
         ODOSAddButton(buttonColor: AppColors.gray500),
         ODOSMyGoal(consecutive_days: 20,my_goal: "내 목표",imoji: "images/icon_fire.png",),
+        ODOSCalander(dateOffset: 2, dateNum: 31, ),
       ],
     );
   }
