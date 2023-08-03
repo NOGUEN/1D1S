@@ -68,3 +68,33 @@ const TextStyle trackCardProfile = TextStyle(
   fontSize: 16,
   fontWeight: AppFontWeights.medium,
 );
+
+const TextStyle profileCardHead = TextStyle(
+  color: AppColors.black,
+  fontSize: 30,
+  fontWeight: AppFontWeights.bold,
+);
+
+const TextStyle profileCardRecordHead = TextStyle(
+  color: AppColors.black,
+  fontSize: 16,
+  fontWeight: AppFontWeights.regular,
+);
+
+const TextStyle profileCardRecordContent = TextStyle(
+  color: AppColors.black,
+  fontSize: 16,
+  fontWeight: AppFontWeights.bold,
+);
+
+const TextStyle profileCardAboutMeHead = TextStyle(
+  color: AppColors.black,
+  fontSize: 20,
+  fontWeight: AppFontWeights.bold,
+);
+
+const TextStyle profileCardAboutMeContent = TextStyle(
+  color: AppColors.black,
+  fontSize: 20,
+  fontWeight: AppFontWeights.regular,
+);
