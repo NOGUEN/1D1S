@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
+import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
@@ -31,7 +32,14 @@ class MainPage extends BaseView<MainController> {
           userProfileImage: 'images/image_user_profile_gorani.jpg',
           userName: '고라니',
         ),
-
+        ODOSProfileCard(
+          userName: '고라니',
+          userProfileImage: 'images/image_user_profile_gorani.jpg',
+          longestStreakNumber: 20,
+          successfulGoalNumber: 5,
+          isStreakCurrentlyMaintaining: true,
+          aboutMe: '꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉\n꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉',
+        ),
       ],
     );
   }
