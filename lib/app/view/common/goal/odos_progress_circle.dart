@@ -30,7 +30,7 @@ class ODOSProgressCircle extends StatelessWidget {
           roundedCap: (_, __) => true,
         ),
         Text(
-          '${(100 * percent)}%',
+          '${(1000 * percent).toInt() / 10}%',
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,

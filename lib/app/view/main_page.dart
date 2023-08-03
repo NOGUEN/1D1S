@@ -38,7 +38,7 @@ class MainPage extends BaseView<MainController> {
             consecutive_days: 3,
             my_goal: "목표이름",
             imoji: "images/icon_fire.png",
-            totalDay: 25),
+            totalDay: 17),
         ODOSWeekButton(
           circleColor: Color(0xFF237CE8),
           doneWeek: [true, false, true, false, false, true, true],
