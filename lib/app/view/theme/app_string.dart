@@ -22,4 +22,5 @@ abstract class AppString {
   static const home = "images/icon_home.svg";
   static const goal = "images/icon_pen.svg";
   static const mypage = "images/icon_person.svg";
+  static const setting = "images/icon_setting.svg";
 }

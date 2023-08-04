@@ -1,35 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:one_day_one_something/app/view/theme/app_theme.dart';
+import 'package:one_day_one_something/app/view/theme/app_values.dart';
+
+import '../../theme/app_text_theme.dart';
 
 class ODOSSystemList extends StatelessWidget {
-  const ODOSSystemList({super.key});
+  const ODOSSystemList({
+    super.key,
+    required this.list,
+    required this.categoryString,
+  });
+  final List<ODOSSystemListCell> list;
+  final String categoryString;
 
-  //기본적인 틀만 만들었음.
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("category"),
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.all(8),
-            children: [
-              Container(
-                  height: 50,
-                  color: Colors.amber[600],
-                  child: const Center(child: Text('11111'))),
-              Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('22222'))),
-              Container(
-                  height: 50,
-                  color: Colors.amber[400],
-                  child: const Center(child: Text('33333')))
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            categoryString,
+            style: inputContentTextStyle,
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              boxShadow: [
+                odosShadow,
+              ],
+              color: AppColors.white,
+            ),
+            child: ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              itemCount: list.length * 2,
+              itemBuilder: (BuildContext context, int index) {
+                if (index % 2 == 0) {
+                  return list[index ~/ 2];
+                } else {
+                  if (index == list.length * 2 - 1) {
+                    return null;
+                  }
+                  return const Divider(
+                    color: AppColors.gray500,
+                    indent: AppValues.iconDefaultSize + 40,
+                  );
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ODOSSystemListCell extends StatelessWidget {
+  const ODOSSystemListCell({super.key, required this.menuString});
+  final String menuString;
+  final EdgeInsets listPadding = const EdgeInsets.fromLTRB(20, 10, 0, 5);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Row(children: [
+        Padding(
+          padding: listPadding,
+          child: const Icon(Icons.abc),
         ),
-      ],
+        Padding(
+          padding: listPadding,
+          child: Text(
+            menuString,
+            style: inputContentTextStyle,
+          ),
+        )
+      ]),
     );
   }
 }

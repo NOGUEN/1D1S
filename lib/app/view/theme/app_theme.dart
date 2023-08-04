@@ -16,3 +16,10 @@ final ThemeData appThemeData = ThemeData(
     ),
   ),
 );
+
+BoxShadow odosShadow = BoxShadow(
+  color: AppColors.black.withOpacity(0.1),
+  offset: Offset(0, 0),
+  spreadRadius: 0.1,
+  blurRadius: 20,
+);
