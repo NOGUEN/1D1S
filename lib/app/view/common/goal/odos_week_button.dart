@@ -29,8 +29,8 @@ class ODOSWeekButton extends StatelessWidget {
         Text(dayName, style: TextStyle(fontSize: 12, color: Colors.black)),
         SizedBox(height: 10),
         Container(
-          width: 35,
-          height: 35,
+          width: 28.04,
+          height: 28.74,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isDone ? circleColor : circleColor.withOpacity(0.4),
@@ -39,8 +39,8 @@ class ODOSWeekButton extends StatelessWidget {
               ? Center(
                   child: SvgPicture.asset(
                     'assets/check_icon.svg', // 체크 아이콘 이미지 파일 경로
-                    width: 16,
-                    height: 12.79,
+                    width: 10.86,
+                    height: 8.04,
                     color: Colors.white,
                   ),
                 )
