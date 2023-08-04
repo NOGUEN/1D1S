@@ -24,8 +24,8 @@ class ODOSGoalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      width: 341,
-      height: 360,
+      width: 280,
+      height: 295.54,
       decoration: BoxDecoration(
         color: AppColors.defaultBackground,
         borderRadius: BorderRadius.circular(10),
@@ -46,8 +46,8 @@ class ODOSGoalCard extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
                 child: Image.asset(
                   imoji,
-                  width: 25,
-                  height: 25,
+                  width: 18.61,
+                  height: 24,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -57,7 +57,7 @@ class ODOSGoalCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 10),
           Container(
             child: Row(
               children: [
