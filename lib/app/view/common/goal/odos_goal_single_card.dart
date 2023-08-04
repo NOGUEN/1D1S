@@ -1,3 +1,4 @@
+// multi_card.dart로 대체된 페이지임.
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
@@ -24,8 +25,8 @@ class ODOSGoalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      width: 280,
-      height: 295.54,
+      width: 341,
+      height: 360,
       decoration: BoxDecoration(
         color: AppColors.defaultBackground,
         borderRadius: BorderRadius.circular(10),
@@ -71,7 +72,7 @@ class ODOSGoalCard extends StatelessWidget {
                         "금주의 기록",
                         style: goalCardsubTitle,
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 18),
                       ODOSWeekButton(
                         circleColor: goalColor,
                         doneWeek: [true, false, true, false, false, true, true],

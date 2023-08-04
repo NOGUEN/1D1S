@@ -28,32 +28,14 @@ class MainPage extends BaseView<MainController> {
   Widget body(BuildContext context) {
     return Column(
       children: [
+        GoalMulticard(),
         // ODOSGoalCard(
         //     goalColor: Color(0xFF237CE8),
         //     doneWeek: [true, false, true, false, false, true, true],
         //     consecutive_days: 3,
-        //     my_goal: "목표이름",
+        //     my_goal: "목표이름1",
         //     imoji: "images/icon_fire.png",
-        //     totalDay: 17),
-        // // ODOSWeekButton(
-        //   circleColor: Color(0xFF237CE8),
-        //   doneWeek: [true, false, true, false, false, true, true],
-        // ),
-        // ODOSMultiGoalcard([ODOSGoalCard(
-        //     goalColor: Color(0xFF237CE8),
-        //     doneWeek: [true, false, true, false, false, true, true],
-        //     consecutive_days: 3,
-        //     my_goal: "목표이름",
-        //     imoji: "images/icon_fire.png",
-        //     totalDay: 17),]),
-        GoalMulticard(),
-        ODOSGoalCard(
-            goalColor: Color(0xFF237CE8),
-            doneWeek: [true, false, true, false, false, true, true],
-            consecutive_days: 3,
-            my_goal: "목표이름1",
-            imoji: "images/icon_fire.png",
-            totalDay: 123),
+        //     totalDay: 123),
       ],
     );
   }
