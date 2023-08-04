@@ -13,6 +13,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_list.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_multi_card.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 import '../controller/main/main_controller.dart';
@@ -26,23 +27,33 @@ class MainPage extends BaseView<MainController> {
   @override
   Widget body(BuildContext context) {
     return Column(
-      children: const [
-        ODOSMyGoal(
-          consecutive_days: 20,
-          my_goal: "내 목표",
-          imoji: "images/icon_fire.png",
-        ),
+      children: [
+        // ODOSGoalCard(
+        //     goalColor: Color(0xFF237CE8),
+        //     doneWeek: [true, false, true, false, false, true, true],
+        //     consecutive_days: 3,
+        //     my_goal: "목표이름",
+        //     imoji: "images/icon_fire.png",
+        //     totalDay: 17),
+        // // ODOSWeekButton(
+        //   circleColor: Color(0xFF237CE8),
+        //   doneWeek: [true, false, true, false, false, true, true],
+        // ),
+        // ODOSMultiGoalcard([ODOSGoalCard(
+        //     goalColor: Color(0xFF237CE8),
+        //     doneWeek: [true, false, true, false, false, true, true],
+        //     consecutive_days: 3,
+        //     my_goal: "목표이름",
+        //     imoji: "images/icon_fire.png",
+        //     totalDay: 17),]),
+        GoalMulticard(),
         ODOSGoalCard(
             goalColor: Color(0xFF237CE8),
             doneWeek: [true, false, true, false, false, true, true],
             consecutive_days: 3,
-            my_goal: "목표이름",
+            my_goal: "목표이름1",
             imoji: "images/icon_fire.png",
-            totalDay: 17),
-        ODOSWeekButton(
-          circleColor: Color(0xFF237CE8),
-          doneWeek: [true, false, true, false, false, true, true],
-        ),
+            totalDay: 123),
       ],
     );
   }
