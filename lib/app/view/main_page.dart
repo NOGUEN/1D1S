@@ -5,6 +5,8 @@ import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigat
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/common/track/odos_track_card.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_week_button.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 import '../controller/main/main_controller.dart';
@@ -28,6 +30,7 @@ class MainPage extends BaseView<MainController> {
           userProfileImage: 'images/image_user_profile_gorani.jpg',
           userName: '고라니',
         ),
+
       ],
     );
   }
