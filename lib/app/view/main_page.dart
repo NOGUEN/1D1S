@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_add_button.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_system_list.dart';
-import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
 
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
