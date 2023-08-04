@@ -29,6 +29,12 @@ class MainPage extends BaseView<MainController> {
     return Column(
       children: [
         GoalMulticard(),
+        ODOSGoalList(
+          imoji: "images/icon_fire.png",
+          circleColor: AppColors.gray700,
+          my_goal: "내 목표",
+          percent: 0.5,
+        ),
         // ODOSGoalCard(
         //     goalColor: Color(0xFF237CE8),
         //     doneWeek: [true, false, true, false, false, true, true],
