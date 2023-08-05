@@ -35,6 +35,9 @@ class MainPage extends BaseView<MainController> {
           my_goal: "내 목표",
           percent: 0.5,
         ),
+        ODOSAddButton(
+          buttonColor: AppColors.blueOrigin,
+        ),
         // ODOSGoalCard(
         //     goalColor: Color(0xFF237CE8),
         //     doneWeek: [true, false, true, false, false, true, true],
