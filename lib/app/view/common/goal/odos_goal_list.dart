@@ -57,12 +57,18 @@ class ODOSGoalList extends StatelessWidget {
               style: goalListHead,
             ),
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-            child: Image.asset(
-              'images/icon_add.png',
-              width: 45,
-              height: 45,
+          SizedBox(
+            width: 60,
+            height: 60,
+            child: IconButton(
+              onPressed: () {
+                // Add your onPressed function here
+              },
+              icon: Image.asset(
+                'images/icon_add.png',
+                width: 60,
+                height: 60,
+              ),
             ),
           ),
           IconButton(
