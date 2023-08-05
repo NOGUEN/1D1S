@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'app_colors.dart';
 
@@ -13,6 +14,17 @@ const TextStyle inputHintTextStyle = TextStyle(
   color: AppColors.gray500,
   fontSize: 20,
   fontWeight: AppFontWeights.regular,
+);
+
+const TextStyle inputGoalAddHintTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 18,
+  fontWeight: AppFontWeights.bold,
+);
+const TextStyle inputGoalAddConfirmTextStyle = TextStyle(
+  color: Colors.blue,
+  fontSize: 18,
+  fontWeight: AppFontWeights.bold,
 );
 
 const TextStyle inputContentTextStyle = TextStyle(
@@ -88,5 +100,10 @@ const TextStyle goalCardsubTitle = TextStyle(
 const TextStyle goalCardconsecutive = TextStyle(
   color: AppColors.black,
   fontSize: 35,
+  fontWeight: AppFontWeights.bold,
+);
+const TextStyle goalNewcardDialog = TextStyle(
+  color: AppColors.black,
+  fontSize: 24,
   fontWeight: AppFontWeights.bold,
 );
