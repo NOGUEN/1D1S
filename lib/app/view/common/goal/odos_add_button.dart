@@ -41,17 +41,7 @@ class ODOSAddButton extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return CustomDialogBox(
-                    title: "Custom Dialog Demo",
-                    descriptions:
-                        "Hii all this is a custom dialog in flutter and  you will be use in your flutter applications",
-                    text: "Yes",
-                    img: Image.asset(
-                      'images/icon_add.png',
-                      width: 45,
-                      height: 45,
-                    ),
-                  );
+                  return CustomDialogBox();
                 });
           },
           child: Center(

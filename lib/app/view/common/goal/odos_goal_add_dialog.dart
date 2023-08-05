@@ -7,15 +7,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_color_palette.da
 import 'package:one_day_one_something/app/view/common/goal/odos_icon_picker.dart';
 
 class CustomDialogBox extends StatefulWidget {
-  final String title, descriptions, text;
-  final Image img;
-
-  const CustomDialogBox(
-      {super.key,
-      required this.title,
-      required this.descriptions,
-      required this.text,
-      required this.img});
+  const CustomDialogBox({super.key});
 
   @override
   State<StatefulWidget> createState() => _CustomDialogBoxState();
