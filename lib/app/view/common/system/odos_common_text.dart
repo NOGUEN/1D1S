@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../theme/app_string.dart';
 
-class CommonText extends StatelessWidget {
+class ODOSCommonText extends StatelessWidget {
   final String text;
   final String textKey;
   final Color textColor;
-  const CommonText({
+  const ODOSCommonText({
     super.key,
     required this.text,
     required this.textKey,
