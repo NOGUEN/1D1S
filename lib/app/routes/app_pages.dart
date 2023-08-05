@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/view/auth/login_page.dart';
+import 'package:one_day_one_something/app/view/auth/register_page.dart';
 
 import '../bindings/auth_binding.dart';
 import '../bindings/main_binding.dart';
@@ -17,14 +18,21 @@ class AppPages {
 
   static final pages = [
     GetPage(
+      name: _Paths.MAIN,
+      page: () => MainPage(),
+      binding: MainBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: _Paths.LOGIN,
       page: () => LoginPage(),
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.MAIN,
-      page: () => MainPage(),
-      binding: MainBinding(),
+      name: _Paths.REGISTER,
+      page: () => RegisterPage(),
+      binding: RegisterBinding(),
+      transition: Transition.native,
     ),
   ];
 }
