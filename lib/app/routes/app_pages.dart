@@ -1,7 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:one_day_one_something/app/view/auth/login_page.dart';
 
+import '../bindings/auth_binding.dart';
 import '../bindings/main_binding.dart';
 import '../view/main_page.dart';
 part './app_routes.dart';
@@ -10,10 +12,15 @@ part './app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.MAIN;
+  static const INITIAL = Routes.LOGIN;
   static const TEST_PAGE = Routes.TEST_PAGE;
 
   static final pages = [
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
+    ),
     GetPage(
       name: _Paths.MAIN,
       page: () => MainPage(),

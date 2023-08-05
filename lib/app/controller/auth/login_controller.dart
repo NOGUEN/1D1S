@@ -7,6 +7,8 @@ import '../../routes/app_pages.dart';
 class LoginController extends BaseController {
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
+  var emailValue = ''.obs;
+  var passwordValue = ''.obs;
 
   @override
   void dispose() {
@@ -16,7 +18,7 @@ class LoginController extends BaseController {
   }
 
   void login() {
-    showToast("로그인 성공 : ${emailEditingController.text}");
+    showToast("로그인 성공 : ${emailEditingController.value.text}");
     Get.offAndToNamed(Routes.MAIN);
   }
 
