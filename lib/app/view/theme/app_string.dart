@@ -1,9 +1,16 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class AppString {
+  static const str_1D1S = "1D1S";
   static const str_home = "홈";
   static const str_goal = "목표";
   static const str_mypage = "마이페이지";
+  static const str_email = "이메일";
+  static const str_email_hint = "이메일";
+  static const str_password = "비밀번호";
+  static const str_password_hint = "비밀번호를 입력해주세요.";
+  static const str_login = "로그인";
+  static const str_register = "회원가입하기";
 
   // common_text의 key로 사용
   static const regular12 = "regular12";
