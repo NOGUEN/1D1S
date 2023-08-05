@@ -22,7 +22,7 @@ class ODOSConfirmButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: double.infinity,
       height: AppValues.buttonHeight,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -33,7 +33,7 @@ class ODOSConfirmButton extends StatelessWidget {
             ),
           ),
           overlayColor: MaterialStateProperty.all(Colors.transparent),
-          backgroundColor: MaterialStateProperty.all(AppColors.black),
+          backgroundColor: MaterialStateProperty.all(buttonColor),
           elevation: MaterialStateProperty.all(0.0),
         ),
         child: ODOSCommonText(
@@ -47,18 +47,27 @@ class ODOSConfirmButton extends StatelessWidget {
 }
 
 class ODOSSubButton extends StatelessWidget {
-  const ODOSSubButton({super.key});
+  final Color textColor;
+  final String buttonText;
+  final GestureTapCallback onPressed;
+
+  const ODOSSubButton({
+    required this.textColor,
+    required this.buttonText,
+    required this.onPressed,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         elevation: MaterialStateProperty.all(0.0),
       ),
-      child: const Text(
-        "Text >",
+      child: Text(
+        buttonText,
         style: subButtonTextStyle,
       ),
     );

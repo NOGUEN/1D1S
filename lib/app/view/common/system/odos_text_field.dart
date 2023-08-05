@@ -11,6 +11,7 @@ class ODOSTextField extends StatelessWidget {
   final bool? needHide;
   final String? iconPath;
   void Function(String)? keyboardSubmit;
+  void Function(String)? onChanged;
   final Function()? iconPressed;
 
   ODOSTextField({
@@ -23,6 +24,7 @@ class ODOSTextField extends StatelessWidget {
     this.iconPath,
     this.keyboardSubmit,
     this.iconPressed,
+    this.onChanged,
     super.key,
   });
 
@@ -59,6 +61,7 @@ class ODOSTextField extends StatelessWidget {
           obscureText: needHide != null && needHide! ? true : false,
           autofocus: false,
           onSubmitted: keyboardSubmit,
+          onChanged: onChanged,
         ),
       ],
     );
