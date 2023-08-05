@@ -11,6 +11,9 @@ abstract class AppString {
   static const str_password_hint = "비밀번호를 입력해주세요.";
   static const str_login = "로그인";
   static const str_register = "회원가입하기";
+  static const str_check_password = "비밀번호 확인";
+  static const str_check_password_hint = "비밀번호를 다시 입력해주세요.";
+  static const str_next = "다음";
 
   // common_text의 key로 사용
   static const regular12 = "regular12";

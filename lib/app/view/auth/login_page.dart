@@ -17,6 +17,11 @@ class LoginPage extends BaseView<LoginController> {
   }
 
   @override
+  Color pageBackgroundColor() {
+    return AppColors.white;
+  }
+
+  @override
   Widget body(BuildContext context) {
     return _BaseLoginPage(
       widgetList: [
