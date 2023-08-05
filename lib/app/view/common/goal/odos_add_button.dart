@@ -3,6 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/theme/app_values.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_add_dialog.dart';
 
 class ODOSAddButton extends StatelessWidget {
   final Color buttonColor;
@@ -15,20 +16,20 @@ class ODOSAddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:361,
-      height:70,
+      width: 361,
+      height: 70,
       decoration: BoxDecoration(
-          color: AppColors.defaultBackground,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.black.withOpacity(0.25),
-              spreadRadius: 0,
-              blurRadius: 4,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
+        color: AppColors.defaultBackground,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.25),
+            spreadRadius: 0,
+            blurRadius: 4,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
       child: DottedBorder(
         borderType: BorderType.RRect,
         radius: Radius.circular(10),
@@ -36,14 +37,30 @@ class ODOSAddButton extends StatelessWidget {
         color: Colors.grey,
         strokeWidth: 3,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CustomDialogBox(
+                    title: "Custom Dialog Demo",
+                    descriptions:
+                        "Hii all this is a custom dialog in flutter and  you will be use in your flutter applications",
+                    text: "Yes",
+                    img: Image.asset(
+                      'images/icon_add.png',
+                      width: 45,
+                      height: 45,
+                    ),
+                  );
+                });
+          },
           child: Center(
-                  child: Image.asset(
-                    'images/icon_add.png',
-                    width: 45,
-                    height: 45,
-                  ),
-                ),
+            child: Image.asset(
+              'images/icon_add.png',
+              width: 45,
+              height: 45,
+            ),
+          ),
         ),
       ),
     );
