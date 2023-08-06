@@ -103,3 +103,9 @@ const TextStyle profileCardAboutMeContent = TextStyle(
   fontSize: 20,
   fontWeight: AppFontWeights.regular,
 );
+
+const TextStyle everyoneSGoalButtonTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 25,
+  fontWeight: AppFontWeights.bold,
+);
