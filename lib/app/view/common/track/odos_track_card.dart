@@ -19,24 +19,17 @@ class ODOSTrackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
       padding: EdgeInsets.all(10),
       width: 150,
       height: 100,
       decoration: BoxDecoration(
         color: trackColor,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
               color: AppColors.black.withOpacity(0.1),
               spreadRadius: 2,
               blurRadius: 20
-          ),
-          BoxShadow(
-              color: AppColors.black.withOpacity(0.25),
-              offset: Offset(0, 4),
-              spreadRadius: 0,
-              blurRadius: 4
           )
         ]
       ),
