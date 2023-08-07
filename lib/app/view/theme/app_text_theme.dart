@@ -26,7 +26,11 @@ const TextStyle inputGoalAddConfirmTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
-
+const TextStyle RecordAddConfirmTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 19,
+  fontWeight: AppFontWeights.bold,
+);
 const TextStyle inputContentTextStyle = TextStyle(
   color: AppColors.black,
   fontSize: 20,
