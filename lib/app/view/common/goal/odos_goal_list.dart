@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
@@ -15,7 +17,11 @@ class ODOSGoalList extends StatelessWidget {
       width:361,
       height: 70,
       decoration: BoxDecoration(
-        color: AppColors.defaultBackground,
+        gradient: LinearGradient(
+          colors:[circleColor, Color.lerp(AppColors.defaultBackground, circleColor, min(1, pow(percent, 6).toDouble()))!],
+          begin: Alignment.centerLeft,
+          end: Alignment(percent*2 - 1, 0)
+        ),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -31,8 +37,8 @@ class ODOSGoalList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ODOSProgressCircle(
-            circleColor: AppColors.gray700,
-            percent: 0.5,
+            circleColor: circleColor,
+            percent: percent,
           ),
           Container(
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -64,7 +70,13 @@ class ODOSGoalList extends StatelessWidget {
             color: AppColors.gray500,
             icon: Icon(Icons.arrow_forward_ios),
             onPressed: () {
-              // > 버튼을 눌렀을 때 동작
+              showDialog(context: context, builder: (context) {
+                return Dialog(
+                  child: Image.asset(imoji), //Image 대신 적절한 모달 추가
+                  clipBehavior: Clip.none,
+                  backgroundColor: Colors.white.withOpacity(0),
+                );
+              });
             },
           ),
         ],
