@@ -103,26 +103,26 @@ class _ODOSCalanderState extends State<ODOSCalander> {
         width: 20, height: 20,
         child: Stack(
             children: [
-              SizedBox(width: 20, height: 20, child: Text('$date', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),)),
+
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(width: 20, height: 6, decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.5),
+                      color: AppColors.orangeBackground,
                       borderRadius: BorderRadius.circular(3)
                   ),),
                   Container(width: 20, height: 6, decoration: BoxDecoration(
-                      color: Colors.green.withOpacity(0.5),
+                      color: AppColors.blueBackground,
                       borderRadius: BorderRadius.circular(3)
                   ),),
-                  Container(width: 20, height: 6,
-                    decoration: BoxDecoration(
-                        color: Colors.blue.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(3)
+                  Container(width: 20, height: 6, decoration: BoxDecoration(
+                      color: AppColors.greenBackground,
+                      borderRadius: BorderRadius.circular(3)
                     ),
                   ),
                 ],
-              )
+              ),
+              SizedBox(width: 20, height: 20, child: Text('$date', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),)),
             ]
         )
     );
