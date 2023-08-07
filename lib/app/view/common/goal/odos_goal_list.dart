@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_miniver.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart';
 
 class ODOSGoalList extends StatelessWidget {
   final String imoji;
@@ -62,6 +63,11 @@ class ODOSGoalList extends StatelessWidget {
             height: 60,
             child: IconButton(
               onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return recordDialogBox();
+                    });
                 // Add your onPressed function here
               },
               icon: Image.asset(
