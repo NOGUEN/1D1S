@@ -76,6 +76,7 @@ flutter:
     - assets/
     - images/icon_fire.png
     - images/icon_add.png
+    - images/icon_setting.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

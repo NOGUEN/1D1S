@@ -3,15 +3,38 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
 class ODOSTextField extends StatelessWidget {
-  const ODOSTextField({super.key});
+  final TextEditingController controller;
+  final String titleText;
+  final String hintText;
+  final TextInputAction? action;
+  final TextInputType? inputType;
+  final bool? needHide;
+  final String? iconPath;
+  void Function(String)? keyboardSubmit;
+  void Function(String)? onChanged;
+  final Function()? iconPressed;
+
+  ODOSTextField({
+    required this.controller,
+    required this.titleText,
+    required this.hintText,
+    this.action,
+    this.inputType,
+    this.needHide,
+    this.iconPath,
+    this.keyboardSubmit,
+    this.iconPressed,
+    this.onChanged,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text(
-          "이메일",
+          titleText,
           style: labelTextStyle,
         ),
         TextField(
@@ -28,11 +51,17 @@ class ODOSTextField extends StatelessWidget {
                 width: 4,
               ),
             ),
-            hintText: "hint text",
+            hintText: hintText,
             hintStyle: inputHintTextStyle,
             contentPadding: EdgeInsets.fromLTRB(16, 0, 0, 0),
           ),
           style: inputContentTextStyle,
+          textInputAction: action,
+          keyboardType: inputType,
+          obscureText: needHide != null && needHide! ? true : false,
+          autofocus: false,
+          onSubmitted: keyboardSubmit,
+          onChanged: onChanged,
         ),
       ],
     );
