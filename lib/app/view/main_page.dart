@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_add_button.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_list.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_goal_multi_card.dart';
+import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
-
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
 
