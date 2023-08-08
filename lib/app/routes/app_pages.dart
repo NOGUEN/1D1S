@@ -27,12 +27,13 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginPage(),
       binding: LoginBinding(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: _Paths.REGISTER,
       page: () => RegisterPage(),
       binding: RegisterBinding(),
-      transition: Transition.native,
+      transition: Transition.fadeIn,
     ),
   ];
 }
