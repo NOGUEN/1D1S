@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:one_day_one_something/app/core/base/base_view.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
+import 'package:one_day_one_something/app/routes/app_pages.dart';
+
+import 'package:one_day_one_something/app/view/auth/register_sub_page/set_account_page.dart';
+import 'package:one_day_one_something/app/view/auth/register_sub_page/set_profile_page.dart';
+import 'package:one_day_one_something/app/view/auth/register_sub_page/welcome_page.dart';
+
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
@@ -13,19 +18,115 @@ import '../../controller/auth/register_controller.dart';
 class RegisterPage extends BaseView<RegisterController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return AppBar(
-      leading: IconButton(
-        icon: const Icon(
-          Icons.arrow_back,
-          color: AppColors.black,
-          size: 40,
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(175),
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: AppColors.black,
+                size: 40,
+              ),
+              onPressed: () {
+                if (controller.tabController.index != 0) {
+                  controller.tabController
+                      .animateTo((controller.tabController.index - 1) % 3);
+                  controller.currentTabIndex.value =
+                      controller.tabController.index;
+                } else {
+                  Get.offAndToNamed(Routes.LOGIN);
+                }
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Obx(
+              () {
+                return SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: Stack(
+                    children: [
+                      AnimatedPositioned(
+                        top: controller.currentTabIndex.value == 0 ? 0 : 25,
+                        left: 20,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.fastOutSlowIn,
+                        child: AnimatedContainer(
+                          height:
+                              controller.currentTabIndex.value == 0 ? 12 : 10,
+                          width:
+                              controller.currentTabIndex.value == 0 ? 12 : 10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: controller.currentTabIndex.value == 0
+                                ? AppColors.black
+                                : AppColors.gray500,
+                          ),
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      ),
+                      AnimatedPositioned(
+                        top: controller.currentTabIndex.value == 1 ? 0 : 25,
+                        left: 60,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.fastOutSlowIn,
+                        child: AnimatedContainer(
+                          height:
+                              controller.currentTabIndex.value == 1 ? 12 : 10,
+                          width:
+                              controller.currentTabIndex.value == 1 ? 12 : 10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: controller.currentTabIndex.value == 1
+                                ? AppColors.black
+                                : AppColors.gray500,
+                          ),
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      ),
+                      AnimatedPositioned(
+                        top: controller.currentTabIndex.value == 2 ? 0 : 25,
+                        left: 100,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.fastOutSlowIn,
+                        child: AnimatedContainer(
+                          height:
+                              controller.currentTabIndex.value == 2 ? 12 : 10,
+                          width:
+                              controller.currentTabIndex.value == 2 ? 12 : 10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: controller.currentTabIndex.value == 2
+                                ? AppColors.black
+                                : AppColors.gray500,
+                          ),
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            const Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: AppValues.screenPadding),
+              child: Text(
+                AppString.str_register,
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: AppFontWeights.extrabold,
+                ),
+              ),
+            ),
+          ],
         ),
-        onPressed: () {
-          Get.back();
-        },
       ),
-      backgroundColor: AppColors.white,
-      elevation: 0.0,
     );
   }
 
@@ -36,86 +137,21 @@ class RegisterPage extends BaseView<RegisterController> {
 
   @override
   Widget body(BuildContext context) {
-    return _BaseRegisterPage(widgetList: [
-      const SizedBox(
-        height: 70,
-      ),
-      const Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          "회원가입",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: AppFontWeights.extrabold,
-          ),
-        ),
-      ),
-      const SizedBox(
-        height: 60,
-      ),
-      ODOSTextField(
-        controller: controller.emailEditingController,
-        titleText: AppString.str_email,
-        hintText: AppString.str_email_hint,
-        onChanged: (p0) {
-          controller.emailValue.value = p0;
-        },
-      ),
-      const SizedBox(
-        height: 40,
-      ),
-      ODOSTextField(
-        controller: controller.passwordEditingController,
-        titleText: AppString.str_password,
-        hintText: AppString.str_password_hint,
-        needHide: true,
-        onChanged: (p0) {
-          controller.passwordValue.value = p0;
-        },
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      ODOSTextField(
-        controller: controller.validPasswordEditingController,
-        titleText: AppString.str_check_password,
-        hintText: AppString.str_check_password_hint,
-        needHide: true,
-        onChanged: (p0) {
-          controller.validpasswordValue.value = p0;
-        },
-      ),
-      const SizedBox(
-        height: 200,
-      ),
-      Obx(
-        () {
-          Color buttonColor;
-
-          if ((controller.emailValue.value.isNotEmpty &&
-                  controller.passwordValue.value.isNotEmpty) &&
-              controller.passwordValue.value ==
-                  controller.validpasswordValue.value) {
-            buttonColor = AppColors.black;
-          } else {
-            buttonColor = AppColors.gray500;
-          }
-
-          return ODOSConfirmButton(
-            buttonColor: buttonColor,
-            textColor: AppColors.white,
-            buttonText: AppString.str_next,
-            onPressed: () {},
-          );
-        },
-      ),
-    ]);
+    return TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
+      controller: controller.tabController,
+      children: [
+        SetAccountPage(),
+        SetProfilePage(),
+        WelcomPage(),
+      ],
+    );
   }
 }
 
-class _BaseRegisterPage extends StatelessWidget {
+class BaseRegisterPage extends StatelessWidget {
   final List<Widget> widgetList;
-  const _BaseRegisterPage({
+  const BaseRegisterPage({
     required this.widgetList,
   });
 
@@ -133,6 +169,30 @@ class _BaseRegisterPage extends StatelessWidget {
             children: widgetList,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _AnimatedDot extends StatelessWidget {
+  final Animation<double> dotAnimation;
+
+  _AnimatedDot({required this.dotAnimation});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: dotAnimation,
+      builder: (context, child) {
+        return Transform.translate(
+          offset: Offset(0, dotAnimation.value),
+          child: child,
+        );
+      },
+      child: Container(
+        width: 10,
+        height: 10,
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black),
       ),
     );
   }
