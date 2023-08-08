@@ -11,6 +11,8 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
+import 'common/system/odos_appbar.dart';
+import 'common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
   @override

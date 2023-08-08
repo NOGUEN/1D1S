@@ -77,6 +77,14 @@ flutter:
     - images/icon_fire.png
     - images/icon_add.png
     - images/icon_setting.svg
+    - images/profile_0.png
+    - images/profile_1.png
+    - images/profile_2.png
+    - images/profile_3.png
+    - images/profile_4.png
+    - images/profile_5.png
+    - images/profile_6.png
+    - images/profile_7.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
