@@ -87,10 +87,8 @@ class LoginPage extends BaseView<LoginController> {
           height: 20,
         ),
         ODOSSubButton(
-          textColor: !controller.passwordEditingController.isBlank!
-              ? AppColors.gray500
-              : AppColors.black,
-          buttonText: AppString.str_register,
+          textColor: AppColors.black,
+          buttonText: AppString.str_go_register,
           onPressed: () => controller.goRegister(),
         ),
       ],
