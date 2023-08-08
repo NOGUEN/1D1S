@@ -9,6 +9,9 @@ import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_multi_card.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
+import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
+import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
+import 'package:one_day_one_something/app/view/home_page.dart';
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
 import 'common/system/odos_appbar.dart';
@@ -42,7 +45,7 @@ class MainPage extends BaseView<MainController> {
     switch (menuCode) {
       case MenuCode.HOME:
         // return homeView;
-        return Container();
+        return HomePage();
       case MenuCode.GOAL:
         // return goalView;
         goalPage ??= Container();
