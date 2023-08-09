@@ -16,123 +16,113 @@ class HomePage extends BaseView<MainController> {
   }
 
   @override
-  Color pageBackgroundColor(){
+  Color pageBackgroundColor() {
     return AppColors.white;
   }
 
   @override
   Widget body(BuildContext context) {
-    return BaseHomePage(
-      everyoneSGoalList: [
-        {
-          "consecutive_days": 20,
-          "my_goal": "내 목표"
-        },
-        {
-          "consecutive_days": 20,
-          "my_goal": "내 목표"
-        },
-        {
-          "consecutive_days": 20,
-          "my_goal": "내 목표"
-        },
-        {
-          "consecutive_days": 20,
-          "my_goal": "내 목표"
-        }
-      ],
-      everyoneSTrackList: [
-        {
-          "trackColor": AppColors.redBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "1"
-        },
-        {
-          "trackColor": AppColors.orangeBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "2"
-        },
-        {
-          "trackColor": AppColors.yellowBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "3"
-        },
-        {
-          "trackColor": AppColors.greenBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "4"
-        },
-        {
-          "trackColor": AppColors.blueBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "5"
-        },
-        {
-          "trackColor": AppColors.purpleBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "6"
-        },
-        {
-          "trackColor": AppColors.defaultBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "7"
-        },
-        {
-          "trackColor": AppColors.redBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "8"
-        },
-        {
-          "trackColor": AppColors.orangeBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "9"
-        },
-        {
-          "trackColor": AppColors.yellowBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "10"
-        },
-        {
-          "trackColor": AppColors.greenBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "11"
-        },
-        {
-          "trackColor": AppColors.blueBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "12"
-        },
-        {
-          "trackColor": AppColors.purpleBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "13"
-        },
-        {
-          "trackColor": AppColors.defaultBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "14"
-        },
-        {
-          "trackColor": AppColors.redBackground,
-          "trackIcon": 'images/icon_blue_book.png',
-          "userProfileImage": 'images/image_user_profile_gorani.jpg',
-          "userName": "15"
-        },
-      ],
+    return SingleChildScrollView(
+      child: BaseHomePage(
+        everyoneSGoalList: [
+          {"consecutive_days": 20, "my_goal": "내 목표"},
+          {"consecutive_days": 20, "my_goal": "내 목표"},
+          {"consecutive_days": 20, "my_goal": "내 목표"},
+          {"consecutive_days": 20, "my_goal": "내 목표"}
+        ],
+        everyoneSTrackList: [
+          {
+            "trackColor": AppColors.redBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "1"
+          },
+          {
+            "trackColor": AppColors.orangeBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "2"
+          },
+          {
+            "trackColor": AppColors.yellowBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "3"
+          },
+          {
+            "trackColor": AppColors.greenBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "4"
+          },
+          {
+            "trackColor": AppColors.blueBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "5"
+          },
+          {
+            "trackColor": AppColors.purpleBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "6"
+          },
+          {
+            "trackColor": AppColors.defaultBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "7"
+          },
+          {
+            "trackColor": AppColors.redBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "8"
+          },
+          {
+            "trackColor": AppColors.orangeBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "9"
+          },
+          {
+            "trackColor": AppColors.yellowBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "10"
+          },
+          {
+            "trackColor": AppColors.greenBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "11"
+          },
+          {
+            "trackColor": AppColors.blueBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "12"
+          },
+          {
+            "trackColor": AppColors.purpleBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "13"
+          },
+          {
+            "trackColor": AppColors.defaultBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "14"
+          },
+          {
+            "trackColor": AppColors.redBackground,
+            "trackIcon": 'images/icon_blue_book.png',
+            "userProfileImage": 'images/image_user_profile_gorani.jpg',
+            "userName": "15"
+          },
+        ],
+      ),
     );
   }
 }
@@ -140,17 +130,14 @@ class HomePage extends BaseView<MainController> {
 class EveryoneSTrackListSingleLine extends StatelessWidget {
   final List trackList;
   final bool reverseScroll;
-  const EveryoneSTrackListSingleLine({
-    super.key,
-    required this.trackList,
-    required this.reverseScroll
-  });
+  const EveryoneSTrackListSingleLine(
+      {super.key, required this.trackList, required this.reverseScroll});
 
   @override
   Widget build(BuildContext context) {
     return ScrollLoopAutoScroll(
       delay: Duration(seconds: 0),
-      duration: Duration(seconds: 30),
+      duration: Duration(seconds: 60),
       duplicateChild: 4,
       reverseScroll: reverseScroll,
       gap: 0,
@@ -160,31 +147,26 @@ class EveryoneSTrackListSingleLine extends StatelessWidget {
         clipBehavior: Clip.none,
         height: 140,
         child: Row(
-            children: trackList.map(
-                (trackCard) =>
-                  ODOSTrackCard(
-                      trackColor: trackCard["trackColor"],
-                      trackIcon: trackCard["trackIcon"],
-                      userProfileImage: trackCard["userProfileImage"],
-                      userName: trackCard["userName"]
-                  ).marginOnly(right: 12)
-            ).toList()
-        ),
+            children: trackList
+                .map((trackCard) => ODOSTrackCard(
+                        trackColor: trackCard["trackColor"],
+                        trackIcon: trackCard["trackIcon"],
+                        userProfileImage: trackCard["userProfileImage"],
+                        userName: trackCard["userName"])
+                    .marginOnly(right: 12))
+                .toList()),
       ),
     );
   }
 }
 
-
-
 class BaseHomePage extends StatelessWidget {
   final List everyoneSGoalList;
   final List everyoneSTrackList;
-  const BaseHomePage({
-    super.key,
-    required this.everyoneSGoalList,
-    required this.everyoneSTrackList
-  });
+  const BaseHomePage(
+      {super.key,
+      required this.everyoneSGoalList,
+      required this.everyoneSTrackList});
 
   @override
   Widget build(BuildContext context) {
@@ -193,17 +175,19 @@ class BaseHomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(  //모두의 목표 버튼
+          Padding(
+            //모두의 목표 버튼
             padding: const EdgeInsets.fromLTRB(16, 21, 0, 0),
             child: TextButton(
               style: ButtonStyle(
-                overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
-              ),
-              onPressed: (){},
+                  overlayColor: MaterialStateColor.resolveWith(
+                      (states) => Colors.transparent)),
+              onPressed: () {},
               child: Text("모두의 목표 >", style: everyoneSGoalButtonTextStyle),
             ),
           ),
-          SizedBox( //모두의 목표 리스트
+          SizedBox(
+            //모두의 목표 리스트
             height: 140,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -211,39 +195,48 @@ class BaseHomePage extends StatelessWidget {
               clipBehavior: Clip.none,
               physics: ClampingScrollPhysics(),
               itemCount: everyoneSGoalList.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return ODOSMyGoal(
-                    consecutive_days: everyoneSGoalList[index]["consecutive_days"],
-                    my_goal: everyoneSGoalList[index]["my_goal"],
-                    imoji: 'images/icon_fire.png'
-                ).marginOnly(right: 17);
+                        consecutive_days: everyoneSGoalList[index]
+                            ["consecutive_days"],
+                        my_goal: everyoneSGoalList[index]["my_goal"],
+                        imoji: 'images/icon_fire.png')
+                    .marginOnly(right: 17);
               },
             ),
           ),
-          Padding(  //모두의 기록 버튼
+          Padding(
+            //모두의 기록 버튼
             padding: const EdgeInsets.fromLTRB(16, 21, 0, 20),
             child: TextButton(
               style: ButtonStyle(
-                  overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
-              ),
-              onPressed: (){},
+                  overlayColor: MaterialStateColor.resolveWith(
+                      (states) => Colors.transparent)),
+              onPressed: () {},
               child: Text("모두의 기록 >", style: everyoneSGoalButtonTextStyle),
             ),
           ),
           Column(
             children: [
               Transform.translate(
-                offset: Offset(0, -20),
-                child: EveryoneSTrackListSingleLine(trackList: everyoneSTrackList.sublist(0, 5), reverseScroll: true,)
-              ),
+                  offset: Offset(0, -20),
+                  child: EveryoneSTrackListSingleLine(
+                    trackList: everyoneSTrackList.sublist(0, 5),
+                    reverseScroll: true,
+                  )),
               Transform.translate(
                   offset: Offset(0, -40),
-                  child: EveryoneSTrackListSingleLine(trackList: everyoneSTrackList.sublist(5, 10), reverseScroll: false,)
-              ),
+                  child: EveryoneSTrackListSingleLine(
+                    trackList: everyoneSTrackList.sublist(5, 10),
+                    reverseScroll: false,
+                  )),
               Transform.translate(
                   offset: Offset(0, -60),
-                  child: EveryoneSTrackListSingleLine(trackList: everyoneSTrackList.sublist(10, min(everyoneSTrackList.length, 15)), reverseScroll: true,)
-              ),
+                  child: EveryoneSTrackListSingleLine(
+                    trackList: everyoneSTrackList.sublist(
+                        10, min(everyoneSTrackList.length, 15)),
+                    reverseScroll: true,
+                  )),
             ],
           )
         ],
