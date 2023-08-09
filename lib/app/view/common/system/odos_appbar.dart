@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:one_day_one_something/app/routes/app_pages.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 
@@ -16,7 +18,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: false,
         elevation: 0.0,
         title: const Text(
-          "1D1S",
+          AppString.str_1D1S,
           style: TextStyle(
             fontSize: 24,
             fontWeight: AppFontWeights.heavy,
@@ -38,7 +40,9 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: AppValues.iconDefaultSize,
             ),
             iconSize: 50,
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.SETTING);
+            },
           ),
         ]);
   }

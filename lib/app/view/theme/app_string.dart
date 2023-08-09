@@ -4,6 +4,7 @@ abstract class AppString {
   static const str_1D1S = "1D1S";
   static const str_home = "홈";
   static const str_goal = "목표";
+  static const str_setting = "설정";
   static const str_mypage = "마이페이지";
   static const str_email = "이메일";
   static const str_email_hint = "이메일";

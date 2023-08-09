@@ -16,48 +16,45 @@ class ODOSSystemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            categoryString,
-            style: inputContentTextStyle,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          categoryString,
+          style: inputContentTextStyle,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            boxShadow: [
+              odosShadow,
+            ],
+            color: AppColors.white,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              boxShadow: [
-                odosShadow,
-              ],
-              color: AppColors.white,
-            ),
-            child: ListView.builder(
-              primary: false,
-              shrinkWrap: true,
-              itemCount: list.length * 2,
-              itemBuilder: (BuildContext context, int index) {
-                if (index % 2 == 0) {
-                  return list[index ~/ 2];
-                } else {
-                  if (index == list.length * 2 - 1) {
-                    return null;
-                  }
-                  return const Divider(
-                    color: AppColors.gray500,
-                    indent: AppValues.iconDefaultSize + 40,
-                  );
+          child: ListView.builder(
+            primary: false,
+            shrinkWrap: true,
+            itemCount: list.length * 2,
+            itemBuilder: (BuildContext context, int index) {
+              if (index % 2 == 0) {
+                return list[index ~/ 2];
+              } else {
+                if (index == list.length * 2 - 1) {
+                  return null;
                 }
-              },
-            ),
+                return const Divider(
+                  color: AppColors.gray500,
+                  indent: AppValues.iconDefaultSize + 40,
+                );
+              }
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
