@@ -17,7 +17,7 @@ class HomePage extends BaseView<MainController> {
   }
 
   @override
-  Color pageBackgroundColor(){
+  Color pageBackgroundColor() {
     return AppColors.white;
   }
 
@@ -55,31 +55,26 @@ class EveryoneSTrackListSingleLine extends StatelessWidget {
         clipBehavior: Clip.none,
         height: 140,
         child: Row(
-            children: trackList.map(
-                (trackCard) =>
-                  ODOSTrackCard(
-                      trackColor: trackCard["trackColor"],
-                      trackIcon: trackCard["trackIcon"],
-                      userProfileImage: trackCard["userProfileImage"],
-                      userName: trackCard["userName"]
-                  ).marginOnly(right: 12)
-            ).toList()
-        ),
+            children: trackList
+                .map((trackCard) => ODOSTrackCard(
+                        trackColor: trackCard["trackColor"],
+                        trackIcon: trackCard["trackIcon"],
+                        userProfileImage: trackCard["userProfileImage"],
+                        userName: trackCard["userName"])
+                    .marginOnly(right: 12))
+                .toList()),
       ),
     );
   }
 }
 
-
-
 class BaseHomePage extends StatelessWidget {
   final List everyoneSGoalList;
   final List everyoneSTrackList;
-  const BaseHomePage({
-    super.key,
-    required this.everyoneSGoalList,
-    required this.everyoneSTrackList
-  });
+  const BaseHomePage(
+      {super.key,
+      required this.everyoneSGoalList,
+      required this.everyoneSTrackList});
 
   @override
   Widget build(BuildContext context) {
@@ -88,17 +83,19 @@ class BaseHomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(  //모두의 목표 버튼
+          Padding(
+            //모두의 목표 버튼
             padding: const EdgeInsets.fromLTRB(16, 21, 0, 0),
             child: TextButton(
               style: ButtonStyle(
-                overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
-              ),
-              onPressed: (){},
+                overlayColor: MaterialStateColor.resolveWith(
+                    (states) => Colors.transparent)),
+              onPressed: () {},
               child: Text(AppString.str_everyone_s_goal_button, style: everyoneSGoalButtonTextStyle),
             ),
           ),
-          SizedBox( //모두의 목표 리스트
+          SizedBox(
+            //모두의 목표 리스트
             height: 140,
             child: everyoneSGoalList.isEmpty ?
             Center(
@@ -109,22 +106,24 @@ class BaseHomePage extends StatelessWidget {
               clipBehavior: Clip.none,
               physics: ClampingScrollPhysics(),
               itemCount: everyoneSGoalList.length,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return ODOSMyGoal(
-                    consecutive_days: everyoneSGoalList[index]["consecutive_days"],
-                    my_goal: everyoneSGoalList[index]["my_goal"],
-                    imoji: 'images/icon_fire.png'
-                ).marginOnly(right: 17);
+                        consecutive_days: everyoneSGoalList[index]
+                            ["consecutive_days"],
+                        my_goal: everyoneSGoalList[index]["my_goal"],
+                        imoji: 'images/icon_fire.png')
+                    .marginOnly(right: 17);
               },
             ),
           ),
-          Padding(  //모두의 기록 버튼
+          Padding(
+            //모두의 기록 버튼
             padding: const EdgeInsets.fromLTRB(16, 21, 0, 20),
             child: TextButton(
               style: ButtonStyle(
-                  overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
-              ),
-              onPressed: (){},
+                  overlayColor: MaterialStateColor.resolveWith(
+                      (states) => Colors.transparent)),
+              onPressed: () {},
               child: Text(AppString.str_everyone_s_track_button, style: everyoneSGoalButtonTextStyle),
             ),
           ),
