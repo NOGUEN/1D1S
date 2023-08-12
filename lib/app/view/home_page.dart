@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:one_day_one_something/app/view/theme/app_string.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
@@ -94,12 +95,15 @@ class BaseHomePage extends StatelessWidget {
                 overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
               ),
               onPressed: (){},
-              child: Text("모두의 목표 >", style: everyoneSGoalButtonTextStyle),
+              child: Text(AppString.str_everyone_s_goal_button, style: everyoneSGoalButtonTextStyle),
             ),
           ),
           SizedBox( //모두의 목표 리스트
             height: 140,
-            child: ListView.builder(
+            child: everyoneSGoalList.isEmpty ?
+            Center(
+              child: Text(AppString.str_empty_goal_list, style: everyoneSGoalButtonTextStyle,),
+            ) : ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.fromLTRB(24, 20, 24, 20),
               clipBehavior: Clip.none,
@@ -121,10 +125,13 @@ class BaseHomePage extends StatelessWidget {
                   overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent)
               ),
               onPressed: (){},
-              child: Text("모두의 기록 >", style: everyoneSGoalButtonTextStyle),
+              child: Text(AppString.str_everyone_s_track_button, style: everyoneSGoalButtonTextStyle),
             ),
           ),
-          Column(
+          everyoneSTrackList.isEmpty ?
+          Center(
+            child: Text(AppString.str_empty_track_list, style: everyoneSGoalButtonTextStyle,),
+          ) : Column(   //모두의 기록 리스트
             children: [
               Transform.translate(
                 offset: Offset(0, -20),
