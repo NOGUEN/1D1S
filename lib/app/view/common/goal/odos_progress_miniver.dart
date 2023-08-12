@@ -3,11 +3,11 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class ODOSProgressCircle extends StatelessWidget {
+class ODOSProgressMiniCircle extends StatelessWidget {
   final Color circleColor;
   final double percent;
 
-  const ODOSProgressCircle({
+  const ODOSProgressMiniCircle({
     required this.circleColor,
     required this.percent,
   });
@@ -20,12 +20,12 @@ class ODOSProgressCircle extends StatelessWidget {
         CircularStepProgressIndicator(
           totalSteps: 100,
           currentStep: (percent * 100).toInt(),
-          stepSize: 10,
+          stepSize: 6,
           selectedColor: circleColor,
           unselectedColor: Colors.grey[200],
           padding: 0,
-          width: 82.11,
-          height: 82.11,
+          width: 50,
+          height: 50,
           // selectedStepSize: 15,
           roundedCap: (_, __) => true,
         ),
@@ -33,7 +33,7 @@ class ODOSProgressCircle extends StatelessWidget {
           '${(1000 * percent).toInt() / 10}%',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 20,
+            fontSize: 10,
             fontWeight: FontWeight.bold,
           ),
         ),

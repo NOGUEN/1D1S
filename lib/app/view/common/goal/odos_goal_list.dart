@@ -1,44 +1,44 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_progress_miniver.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart';
+
 class ODOSGoalList extends StatelessWidget {
   final String imoji;
   final String my_goal;
   final Color circleColor;
   final double percent;
-  const ODOSGoalList({super.key, required this.imoji, required this.circleColor, required this.my_goal, required this.percent});
+  const ODOSGoalList(
+      {super.key,
+      required this.imoji,
+      required this.circleColor,
+      required this.my_goal,
+      required this.percent});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:361,
+      width: 361,
       height: 70,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors:[circleColor, Color.lerp(AppColors.defaultBackground, circleColor, min(1, pow(percent, 6).toDouble()))!],
-          begin: Alignment.centerLeft,
-          end: Alignment(percent*2 - 1, 0)
-        ),
+        color: AppColors.defaultBackground,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
               color: AppColors.black.withOpacity(0.1),
               offset: Offset(0, 0),
               spreadRadius: 0.1,
-              blurRadius: 20
-          )
+              blurRadius: 20)
         ],
       ),
       padding: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ODOSProgressCircle(
-            circleColor: circleColor,
-            percent: percent,
+          ODOSProgressMiniCircle(
+            circleColor: AppColors.gray700,
+            percent: 0.5,
           ),
           Container(
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -58,25 +58,30 @@ class ODOSGoalList extends StatelessWidget {
               style: goalListHead,
             ),
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-            child: Image.asset(
-              'images/icon_add.png',
-              width: 45,
-              height: 45,
+          SizedBox(
+            width: 60,
+            height: 60,
+            child: IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return recordDialogBox();
+                    });
+                // Add your onPressed function here
+              },
+              icon: Image.asset(
+                'images/icon_add.png',
+                width: 60,
+                height: 60,
+              ),
             ),
           ),
           IconButton(
             color: AppColors.gray500,
             icon: Icon(Icons.arrow_forward_ios),
             onPressed: () {
-              showDialog(context: context, builder: (context) {
-                return Dialog(
-                  child: Image.asset(imoji), //Image 대신 적절한 모달 추가
-                  clipBehavior: Clip.none,
-                  backgroundColor: Colors.white.withOpacity(0),
-                );
-              });
+              // > 버튼을 눌렀을 때 동작
             },
           ),
         ],
