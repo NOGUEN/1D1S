@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
@@ -22,7 +25,12 @@ class ODOSGoalList extends StatelessWidget {
       width: 361,
       height: 70,
       decoration: BoxDecoration(
-        color: AppColors.defaultBackground,
+        gradient: LinearGradient(
+          colors: [circleColor, Color.lerp(AppColors.defaultBackground, circleColor, pow(percent, 6).toDouble())!],
+          begin: Alignment.centerLeft,
+          end: Alignment(percent, 0),
+
+        ),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -37,8 +45,8 @@ class ODOSGoalList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ODOSProgressMiniCircle(
-            circleColor: AppColors.gray700,
-            percent: 0.5,
+            circleColor: circleColor,
+            percent: percent,
           ),
           Container(
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
