@@ -6,7 +6,7 @@ part 'user_model.g.dart';
 
 @JsonSerializable()
 class UserModel {
-  String uid;
+  String? uid;
   String nickname;
   String name;
   String email;
@@ -16,7 +16,7 @@ class UserModel {
   List<TrackModel>? friendTrackList;
 
   UserModel({
-    required this.uid,
+    this.uid,
     required this.nickname,
     required this.name,
     required this.email,

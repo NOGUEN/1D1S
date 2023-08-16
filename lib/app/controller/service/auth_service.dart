@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/local/db/storage_util.dart';
+import 'package:one_day_one_something/app/data/local/db/util.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
 
 class AuthService with StorageUtil {
@@ -13,14 +14,10 @@ class AuthService with StorageUtil {
           email: userModel.email, password: password);
 
       final uid = credential.user!.uid;
-      userModel.id = uid;
+      userModel.uid = uid;
       credential.user!.updateDisplayName(userModel.name);
-      credential.user!.updatePhotoURL(userModel.type); //URL에 가입 타입 저장
-
-      databaseRef.child(userModel.type!).child(uid).set(userModel.toJson());
 
       saveString(UID_KEY, uid);
-      saveString(IMAGE_KEY, DEFUALT_URL);
       return SUCCESS;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
