@@ -1,6 +1,10 @@
 import 'package:one_day_one_something/app/data/model/firebase/goal_model.dart';
 import 'package:one_day_one_something/app/data/model/firebase/track_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user_model.g.dart';
+
+@JsonSerializable()
 class UserModel {
   String uid;
   String nickname;
@@ -21,4 +25,9 @@ class UserModel {
     this.friendUidList,
     this.friendTrackList,
   });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }

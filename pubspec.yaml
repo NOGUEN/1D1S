@@ -50,6 +50,8 @@ dependencies:
   firebase_auth: ^4.7.2
   get_storage: ^2.1.1
   firebase_core: ^2.15.0
+  build_runner: ^2.3.3
+  json_annotation: ^4.8.1
 
 dev_dependencies:
   flutter_test:

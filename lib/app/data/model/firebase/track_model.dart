@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'track_model.g.dart';
+
+@JsonSerializable()
 class TrackModel {
   String title;
   DateTime date;
@@ -8,4 +13,9 @@ class TrackModel {
     required this.date,
     this.description,
   });
+
+  factory TrackModel.fromJson(Map<String, dynamic> json) =>
+      _$TrackModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TrackModelToJson(this);
 }
