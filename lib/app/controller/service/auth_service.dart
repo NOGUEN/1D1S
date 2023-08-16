@@ -13,6 +13,8 @@ class AuthService with StorageUtil {
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
           email: userModel.email, password: password);
 
+      print(userModel.email);
+
       final uid = credential.user!.uid;
       userModel.uid = uid;
       credential.user!.updateDisplayName(userModel.name);

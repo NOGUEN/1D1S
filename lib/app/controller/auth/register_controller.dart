@@ -10,7 +10,6 @@ class RegisterController extends BaseController
     with GetTickerProviderStateMixin {
   final emailEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
-  final nickNameEditingController = TextEditingController();
   final validPasswordEditingController = TextEditingController();
   final nicknameEditingController = TextEditingController();
   AuthService authService = AuthService();
@@ -33,11 +32,7 @@ class RegisterController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(vsync: this, length: 3);
-  }
-
-  void register() {
-    showToast("가입완료");
+    tabController = TabController(vsync: this, length: 4);
   }
 
   void emailValidation(String value) {
@@ -59,16 +54,18 @@ class RegisterController extends BaseController
     }
   }
 
-  Future<void> registerComplete() async {
+  Future<void> register() async {
     final userModel = UserModel(
-      nickname: nickNameEditingController.text,
-      name: nickNameEditingController.text,
-      email: emailEditingController.text,
+      nickname: nicknameEditingController.text,
+      name: nicknameEditingController.text,
+      email: emailValue.value,
     );
+    final credential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: emailValue.value, password: passwordValue.value);
 
     registerResult.value = await authService.register(
       userModel,
-      validPasswordEditingController.text,
+      passwordValue.value,
     );
 
     if (registerResult.value == SUCCESS) {
@@ -80,7 +77,7 @@ class RegisterController extends BaseController
   void dispose() {
     emailEditingController.dispose();
     passwordEditingController.dispose();
-    nickNameEditingController.dispose();
+    nicknameEditingController.dispose();
     validPasswordEditingController.dispose();
     nicknameEditingController.dispose();
 

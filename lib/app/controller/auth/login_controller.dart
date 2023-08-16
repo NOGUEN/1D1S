@@ -35,6 +35,6 @@ class LoginController extends BaseController {
   }
 
   void goRegister() {
-    Get.offAndToNamed(Routes.REGISTER);
+    Get.toNamed(Routes.REGISTER);
   }
 }
