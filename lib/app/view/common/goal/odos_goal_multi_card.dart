@@ -54,7 +54,7 @@ class _GoalMulticardState extends State<GoalMulticard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 295.5,
+      height: 335.5,
       child: ScrollSnapList(
           itemBuilder: _buildListItem,
           itemCount: cardlist.length,
@@ -68,9 +68,10 @@ class _GoalMulticardState extends State<GoalMulticard> {
   Widget _buildListItem(BuildContext context, int index) {
     ODOSGoalCard eachcard = cardlist[index];
     int stackday = eachcard.consecutive_days;
-    return SizedBox(
+    return Container(
       width: 280,
       height: 295.5,
+      margin: EdgeInsets.symmetric(vertical: 20),
       child: Card(
         elevation: 12,
         child: ClipRRect(
@@ -81,18 +82,10 @@ class _GoalMulticardState extends State<GoalMulticard> {
                   Container(
                     padding: EdgeInsets.all(10),
                     width: 280,
-                    height: 295.5,
+                    height: 285.5,
                     decoration: BoxDecoration(
                       color: AppColors.defaultBackground,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                            color:
-                                Color.fromARGB(255, 0, 0, 0).withOpacity(0.1),
-                            offset: Offset(0, 0),
-                            spreadRadius: 0.1,
-                            blurRadius: 20)
-                      ],
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,15 +124,7 @@ class _GoalMulticardState extends State<GoalMulticard> {
                                     SizedBox(height: 10),
                                     ODOSWeekButton(
                                       circleColor: eachcard.goalColor,
-                                      doneWeek: [
-                                        true,
-                                        false,
-                                        true,
-                                        false,
-                                        false,
-                                        true,
-                                        true
-                                      ],
+                                      doneWeek: eachcard.doneWeek,
                                     ),
                                     SizedBox(height: 24),
                                     Text(
