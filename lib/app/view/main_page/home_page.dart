@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:one_day_one_something/app/controller/main/home_page_controller.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
@@ -7,10 +8,9 @@ import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
 import 'package:one_day_one_something/app/view/common/track/odos_track_card.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import '../../controller/main/main_controller.dart';
 import 'dart:math';
 
-class HomePage extends BaseView<MainController> {
+class HomePage extends BaseView<HomePageController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return null;
