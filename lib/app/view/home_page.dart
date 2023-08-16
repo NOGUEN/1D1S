@@ -22,7 +22,7 @@ class HomePage extends BaseView<MainController> {
 
   @override
   Widget body(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: BaseHomePage(
         everyoneSGoalList: [
           {"consecutive_days": 20, "my_goal": "내 목표"},
