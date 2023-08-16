@@ -7,7 +7,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_my_goal.dart';
 import 'package:one_day_one_something/app/view/common/track/odos_track_card.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import '../controller/main/main_controller.dart';
+import '../../controller/main/main_controller.dart';
 import 'dart:math';
 
 class HomePage extends BaseView<MainController> {
