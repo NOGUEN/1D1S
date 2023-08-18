@@ -3,12 +3,12 @@
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/view/auth/login_page.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
+import 'package:one_day_one_something/app/view/main_page/main_page.dart';
 import 'package:one_day_one_something/app/view/setting/setting_page.dart';
 import 'package:one_day_one_something/app/view/update_profile_page.dart';
-
 import '../bindings/auth_binding.dart';
 import '../bindings/main_binding.dart';
-import '../view/main_page.dart';
+
 part './app_routes.dart';
 
 // 앱 내 페이지를 정의하는 공간, 페이지 만든 후 여기에 정의해주세요
