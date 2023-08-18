@@ -21,6 +21,10 @@ abstract class AppString {
   static const str_nickname_hint = "닉네임을 입력해주세요.";
   static const str_welcome_message = "환영합니다!";
   static const str_base_profile = "기본 프로필";
+  static const str_everyone_s_goal_button = "모두의 목표 >";
+  static const str_everyone_s_track_button = "모두의 기록 >";
+  static const str_empty_goal_list = "아직 등록된 목표가 없어요!";
+  static const str_empty_track_list = "아직 등록된 기록이 없어요!";
   static const str_profile = "프로필";
   static const str_about_me = "자기소개";
   static const str_about_me_hint = "자기소개를 입력해주세요.";

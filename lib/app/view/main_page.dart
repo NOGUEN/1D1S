@@ -7,6 +7,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_goal_list.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_multi_card.dart';
+import 'package:one_day_one_something/app/view/goal_page.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
@@ -15,8 +16,6 @@ import 'package:one_day_one_something/app/view/home_page.dart';
 import 'package:one_day_one_something/app/view/update_profile_page.dart';
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
-import 'common/system/odos_appbar.dart';
-import 'common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
   @override
@@ -37,9 +36,9 @@ class MainPage extends BaseView<MainController> {
     return ODOSBottomNavigationBar(
         onNewMenuSelected: controller.onMenuSelected);
   }
-
+  
   final Container homePage = Container();
-  Container? goalPage;
+  GoalPage? goalPage;
   Container? settingPage;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
@@ -49,7 +48,7 @@ class MainPage extends BaseView<MainController> {
         return HomePage();
       case MenuCode.GOAL:
         // return goalView;
-        goalPage ??= Container();
+        goalPage ??= GoalPage();
         return goalPage!;
       case MenuCode.MYPAGE:
         // return goalView;
