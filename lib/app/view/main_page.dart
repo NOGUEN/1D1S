@@ -15,8 +15,6 @@ import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigat
 import 'package:one_day_one_something/app/view/home_page.dart';
 import '../controller/main/main_controller.dart';
 import '../data/model/enum/menu_code.dart';
-import 'common/system/odos_appbar.dart';
-import 'common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
   @override
@@ -37,7 +35,7 @@ class MainPage extends BaseView<MainController> {
     return ODOSBottomNavigationBar(
         onNewMenuSelected: controller.onMenuSelected);
   }
-
+  
   final Container homePage = Container();
   GoalPage? goalPage;
   Container? settingPage;

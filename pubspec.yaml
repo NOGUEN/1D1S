@@ -45,6 +45,13 @@ dependencies:
   dotted_border: ^2.0.0
   scroll_loop_auto_scroll: ^0.0.2
   scroll_snap_list: ^0.9.1
+  json_serializable: ^6.6.2
+  firebase_database: ^10.2.4
+  firebase_auth: ^4.7.2
+  get_storage: ^2.1.1
+  firebase_core: ^2.15.0
+  build_runner: ^2.3.3
+  json_annotation: ^4.8.1
 
 dev_dependencies:
   flutter_test:

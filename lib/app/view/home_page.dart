@@ -23,6 +23,7 @@ class HomePage extends BaseView<MainController> {
 
   @override
   Widget body(BuildContext context) {
+
     return BaseHomePage(
       everyoneSGoalList: controller.everyoneSGoalList,
       everyoneSTrackList: controller.everyoneSTrackList
