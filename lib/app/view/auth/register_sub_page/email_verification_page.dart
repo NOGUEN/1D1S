@@ -10,13 +10,6 @@ class EmailVerificationPage extends BaseView<RegisterController> {
   bool isEmailVerified = false;
   Timer? timer;
 
-  @override
-  void onInit() {
-    FirebaseAuth.instance.currentUser?.sendEmailVerification();
-    timer =
-        Timer.periodic(const Duration(seconds: 3), (_) => checkEmailVerified());
-  }
-
   checkEmailVerified() async {
     await FirebaseAuth.instance.currentUser?.reload();
 
@@ -65,9 +58,7 @@ class EmailVerificationPage extends BaseView<RegisterController> {
           child: ElevatedButton(
             child: const Text('Resend'),
             onPressed: () {
-              try {
-                FirebaseAuth.instance.currentUser?.sendEmailVerification();
-              } catch (e) {
+              try {} catch (e) {
                 debugPrint('$e');
               }
             },

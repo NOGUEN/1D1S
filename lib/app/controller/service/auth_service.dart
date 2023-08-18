@@ -8,32 +8,30 @@ import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
 
 class AuthService with StorageUtil {
   //회원가입
-  Future<int> register(UserModel userModel, String password) async {
+  Future<FirebaseCode> register(UserModel userModel, String password) async {
     try {
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
           email: userModel.email, password: password);
-
-      print(userModel.email);
 
       final uid = credential.user!.uid;
       userModel.uid = uid;
       credential.user!.updateDisplayName(userModel.name);
 
       saveString(UID_KEY, uid);
-      return SUCCESS;
+      return FirebaseCode.SUCCESS;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         log("6자이상 비밀번호가 필요합니다");
-        return FAIL_ONE;
+        return FirebaseCode.WEAK_PASSWORD;
       } else if (e.code == 'email-already-in-use') {
         log("가입된 이메일 입니다");
-        return FAIL_SECOND;
+        return FirebaseCode.EMAIL_ALREADY_IN_USE;
       }
     } catch (e) {
       log(e.toString());
-      return ERROR;
+      return FirebaseCode.ERROR;
     }
-    return ERROR;
+    return FirebaseCode.ERROR;
   }
 
   //로그인

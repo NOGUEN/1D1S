@@ -23,7 +23,7 @@ class RegisterController extends BaseController
 
   var emailEnabled = false.obs;
   var passwordEnabled = false.obs;
-  var registerResult = 9.obs;
+  var registerResult = FirebaseCode.SUCCESS.obs;
 
   void updateTabIndex(int index) {
     currentTabIndex.value = index;
@@ -54,23 +54,19 @@ class RegisterController extends BaseController
     }
   }
 
-  Future<void> register() async {
+  Future<FirebaseCode> register() async {
     final userModel = UserModel(
       nickname: nicknameEditingController.text,
       name: nicknameEditingController.text,
       email: emailValue.value,
     );
-    final credential = await firebaseAuth.createUserWithEmailAndPassword(
-        email: emailValue.value, password: passwordValue.value);
 
     registerResult.value = await authService.register(
       userModel,
       passwordValue.value,
     );
 
-    if (registerResult.value == SUCCESS) {
-      Get.offAllNamed(Routes.MAIN);
-    }
+    return registerResult.value;
   }
 
   @override
