@@ -8,7 +8,6 @@ import 'package:one_day_one_something/app/view/update_profile_page.dart';
 
 import '../bindings/auth_binding.dart';
 import '../bindings/main_binding.dart';
-// import '../bindings/mypage_binding.dart';
 import '../view/main_page.dart';
 part './app_routes.dart';
 

@@ -7,15 +7,17 @@ import 'package:one_day_one_something/app/view/common/goal/odos_goal_list.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_multi_card.dart';
-import 'package:one_day_one_something/app/view/goal_page.dart';
+import 'package:one_day_one_something/app/view/main_page/goal_page.dart';
+import 'package:one_day_one_something/app/view/main_page/my_page.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/common/profile/odos_profile_card.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_bottom_navigationbar.dart';
-import 'package:one_day_one_something/app/view/home_page.dart';
-import 'package:one_day_one_something/app/view/update_profile_page.dart';
-import '../controller/main/main_controller.dart';
-import '../data/model/enum/menu_code.dart';
+import 'package:one_day_one_something/app/view/main_page/home_page.dart';
+import '../../controller/main/main_controller.dart';
+import '../../data/model/enum/menu_code.dart';
+import '../common/system/odos_appbar.dart';
+import '../common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
   @override
@@ -36,9 +38,10 @@ class MainPage extends BaseView<MainController> {
     return ODOSBottomNavigationBar(
         onNewMenuSelected: controller.onMenuSelected);
   }
-  
+
   final Container homePage = Container();
   GoalPage? goalPage;
+  MyPage? myPage;
   Container? settingPage;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
@@ -52,8 +55,8 @@ class MainPage extends BaseView<MainController> {
         return goalPage!;
       case MenuCode.MYPAGE:
         // return goalView;
-        settingPage ??= Container();
-        return UpdateProfilePage()!;
+        myPage ??= MyPage();
+        return myPage!;
       default:
         // return LoginPage();
         return Container();

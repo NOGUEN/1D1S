@@ -43,10 +43,11 @@ class ODOSProfileCard extends StatelessWidget {
           SizedBox(
             height: 150,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(  // *Profile Image*
-                  margin: EdgeInsets.fromLTRB(15, 0, 38, 0),
+                  margin: EdgeInsets.only(left: 15),
                   child: CircleAvatar(
                     backgroundColor: AppColors.black,
                     radius: 60.0, //외부 원의 반지름
@@ -56,8 +57,9 @@ class ODOSProfileCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                Container(
                   height: 100,
+                  margin: EdgeInsets.only(right: 15),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
