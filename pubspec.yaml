@@ -45,6 +45,7 @@ dependencies:
   dotted_border: ^2.0.0
   scroll_loop_auto_scroll: ^0.0.2
   scroll_snap_list: ^0.9.1
+  image_picker: ^1.0.2
 
 dev_dependencies:
   flutter_test:

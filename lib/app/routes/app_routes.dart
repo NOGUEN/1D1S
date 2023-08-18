@@ -11,6 +11,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const MAIN = _Paths.MAIN;
   static const SETTING = _Paths.SETTING;
+  static const UPDATE_PROFILE = _Paths.UPDATE_PROFILE;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const REGISTER = "/register";
   static const MAIN = "/main";
   static const SETTING = "/setting";
+  static const UPDATE_PROFILE = "/update_profile";
 }

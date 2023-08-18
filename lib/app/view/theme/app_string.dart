@@ -15,12 +15,15 @@ abstract class AppString {
   static const str_go_register = "회원가입 하러가기 >";
   static const str_check_password = "비밀번호 확인";
   static const str_check_password_hint = "비밀번호를 다시 입력해주세요.";
-  static const str_next = "다음";
+  static const str_next = "다음 >";
+  static const str_change = "변경";
   static const str_nickname = "닉네임";
   static const str_nickname_hint = "닉네임을 입력해주세요.";
   static const str_welcome_message = "환영합니다!";
   static const str_base_profile = "기본 프로필";
-
+  static const str_profile = "프로필";
+  static const str_about_me = "자기소개";
+  static const str_about_me_hint = "자기소개를 입력해주세요.";
   // common_text의 key로 사용
   static const regular12 = "regular12";
   static const regular14 = "regular14";

@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:one_day_one_something/app/view/auth/login_page.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
 import 'package:one_day_one_something/app/view/setting/setting_page.dart';
+import 'package:one_day_one_something/app/view/update_profile_page.dart';
 
 import '../bindings/auth_binding.dart';
 import '../bindings/main_binding.dart';
+// import '../bindings/mypage_binding.dart';
 import '../view/main_page.dart';
 part './app_routes.dart';
 
@@ -40,6 +42,12 @@ class AppPages {
       name: _Paths.SETTING,
       page: () => SettingPage(),
       binding: SettingBinding(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: _Paths.UPDATE_PROFILE,
+      page: () => UpdateProfilePage(),
+      binding: UpdateProfileBinding(),
       transition: Transition.cupertino,
     ),
   ];
