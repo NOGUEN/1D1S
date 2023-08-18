@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/routes/app_pages.dart';
+import 'package:one_day_one_something/app/view/auth/register_sub_page/email_verification_page.dart';
 
 import 'package:one_day_one_something/app/view/auth/register_sub_page/set_account_page.dart';
 import 'package:one_day_one_something/app/view/auth/register_sub_page/set_profile_page.dart';
@@ -41,7 +42,7 @@ class RegisterPage extends BaseView<RegisterController> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Obx(
@@ -73,7 +74,7 @@ class RegisterPage extends BaseView<RegisterController> {
                       AnimatedPositioned(
                         top: controller.currentTabIndex.value == 1 ? 0 : 25,
                         left: 60,
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.fastOutSlowIn,
                         child: AnimatedContainer(
                           height:
@@ -86,13 +87,13 @@ class RegisterPage extends BaseView<RegisterController> {
                                 ? AppColors.black
                                 : AppColors.gray500,
                           ),
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                         ),
                       ),
                       AnimatedPositioned(
                         top: controller.currentTabIndex.value == 2 ? 0 : 25,
                         left: 100,
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.fastOutSlowIn,
                         child: AnimatedContainer(
                           height:
@@ -105,7 +106,7 @@ class RegisterPage extends BaseView<RegisterController> {
                                 ? AppColors.black
                                 : AppColors.gray500,
                           ),
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                         ),
                       ),
                     ],
@@ -142,6 +143,7 @@ class RegisterPage extends BaseView<RegisterController> {
       controller: controller.tabController,
       children: [
         SetAccountPage(),
+        EmailVerificationPage(),
         SetProfilePage(),
         WelcomPage(),
       ],
@@ -169,30 +171,6 @@ class BaseRegisterPage extends StatelessWidget {
             children: widgetList,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _AnimatedDot extends StatelessWidget {
-  final Animation<double> dotAnimation;
-
-  _AnimatedDot({required this.dotAnimation});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: dotAnimation,
-      builder: (context, child) {
-        return Transform.translate(
-          offset: Offset(0, dotAnimation.value),
-          child: child,
-        );
-      },
-      child: Container(
-        width: 10,
-        height: 10,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black),
       ),
     );
   }

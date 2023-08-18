@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/auth/register_controller.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
+import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/model/enum/menu_code.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
@@ -29,11 +32,20 @@ class SetAccountPage extends BaseView<RegisterController> {
         height: 30,
       ),
       ODOSTextField(
+        controller: controller.nicknameEditingController,
+        titleText: "닉네임",
+        hintText: "닉네임을 입력해주세요",
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      ODOSTextField(
         controller: controller.emailEditingController,
         titleText: AppString.str_email,
         hintText: AppString.str_email_hint,
         onChanged: (p0) {
           controller.emailValue.value = p0;
+          controller.emailValidation(p0);
         },
       ),
       const SizedBox(
@@ -58,6 +70,7 @@ class SetAccountPage extends BaseView<RegisterController> {
         needHide: true,
         onChanged: (p0) {
           controller.validpasswordValue.value = p0;
+          controller.passwordValidation(p0);
         },
       ),
       const SizedBox(
@@ -72,16 +85,20 @@ class SetAccountPage extends BaseView<RegisterController> {
       () {
         Color buttonColor;
         void Function() onPressed;
+        late FirebaseCode registerResult;
 
-        if ((controller.emailValue.value.isNotEmpty &&
-                controller.passwordValue.value.isNotEmpty) &&
-            controller.passwordValue.value ==
-                controller.validpasswordValue.value) {
+        if (controller.emailEnabled.value && controller.passwordEnabled.value) {
           buttonColor = AppColors.black;
-          onPressed = () {
-            controller.tabController
-                .animateTo((controller.tabController.index + 1) % 3);
-            controller.currentTabIndex.value = 1;
+          onPressed = () async {
+            registerResult = await controller.register();
+            if (registerResult == FirebaseCode.SUCCESS) {
+              firebaseAuth.currentUser?.sendEmailVerification();
+              controller.tabController
+                  .animateTo((controller.tabController.index + 1) % 3);
+              controller.currentTabIndex.value = 1;
+            } else if (registerResult == FirebaseCode.EMAIL_ALREADY_IN_USE) {
+              showToast("이미 가입된 이메일입니다.");
+            }
           };
         } else {
           buttonColor = AppColors.gray500;
