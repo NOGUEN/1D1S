@@ -82,7 +82,6 @@ class GoalMulticard extends StatelessWidget {
                         Container(
                           child: Row(
                             children: [
-                              SizedBox(width: 10),
                               Expanded(
                                 // Wrap the ODOSWeekButton with Expanded widget
                                 child: Column(
@@ -105,7 +104,7 @@ class GoalMulticard extends StatelessWidget {
                                     SizedBox(height: 10),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                       children: [
                                         ODOSProgressCircle(
                                           circleColor: eachcard["goalColor"],
@@ -118,7 +117,7 @@ class GoalMulticard extends StatelessWidget {
                                         Padding(
                                           padding: EdgeInsets.only(
                                               left:
-                                                  0), // Add 3 pixels left padding
+                                              0), // Add 3 pixels left padding
                                           child: Text(
                                             '$stackday일 연속!',
                                             style: goalCardconsecutive,

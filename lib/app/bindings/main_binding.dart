@@ -11,7 +11,6 @@ class MainBinding implements Bindings {
     Get.lazyPut<MainController>(() {
       return MainController();
     });
-    UpdateProfileBinding().dependencies();
     MyPageBinding().dependencies();
     HomePageBinding().dependencies();
   }

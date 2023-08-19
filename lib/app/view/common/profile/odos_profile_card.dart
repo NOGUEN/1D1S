@@ -28,15 +28,15 @@ class ODOSProfileCard extends StatelessWidget {
       width: 361,
       height: 279,
       decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.black.withOpacity(0.1),
-            spreadRadius: 0.1,
-            blurRadius: 20
-          )
-        ]
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+                color: AppColors.black.withOpacity(0.1),
+                spreadRadius: 0.1,
+                blurRadius: 20
+            )
+          ]
       ),
       child: Column(
         children: [
@@ -79,9 +79,9 @@ class ODOSProfileCard extends StatelessWidget {
                         children: [
                           Text('최고 스트릭', style: profileCardRecordHead),
                           Container(
-                            width: 47,
-                            margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                            child: Text('$longestStreakNumber일', style: profileCardRecordContent)
+                              width: 47,
+                              margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                              child: Text('$longestStreakNumber일', style: profileCardRecordContent)
                           ),
                           Image.asset(
                             'images/icon_fire.png',
@@ -94,8 +94,8 @@ class ODOSProfileCard extends StatelessWidget {
                         children: [
                           Text('성공한 목표', style: profileCardRecordHead),
                           Container(
-                            margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                            child: Text('$successfulGoalNumber개', style: profileCardRecordContent)
+                              margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                              child: Text('$successfulGoalNumber개', style: profileCardRecordContent)
                           )
                         ],
                       ),
@@ -146,13 +146,11 @@ class EditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.red,
-      margin: EdgeInsets.only(left: 4),
-      width: 15,
-      height: 15,
+      width: 35,
+      height: 35,
       alignment: Alignment.center,
       child: IconButton(
-          padding: EdgeInsets.all(0),
+          padding: EdgeInsets.all(10),
           onPressed: onPressed,
           icon: SvgPicture.asset(
             AppString.goal,

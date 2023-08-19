@@ -222,7 +222,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
         if (controller.validNickNameValue.value.isNotEmpty) {
           buttonColor = AppColors.black;
           onPressed = () {
-            // 변경되는 부분 -> 마이페이지로 돌아가기
+            Get.back();
           };
         } else {
           buttonColor = AppColors.gray500;
