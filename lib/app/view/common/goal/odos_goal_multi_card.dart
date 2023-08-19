@@ -8,53 +8,23 @@ import 'package:one_day_one_something/app/view/common/goal/odos_goal_single_card
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_week_button.dart';
 
-class GoalMulticard extends StatefulWidget {
-  const GoalMulticard({super.key});
+class GoalMulticard extends StatelessWidget {
 
-  @override
-  State<GoalMulticard> createState() => _GoalMulticardState();
-}
-
-class _GoalMulticardState extends State<GoalMulticard> {
-  List<ODOSGoalCard> cardlist = [
-    ODOSGoalCard(
-        goalColor: AppColors.redOrigin,
-        doneWeek: [true, false, true, false, false, true, true],
-        consecutive_days: 3,
-        my_goal: "목표이름1",
-        imoji: "images/icon_fire.png",
-        totalDay: 123),
-    ODOSGoalCard(
-        goalColor: AppColors.orangeOrigin,
-        doneWeek: [true, false, true, false, false, true, true],
-        consecutive_days: 4,
-        my_goal: "목표이름2",
-        imoji: "images/icon_fire.png",
-        totalDay: 171),
-    ODOSGoalCard(
-        goalColor: AppColors.greenOrigin,
-        doneWeek: [true, false, true, false, false, true, true],
-        consecutive_days: 5,
-        my_goal: "목표이름3",
-        imoji: "images/icon_fire.png",
-        totalDay: 127),
-    ODOSGoalCard(
-        goalColor: AppColors.blueOrigin,
-        doneWeek: [true, false, true, false, false, true, true],
-        consecutive_days: 6,
-        my_goal: "목표이름4",
-        imoji: "images/icon_fire.png",
-        totalDay: 17),
-  ];
+  final List<dynamic> cardlist;
   double customEquation(double distance) {
     // return 1-(distance/1000); 이걸로 하면 신기한 모양이 됩니다.
     return 1 - min(distance.abs() / 500, 0.2);
   }
 
+  const GoalMulticard({
+    super.key,
+    required this.cardlist
+  });
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 335.5,
+      height: 345.5,
       child: ScrollSnapList(
           itemBuilder: _buildListItem,
           itemCount: cardlist.length,
@@ -66,8 +36,9 @@ class _GoalMulticardState extends State<GoalMulticard> {
   }
 
   Widget _buildListItem(BuildContext context, int index) {
-    ODOSGoalCard eachcard = cardlist[index];
-    int stackday = eachcard.consecutive_days;
+    var eachcard = cardlist[index];
+    int stackday = eachcard["consecutive_days"];
+
     return Container(
       width: 280,
       height: 295.5,
@@ -82,7 +53,7 @@ class _GoalMulticardState extends State<GoalMulticard> {
                   Container(
                     padding: EdgeInsets.all(10),
                     width: 280,
-                    height: 285.5,
+                    height: 295.5,
                     decoration: BoxDecoration(
                       color: AppColors.defaultBackground,
                       borderRadius: BorderRadius.circular(10),
@@ -95,14 +66,14 @@ class _GoalMulticardState extends State<GoalMulticard> {
                             Container(
                               margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
                               child: Image.asset(
-                                eachcard.imoji,
+                                eachcard["imoji"],
                                 width: 18.61,
                                 height: 24,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             Text(
-                              eachcard.my_goal,
+                              eachcard["my_goal"],
                               style: goalCardmainTitle,
                             ),
                           ],
@@ -123,8 +94,8 @@ class _GoalMulticardState extends State<GoalMulticard> {
                                     ),
                                     SizedBox(height: 10),
                                     ODOSWeekButton(
-                                      circleColor: eachcard.goalColor,
-                                      doneWeek: eachcard.doneWeek,
+                                      circleColor: eachcard["goalColor"],
+                                      doneWeek: eachcard["doneWeek"],
                                     ),
                                     SizedBox(height: 24),
                                     Text(
@@ -137,9 +108,9 @@ class _GoalMulticardState extends State<GoalMulticard> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         ODOSProgressCircle(
-                                          circleColor: eachcard.goalColor,
-                                          percent: (eachcard.consecutive_days /
-                                                  eachcard.totalDay)
+                                          circleColor: eachcard["goalColor"],
+                                          percent: (eachcard["consecutive_days"] /
+                                                  eachcard["totalDay"])
                                               .toDouble(),
                                           //TODO: 소숫점 예외처리
                                         ),

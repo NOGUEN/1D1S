@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:one_day_one_something/app/routes/app_pages.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
@@ -9,7 +11,6 @@ class ODOSProfileCard extends StatelessWidget {
   final String userProfileImage;
   final int longestStreakNumber;
   final int successfulGoalNumber;
-  final bool isStreakCurrentlyMaintaining;
   final String aboutMe;
 
   const ODOSProfileCard({
@@ -18,7 +19,6 @@ class ODOSProfileCard extends StatelessWidget {
     required this.userProfileImage,
     required this.longestStreakNumber,
     required this.successfulGoalNumber,
-    required this.isStreakCurrentlyMaintaining,
     required this.aboutMe
   });
 
@@ -68,7 +68,11 @@ class ODOSProfileCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(userName, style: profileCardHead),
-                          EditButton(onPressed: (){}),
+                          EditButton(
+                            onPressed: (){
+                              Get.toNamed(Routes.UPDATE_PROFILE);
+                            }
+                          ),
                         ],
                       ),
                       Row(  // *Streak*
@@ -79,11 +83,11 @@ class ODOSProfileCard extends StatelessWidget {
                             margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
                             child: Text('$longestStreakNumber일', style: profileCardRecordContent)
                           ),
-                          isStreakCurrentlyMaintaining ? Image.asset(
+                          Image.asset(
                             'images/icon_fire.png',
                             width: 16,
                             height: 16,
-                          ) : SizedBox.shrink()
+                          )
                         ],
                       ),
                       Row(  // *Successful Goal*
@@ -113,13 +117,9 @@ class ODOSProfileCard extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                  child: Row(  // *Profile Head*
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('자기소개', style: profileCardAboutMeHead),
-                      EditButton(onPressed: (){}),
-                    ],
-                  ),
+                  alignment: Alignment.topLeft,
+                  child:  // *Profile Head*
+                    Text('자기소개', style: profileCardAboutMeHead),
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -153,7 +153,7 @@ class EditButton extends StatelessWidget {
       alignment: Alignment.center,
       child: IconButton(
           padding: EdgeInsets.all(0),
-          onPressed: (){},
+          onPressed: onPressed,
           icon: SvgPicture.asset(
             AppString.goal,
             colorFilter: ColorFilter.mode(Color(0xffababab), BlendMode.srcIn),
