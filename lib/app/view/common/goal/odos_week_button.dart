@@ -34,6 +34,16 @@ class ODOSWeekButton extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isDone ? circleColor : circleColor.withOpacity(0.4),
+            boxShadow: isDone
+                ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25), // 25% opacity for black color
+                    offset: Offset(0, 0),
+                    blurRadius: 4,
+                    spreadRadius: 0.1,
+                  )
+                ]
+                : null,  // or an empty list if you prefer: []
           ),
           child: isDone
               ? Center(
