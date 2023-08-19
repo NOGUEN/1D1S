@@ -109,7 +109,7 @@ class GoalMulticard extends StatelessWidget {
                                         ODOSProgressCircle(
                                           circleColor: eachcard["goalColor"],
                                           percent: (eachcard["consecutive_days"] /
-                                              eachcard["totalDay"])
+                                                  eachcard["totalDay"])
                                               .toDouble(),
                                           //TODO: 소숫점 예외처리
                                         ),

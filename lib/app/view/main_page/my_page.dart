@@ -51,17 +51,17 @@ class BaseMyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children:[
-              ODOSProfileCard(
-                  userName: userName,
-                  userProfileImage: userProfileImage,
-                  longestStreakNumber: longestStreakNumber,
-                  successfulGoalNumber: successfulGoalNumber,
-                  aboutMe: aboutMe
-              ).marginOnly(left: 20, right: 20, top: 21, bottom: 8),
-              GoalMulticard(cardlist: cardlist),
-            ]
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children:[
+            ODOSProfileCard(
+                userName: userName,
+                userProfileImage: userProfileImage,
+                longestStreakNumber: longestStreakNumber,
+                successfulGoalNumber: successfulGoalNumber,
+                aboutMe: aboutMe
+            ).marginOnly(left: 20, right: 20, top: 21, bottom: 8),
+            GoalMulticard(cardlist: cardlist),
+          ]
         )
     );;
   }

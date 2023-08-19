@@ -69,9 +69,9 @@ class ODOSProfileCard extends StatelessWidget {
                         children: [
                           Text(userName, style: profileCardHead),
                           EditButton(
-                              onPressed: (){
-                                Get.toNamed(Routes.UPDATE_PROFILE);
-                              }
+                            onPressed: (){
+                              Get.toNamed(Routes.UPDATE_PROFILE);
+                            }
                           ),
                         ],
                       ),
@@ -119,7 +119,7 @@ class ODOSProfileCard extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
                   alignment: Alignment.topLeft,
                   child:  // *Profile Head*
-                  Text('자기소개', style: profileCardAboutMeHead),
+                    Text('자기소개', style: profileCardAboutMeHead),
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
