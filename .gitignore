@@ -39,4 +39,5 @@ unlinked_spec.ds
 macos/
 ios/
 windows/
+android/
 pubspec.lock
