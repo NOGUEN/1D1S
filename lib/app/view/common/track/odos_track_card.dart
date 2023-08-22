@@ -18,58 +18,87 @@ class ODOSTrackCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BaseTrackCard(
+      widgetList: [
+        trackTitle(trackIcon: trackIcon),
+        trackProfile(
+          userProfileImage: userProfileImage,
+          userName: userName
+        )
+      ],
+      trackColor: trackColor
+    );
+  }
+}
+
+class BaseTrackCard extends StatelessWidget {
+  final List<Widget> widgetList;
+  final Color trackColor;
+  const BaseTrackCard({
+    super.key,
+    required this.widgetList,
+    required this.trackColor
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
       width: 150,
       height: 100,
       decoration: BoxDecoration(
-        color: trackColor,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-              color: AppColors.black.withOpacity(0.1),
-              spreadRadius: 2,
-              blurRadius: 20
-          )
-        ]
+          color: trackColor,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+                color: AppColors.black.withOpacity(0.1),
+                spreadRadius: 2,
+                blurRadius: 20
+            )
+          ]
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
-                child: Image.asset(
-                  trackIcon,
-                  width: 25,
-                  height: 25,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Text('오늘의 기록', style: trackCardHead)
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: ClipOval(
-                  child: Image.asset(
-                    userProfileImage,
-                    width: 25,
-                    height: 25,
-                  ),
-                ),
-              ),
-              Text(userName, style: trackCardProfile)
-            ],
-          )
-        ],
-      ),
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: widgetList
+      )
     );
   }
+}
+
+Widget trackTitle({trackIcon}){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Container(
+        margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
+        child: Image.asset(
+          trackIcon,
+          width: 25,
+          height: 25,
+          fit: BoxFit.cover,
+        ),
+      ),
+      Text('오늘의 기록', style: trackCardHead)
+    ],
+  );
+}
+
+Widget trackProfile({userProfileImage, userName}){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Container(
+        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+        child: ClipOval(
+          child: Image.asset(
+            userProfileImage,
+            width: 25,
+            height: 25,
+          ),
+        ),
+      ),
+      Text(userName, style: trackCardProfile)
+    ],
+  );
 }
