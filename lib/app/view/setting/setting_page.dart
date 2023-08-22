@@ -42,38 +42,50 @@ class SettingPage extends BaseView<SettingController> {
 
   @override
   Widget body(BuildContext context) {
-    return const _BaseSettingPage(
+    return _BaseSettingPage(
       widgetList: [
-        SizedBox(
-          height: 10,
-        ),
-        ODOSSystemList(
-          list: [
-            ODOSSystemListCell(menuString: "비밀번호 재설정"),
-          ],
-          categoryString: "계정 설정",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        ODOSSystemList(
-          list: [
-            ODOSSystemListCell(menuString: "리마인드 재설정"),
-          ],
-          categoryString: "알림 설정",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        ODOSSystemList(
-          list: [
-            ODOSSystemListCell(menuString: "버전"),
-            ODOSSystemListCell(menuString: "로그아웃"),
-            ODOSSystemListCell(menuString: "회원 탈퇴"),
-          ],
-          categoryString: "서비스",
-        ),
+        space(height: 10),
+        accountSetting(),
+        space(height: 20),
+        notificationSetting(),
+        space(height: 20),
+        serviceSetting()
       ],
+    );
+  }
+
+  Widget space({required double height}){
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget accountSetting(){
+    return const ODOSSystemList(
+      list: [
+        ODOSSystemListCell(menuString: "비밀번호 재설정"),
+      ],
+      categoryString: "계정 설정",
+    );
+  }
+
+  Widget notificationSetting(){
+    return const ODOSSystemList(
+      list: [
+        ODOSSystemListCell(menuString: "리마인드 재설정"),
+      ],
+      categoryString: "알림 설정",
+    );
+  }
+
+  Widget serviceSetting(){
+    return ODOSSystemList(
+      list: [
+        ODOSSystemListCell(menuString: "버전"),
+        ODOSSystemListCell(menuString: "로그아웃"),
+        ODOSSystemListCell(menuString: "회원 탈퇴"),
+      ],
+      categoryString: "서비스",
     );
   }
 }

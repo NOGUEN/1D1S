@@ -29,8 +29,8 @@ class EmailVerificationPage extends BaseView<RegisterController> {
   Widget body(BuildContext context) {
     return BaseRegisterPage(
       widgetList: [
-        const SizedBox(height: 35),
-        const SizedBox(height: 30),
+        space(height: 35),
+        space(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: Center(
@@ -40,9 +40,9 @@ class EmailVerificationPage extends BaseView<RegisterController> {
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        space(height: 16),
         const Center(child: CircularProgressIndicator()),
-        const SizedBox(height: 8),
+        space(height: 8),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.0),
           child: Center(
@@ -52,7 +52,7 @@ class EmailVerificationPage extends BaseView<RegisterController> {
             ),
           ),
         ),
-        const SizedBox(height: 57),
+        space(height: 57),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: ElevatedButton(
@@ -65,6 +65,12 @@ class EmailVerificationPage extends BaseView<RegisterController> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget space({required double height}){
+    return SizedBox(
+      height: height,
     );
   }
 }

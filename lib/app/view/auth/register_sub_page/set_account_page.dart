@@ -28,54 +28,15 @@ class SetAccountPage extends BaseView<RegisterController> {
   @override
   Widget body(BuildContext context) {
     return BaseRegisterPage(widgetList: [
-      const SizedBox(
-        height: 30,
-      ),
-      ODOSTextField(
-        controller: controller.nicknameEditingController,
-        titleText: "닉네임",
-        hintText: "닉네임을 입력해주세요",
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      ODOSTextField(
-        controller: controller.emailEditingController,
-        titleText: AppString.str_email,
-        hintText: AppString.str_email_hint,
-        onChanged: (p0) {
-          controller.emailValue.value = p0;
-          controller.emailValidation(p0);
-        },
-      ),
-      const SizedBox(
-        height: 40,
-      ),
-      ODOSTextField(
-        controller: controller.passwordEditingController,
-        titleText: AppString.str_password,
-        hintText: AppString.str_password_hint,
-        needHide: true,
-        onChanged: (p0) {
-          controller.passwordValue.value = p0;
-        },
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      ODOSTextField(
-        controller: controller.validPasswordEditingController,
-        titleText: AppString.str_check_password,
-        hintText: AppString.str_check_password_hint,
-        needHide: true,
-        onChanged: (p0) {
-          controller.validpasswordValue.value = p0;
-          controller.passwordValidation(p0);
-        },
-      ),
-      const SizedBox(
-        height: 200,
-      ),
+      space(height: 30),
+      nicknameText(),
+      space(height: 20),
+      emailText(),
+      space(height: 40),
+      passwordText(),
+      space(height: 20),
+      validPasswordText(),
+      space(height: 200),
     ]);
   }
 
@@ -117,6 +78,57 @@ class SetAccountPage extends BaseView<RegisterController> {
             onPressed: onPressed,
           ),
         );
+      },
+    );
+  }
+
+  Widget space({required double height}){
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget nicknameText(){
+    return ODOSTextField(
+      controller: controller.nicknameEditingController,
+      titleText: "닉네임",
+      hintText: "닉네임을 입력해주세요",
+    );
+  }
+
+  Widget emailText(){
+    return ODOSTextField(
+      controller: controller.emailEditingController,
+      titleText: AppString.str_email,
+      hintText: AppString.str_email_hint,
+      onChanged: (p0) {
+        controller.emailValue.value = p0;
+        controller.emailValidation(p0);
+      },
+    );
+  }
+
+  Widget passwordText(){
+    return ODOSTextField(
+      controller: controller.passwordEditingController,
+      titleText: AppString.str_password,
+      hintText: AppString.str_password_hint,
+      needHide: true,
+      onChanged: (p0) {
+        controller.passwordValue.value = p0;
+      },
+    );
+  }
+
+  Widget validPasswordText(){
+    return ODOSTextField(
+      controller: controller.validPasswordEditingController,
+      titleText: AppString.str_check_password,
+      hintText: AppString.str_check_password_hint,
+      needHide: true,
+      onChanged: (p0) {
+        controller.validpasswordValue.value = p0;
+        controller.passwordValidation(p0);
       },
     );
   }
