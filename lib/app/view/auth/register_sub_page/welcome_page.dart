@@ -23,24 +23,11 @@ class WelcomPage extends BaseView<RegisterController> {
 
   @override
   Widget body(BuildContext context) {
-    return const BaseRegisterPage(
+    return BaseRegisterPage(
       widgetList: [
-        SizedBox(
-          height: 50,
-        ),
-        Text(
-          AppString.str_welcome_message,
-          style: TextStyle(
-            fontSize: 48,
-            fontWeight: AppFontWeights.bold,
-          ),
-        ),
-        Text(
-          "🎉",
-          style: TextStyle(
-            fontSize: 125,
-          ),
-        ),
+        space(height: 50),
+        welcomeText(),
+        welcomeIcon()
       ],
     );
   }
@@ -80,4 +67,30 @@ class WelcomPage extends BaseView<RegisterController> {
       },
     );
   }
+
+  Widget space({required double height}){
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget welcomeText() {
+    return const Text(
+      AppString.str_welcome_message,
+      style: TextStyle(
+        fontSize: 48,
+        fontWeight: AppFontWeights.bold,
+      ),
+    );
+  }
+
+  Widget welcomeIcon() {
+    return const Text(
+      "🎉",
+      style: TextStyle(
+        fontSize: 125,
+      ),
+    );
+  }
+
 }

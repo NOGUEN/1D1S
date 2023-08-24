@@ -25,73 +25,89 @@ class LoginPage extends BaseView<LoginController> {
   Widget body(BuildContext context) {
     return _BaseLoginPage(
       widgetList: [
-        const SizedBox(
-          height: 150,
-        ),
-        const Text(
-          AppString.str_1D1S,
-          style: TextStyle(
-            fontSize: 54,
-            fontWeight: AppFontWeights.heavy,
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ODOSTextField(
-          controller: controller.emailEditingController,
-          titleText: AppString.str_email,
-          hintText: AppString.str_email_hint,
-          inputType: TextInputType.emailAddress,
-          onChanged: (p0) {
-            controller.emailValue.value = p0;
-          },
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ODOSTextField(
-          controller: controller.passwordEditingController,
-          titleText: AppString.str_password,
-          hintText: AppString.str_password_hint,
-          inputType: TextInputType.visiblePassword,
-          needHide: true,
-          onChanged: (p0) {
-            controller.passwordValue.value = p0;
-          },
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        Obx(
-          () {
-            Color buttonColor;
-            GestureTapCallback onPressedFunc;
-            if (controller.emailValue.value.isNotEmpty &&
-                controller.passwordValue.value.isNotEmpty) {
-              buttonColor = AppColors.black;
-              onPressedFunc = () => controller.login();
-            } else {
-              buttonColor = AppColors.gray300;
-              onPressedFunc = () {};
-            }
-            return ODOSConfirmButton(
-              buttonText: AppString.str_login,
-              textColor: AppColors.white,
-              buttonColor: buttonColor,
-              onPressed: onPressedFunc,
-            );
-          },
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ODOSSubButton(
-          textColor: AppColors.black,
-          buttonText: AppString.str_go_register,
-          onPressed: () => controller.goRegister(),
-        ),
+        space(height: 150),
+        logoText(),
+        space(height: 20),
+        emailText(),
+        space(height: 20),
+        passwordText(),
+        space(height: 40),
+        confirmButton(),
+        space(height: 20),
+        goRegisterButton()
       ],
+    );
+  }
+
+  Widget space({required double height}){
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  Widget logoText(){
+    return const Text(
+      AppString.str_1D1S,
+      style: TextStyle(
+        fontSize: 54,
+        fontWeight: AppFontWeights.heavy,
+      ),
+    );
+  }
+
+  Widget emailText(){
+    return ODOSTextField(
+      controller: controller.emailEditingController,
+      titleText: AppString.str_email,
+      hintText: AppString.str_email_hint,
+      inputType: TextInputType.emailAddress,
+      onChanged: (p0) {
+        controller.emailValue.value = p0;
+      },
+    );
+  }
+
+  Widget passwordText(){
+    return ODOSTextField(
+      controller: controller.passwordEditingController,
+      titleText: AppString.str_password,
+      hintText: AppString.str_password_hint,
+      inputType: TextInputType.visiblePassword,
+      needHide: true,
+      onChanged: (p0) {
+        controller.passwordValue.value = p0;
+      },
+    );
+  }
+
+  Widget confirmButton(){
+    return Obx(
+          () {
+        Color buttonColor;
+        GestureTapCallback onPressedFunc;
+        if (controller.emailValue.value.isNotEmpty &&
+            controller.passwordValue.value.isNotEmpty) {
+          buttonColor = AppColors.black;
+          onPressedFunc = () => controller.login();
+        } else {
+          buttonColor = AppColors.gray300;
+          onPressedFunc = () {};
+        }
+        return ODOSConfirmButton(
+          buttonText: AppString.str_login,
+          textColor: AppColors.white,
+          buttonColor: buttonColor,
+          onPressed: onPressedFunc,
+        );
+      },
+    );
+  }
+
+  Widget goRegisterButton(){
+    return ODOSSubButton(
+      textColor: AppColors.black,
+      buttonText: AppString.str_go_register,
+      onPressed: () => controller.goRegister(),
     );
   }
 }
