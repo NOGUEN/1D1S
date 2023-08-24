@@ -24,6 +24,48 @@ class ODOSProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BaseProfileCard(
+      widgetList: [
+        profileInfoContainer(),
+        dividingLine(),
+        aboutMeContainer(aboutMe)
+      ]
+    );
+  }
+
+  Widget profileInfoContainer(){
+    return SizedBox(
+      height: 150,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          profileImage(userProfileImage),
+          Container(
+            height: 100,
+            margin: EdgeInsets.only(right: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                profileHead(userName),
+                maxStreak(longestStreakNumber),
+                successfulGoal(successfulGoalNumber)
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class BaseProfileCard extends StatelessWidget {
+  final List<Widget> widgetList;
+  const BaseProfileCard({super.key, required this.widgetList});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: 361,
       height: 279,
@@ -39,124 +81,115 @@ class ODOSProfileCard extends StatelessWidget {
           ]
       ),
       child: Column(
-        children: [
-          SizedBox(
-            height: 150,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(  // *Profile Image*
-                  margin: EdgeInsets.only(left: 15),
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.black,
-                    radius: 60.0, //외부 원의 반지름
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage(userProfileImage),
-                      radius: 57.0, //내부 원의 반지름
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 100,
-                  margin: EdgeInsets.only(right: 15),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(  // *Profile Head*
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(userName, style: profileCardHead),
-                          EditButton(
-                            onPressed: (){
-                              Get.toNamed(Routes.UPDATE_PROFILE);
-                            }
-                          ),
-                        ],
-                      ),
-                      Row(  // *Streak*
-                        children: [
-                          Text('최고 스트릭', style: profileCardRecordHead),
-                          Container(
-                              width: 47,
-                              margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                              child: Text('$longestStreakNumber일', style: profileCardRecordContent)
-                          ),
-                          Image.asset(
-                            'images/icon_fire.png',
-                            width: 16,
-                            height: 16,
-                          )
-                        ],
-                      ),
-                      Row(  // *Successful Goal*
-                        children: [
-                          Text('성공한 목표', style: profileCardRecordHead),
-                          Container(
-                              margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                              child: Text('$successfulGoalNumber개', style: profileCardRecordContent)
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            width: double.infinity,
-            height: 1.0,
-            color: Color(0xffc8c8c8),
-          ),  // *Line Divider*
-          Container(  // *About Me*
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                  alignment: Alignment.topLeft,
-                  child:  // *Profile Head*
-                    Text('자기소개', style: profileCardAboutMeHead),
-                ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    aboutMe,  //자기소개는 36자 이하로
-                    style: profileCardAboutMeContent,
-                    textAlign: TextAlign.start,
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+        children: widgetList
       ),
     );
   }
 }
 
+Widget space({height}){
+  return SizedBox(height: height);
+}
 
-class EditButton extends StatelessWidget {
-  final Function() onPressed;
-  const EditButton({super.key, required this.onPressed,});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 35,
-      height: 35,
-      alignment: Alignment.center,
-      child: IconButton(
-          padding: EdgeInsets.all(10),
-          onPressed: onPressed,
-          icon: SvgPicture.asset(
-            AppString.goal,
-            colorFilter: ColorFilter.mode(Color(0xffababab), BlendMode.srcIn),
-          )
+Widget profileImage(String userProfileImage){
+  return Container(  // *Profile Image*
+    margin: EdgeInsets.only(left: 15),
+    child: CircleAvatar(
+      backgroundColor: AppColors.black,
+      radius: 60.0, //외부 원의 반지름
+      child: CircleAvatar(
+        backgroundImage: AssetImage(userProfileImage),
+        radius: 57.0, //내부 원의 반지름
       ),
-    );
-  }
+    ),
+  );
+}
+
+Widget profileHead(String userName){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(userName, style: profileCardHead),
+      editButton()
+    ],
+  );
+}
+
+Widget maxStreak(int longestStreakNumber){
+  return Row(
+    children: [
+      Text('최고 스트릭', style: profileCardRecordHead),
+      Container(
+          width: 47,
+          margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+          child: Text('$longestStreakNumber일', style: profileCardRecordContent)
+      ),
+      Image.asset(
+        'images/icon_fire.png',
+        width: 16,
+        height: 16,
+      )
+    ],
+  );
+}
+
+Widget successfulGoal(int successfulGoalNumber){
+  return Row(  // *Successful Goal*
+    children: [
+      Text('성공한 목표', style: profileCardRecordHead),
+      Container(
+          margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+          child: Text('$successfulGoalNumber개', style: profileCardRecordContent)
+      )
+    ],
+  );
+}
+
+Widget dividingLine(){
+  return Container(
+    margin: EdgeInsets.all(10),
+    width: double.infinity,
+    height: 1.0,
+    color: Color(0xffc8c8c8),
+  );
+}
+
+Widget aboutMeContainer(String aboutMe){
+  return Container(
+    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+    child: Column(
+      children: [
+        Container(
+          margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
+          alignment: Alignment.topLeft,
+          child:  // *Profile Head*
+          Text('자기소개', style: profileCardAboutMeHead),
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            aboutMe,  //자기소개는 36자 이하로
+            style: profileCardAboutMeContent,
+            textAlign: TextAlign.start,
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+Widget editButton() {
+  return Container(
+    width: 35,
+    height: 35,
+    alignment: Alignment.center,
+    child: IconButton(
+        padding: EdgeInsets.all(10),
+        onPressed: (){Get.toNamed(Routes.UPDATE_PROFILE);},
+        icon: SvgPicture.asset(
+          AppString.goal,
+          colorFilter: ColorFilter.mode(Color(0xffababab), BlendMode.srcIn),
+        )
+    ),
+  );
 }
