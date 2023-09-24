@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/bindings/initial_binding.dart';
 import 'package:one_day_one_something/flavors/build_config.dart';
@@ -18,14 +19,17 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: _envConfig.appName,
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.pages,
-      initialBinding: InitialBinding(),
-      theme: appThemeData,
-      defaultTransition: Transition.fade,
+    return ScreenUtilInit(
+      designSize: Size(360, 640),
+      builder: (buildContext, widget) => GetMaterialApp(
+        title: _envConfig.appName,
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.pages,
+        initialBinding: InitialBinding(),
+        theme: appThemeData,
+        defaultTransition: Transition.fade,
+      ),
     );
   }
 }
