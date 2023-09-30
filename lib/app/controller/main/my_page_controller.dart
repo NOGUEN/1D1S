@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'
 
 class MyPageController extends BaseController{
   List<dynamic> cardlist=[].obs;
