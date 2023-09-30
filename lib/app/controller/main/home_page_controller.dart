@@ -31,95 +31,80 @@ class HomePageController extends BaseController {
     //주석처리 하여 리스트 개수 조절 가능
     everyoneSTrackList=[
       {
-        "trackColor": AppColors.redBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPinkBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
         "userName": "1"
       },
       {
-        "trackColor": AppColors.orangeBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalYellowBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
         "userName": "2"
       },
       {
-        "trackColor": AppColors.yellowBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalGreenBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
         "userName": "3"
       },
       {
-        "trackColor": AppColors.greenBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalBlueBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
         "userName": "4"
       },
       {
-        "trackColor": AppColors.blueBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPurpleBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
         "userName": "5"
       },
       {
-        "trackColor": AppColors.purpleBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPinkBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "6"
+        "userName": "1"
       },
       {
-        "trackColor": AppColors.defaultBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalYellowBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "7"
+        "userName": "2"
       },
       {
-        "trackColor": AppColors.redBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalGreenBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "8"
+        "userName": "3"
       },
       {
-        "trackColor": AppColors.orangeBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalBlueBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "9"
+        "userName": "4"
       },
       {
-        "trackColor": AppColors.yellowBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPurpleBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "10"
+        "userName": "5"
       },
       {
-        "trackColor": AppColors.greenBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPinkBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "11"
+        "userName": "1"
       },
       {
-        "trackColor": AppColors.blueBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalYellowBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "12"
+        "userName": "2"
       },
       {
-        "trackColor": AppColors.purpleBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalGreenBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "13"
+        "userName": "3"
       },
       {
-        "trackColor": AppColors.defaultBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalBlueBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "14"
+        "userName": "4"
       },
       {
-        "trackColor": AppColors.redBackground,
-        "trackIcon": 'images/icon_blue_book.png',
+        "trackColor": AppColors.goalPurpleBackground,
         "userProfileImage": 'images/image_user_profile_gorani.jpg',
-        "userName": "15"
-      }
+        "userName": "5"
+      },
     ];
   }
 }

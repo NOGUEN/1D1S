@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ODOSProgressMiniCircle extends StatelessWidget {
-  final Color circleColor;
   final double percent;
 
   const ODOSProgressMiniCircle({
-    required this.circleColor,
     required this.percent,
   });
 
@@ -21,19 +20,19 @@ class ODOSProgressMiniCircle extends StatelessWidget {
           totalSteps: 100,
           currentStep: (percent * 100).toInt(),
           stepSize: 6,
-          selectedColor: circleColor,
-          unselectedColor: Colors.grey[200],
+          selectedColor: AppColors.white,
+          unselectedColor: AppColors.black.withOpacity(0.1),
           padding: 0,
-          width: 50,
-          height: 50,
+          width: 60.h,
+          height: 60.h,
           // selectedStepSize: 15,
           roundedCap: (_, __) => true,
         ),
         Text(
           '${(1000 * percent).toInt() / 10}%',
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 10,
+            color: AppColors.white,
+            fontSize: 12.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
