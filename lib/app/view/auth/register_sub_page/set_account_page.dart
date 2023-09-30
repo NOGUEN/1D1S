@@ -51,20 +51,44 @@ class SetAccountPage extends BaseView<RegisterController> {
         if (controller.emailEnabled.value && controller.passwordEnabled.value) {
           buttonColor = AppColors.black;
           onPressed = () async {
-            registerResult = await controller.register();
-            if (registerResult == FirebaseCode.SUCCESS) {
-              firebaseAuth.currentUser?.sendEmailVerification();
-              controller.tabController
+            try {
+              final signInMethods = await FirebaseAuth.instance.fetchSignInMethodsForEmail(controller.emailValue.value);
+              if (signInMethods.isNotEmpty) {
+                // 이메일이 이미 사용 중입니다.
+                showToast("이미 가입된 이메일입니다.");
+              } else {
+                // 이메일이 사용 가능합니다.
+                // registerResult = await controller.register();
+                // if (registerResult == FirebaseCode.SUCCESS) {
+                //   firebaseAuth.currentUser?.sendEmailVerification();
+                //   showToast("가입가능합니다.");
+                //   controller.tabController
+                //       .animateTo((controller.tabController.index + 1) % 3);
+                //   controller.currentTabIndex.value = 1;
+                // }
+                showToast("가입가능합니다.");
+                controller.tabController
                   .animateTo((controller.tabController.index + 1) % 3);
-              controller.currentTabIndex.value = 1;
-            } else if (registerResult == FirebaseCode.EMAIL_ALREADY_IN_USE) {
-              showToast("이미 가입된 이메일입니다.");
+                controller.currentTabIndex.value = 1;
+                Future.delayed(Duration(seconds: 1), () async {
+                  // 이메일 인증 체크 로직
+                  await controller.checkEmailVerification();
+                });
+              }
+            } catch (e) {
+              // 예외 처리
+              debugPrint('Error: $e');
             }
           };
         } else {
           buttonColor = AppColors.gray500;
           onPressed = () {
-            controller.currentTabIndex.value = 1;
+            controller.currentTabIndex.value = 0;
+            if (controller.emailEnabled.value)
+              showToast("email yes");
+            if(controller.passwordEnabled.value)
+              showToast("password yes");
+            showToast("가입가능합니?.");
           };
         }
 
@@ -116,6 +140,8 @@ class SetAccountPage extends BaseView<RegisterController> {
       needHide: true,
       onChanged: (p0) {
         controller.passwordValue.value = p0;
+        controller.passwordValidationReverse(p0);
+        showToast(controller.passwordValue.value);
       },
     );
   }
@@ -129,6 +155,7 @@ class SetAccountPage extends BaseView<RegisterController> {
       onChanged: (p0) {
         controller.validpasswordValue.value = p0;
         controller.passwordValidation(p0);
+        showToast(controller.validpasswordValue.value);
       },
     );
   }

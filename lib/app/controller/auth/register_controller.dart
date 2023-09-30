@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/service/auth_service.dart';
@@ -5,7 +7,7 @@ import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
 import 'package:one_day_one_something/app/routes/app_pages.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 class RegisterController extends BaseController
     with GetTickerProviderStateMixin {
   final emailEditingController = TextEditingController();
@@ -14,7 +16,8 @@ class RegisterController extends BaseController
   final nicknameEditingController = TextEditingController();
   AuthService authService = AuthService();
   late TabController tabController;
-
+  var isEmailVerified = false.obs;
+  // Timer? timer;
   var emailValue = ''.obs;
   var passwordValue = ''.obs;
   var validpasswordValue = ''.obs;
@@ -23,8 +26,7 @@ class RegisterController extends BaseController
 
   var emailEnabled = false.obs;
   var passwordEnabled = false.obs;
-  var registerResult = FirebaseCode.SUCCESS.obs;
-
+  var registerResult = FirebaseCode.ERROR.obs;
   void updateTabIndex(int index) {
     currentTabIndex.value = index;
   }
@@ -54,6 +56,53 @@ class RegisterController extends BaseController
     }
   }
 
+  void passwordValidationReverse(String value){
+    if (value.isNotEmpty && value == validpasswordValue.value) {
+      passwordEnabled.value = true;
+    } else {
+      passwordEnabled.value = false;
+    }
+  }
+
+  // checkEmailVerified() async {
+  //   await FirebaseAuth.instance.currentUser?.reload();
+  //   isEmailVerified.value = FirebaseAuth.instance.currentUser!.emailVerified;
+  //   if (isEmailVerified.value) {
+  //     // TODO: implement your code after email verification
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text("Email Successfully Verified")));
+  //
+  //     timer?.cancel();
+  //   }
+  // }
+  Future<void> checkEmailVerification() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    ActionCodeSettings actionCodeSettings = ActionCodeSettings(
+      url: 'https://d1s-af0ff.firebaseapp.com/?email=' + emailValue.value,
+      handleCodeInApp: false,
+      iOSBundleId: 'com.example.one_day_one_something',
+      androidPackageName: 'com.example.one_day_one_something',
+      androidInstallApp: true,
+      androidMinimumVersion: '12',
+      dynamicLinkDomain: 'onedayonesomething.page.link'
+    );
+    await firebaseAuth.currentUser?.sendEmailVerification(actionCodeSettings);
+    await auth.sendSignInLinkToEmail(
+      email: emailValue.value,
+      actionCodeSettings: actionCodeSettings,
+    ).catchError((onError) => print('Error sending email verification $onError'))
+        .then((value) => print('Successfully sent email verification'));
+    auth.authStateChanges().listen((User? user) {
+      if (user != null && user.emailVerified) {
+        // 이메일이 인증되었습니다.
+        // 여기에 이메일 인증이 완료된 후의 로직을 작성합니다.
+        isEmailVerified.value = true;
+      }
+      else{
+        isEmailVerified.value = false;
+      }
+    });
+  }
   Future<FirebaseCode> register() async {
     final userModel = UserModel(
       nickname: nicknameEditingController.text,
@@ -76,7 +125,7 @@ class RegisterController extends BaseController
     nicknameEditingController.dispose();
     validPasswordEditingController.dispose();
     nicknameEditingController.dispose();
-
+    // timer?.cancel();
     super.dispose();
   }
 }
