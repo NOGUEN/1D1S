@@ -7,7 +7,7 @@ class MyPageController extends BaseController{
   RxString userName="".obs;
   RxString userProfileImage="".obs;
   RxInt longestStreakNumber=0.obs;
-  RxInt successfulGoalNumber=0.obs;
+  RxInt numberOfFriends=0.obs;
   RxString aboutMe="".obs;
 
   @override
@@ -15,8 +15,8 @@ class MyPageController extends BaseController{
     userName.value= '고라니';
     userProfileImage.value= 'images/image_user_profile_gorani.jpg';
     longestStreakNumber.value= 20;
-    successfulGoalNumber.value= 5;
-    aboutMe.value= '꾸어엉 꾸엉꾸엉';
+    numberOfFriends.value= 5;
+    aboutMe.value= '꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉';
     cardlist = [
       {
         "goalColor": AppColors.goalPinkBackground,

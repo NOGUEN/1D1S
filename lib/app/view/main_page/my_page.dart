@@ -24,7 +24,7 @@ class MyPage extends BaseView<MyPageController> {
       userName: controller.userName.value,
       userProfileImage: controller.userProfileImage.value,
       longestStreakNumber: controller.longestStreakNumber.value,
-      successfulGoalNumber: controller.successfulGoalNumber.value,
+      numberOfFriends: controller.numberOfFriends.value,
       aboutMe: controller.aboutMe.value,
     );
   }
@@ -35,7 +35,7 @@ class BaseMyPage extends StatelessWidget {
   final String userName;
   final String userProfileImage;
   final int longestStreakNumber;
-  final int successfulGoalNumber;
+  final int numberOfFriends;
   final String aboutMe;
   const BaseMyPage({
     super.key,
@@ -43,7 +43,7 @@ class BaseMyPage extends StatelessWidget {
     required this.userName,
     required this.userProfileImage,
     required this.longestStreakNumber,
-    required this.successfulGoalNumber,
+    required this.numberOfFriends,
     required this.aboutMe
   });
 
@@ -57,12 +57,12 @@ class BaseMyPage extends StatelessWidget {
                 userName: userName,
                 userProfileImage: userProfileImage,
                 longestStreakNumber: longestStreakNumber,
-                successfulGoalNumber: successfulGoalNumber,
+                numberOfFriends: numberOfFriends,
                 aboutMe: aboutMe
             ).marginOnly(left: 20, right: 20, top: 21, bottom: 8),
             GoalMulticard(cardlist: cardlist),
           ]
         )
-    );;
+    );
   }
 }
