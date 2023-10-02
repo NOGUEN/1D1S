@@ -12,9 +12,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       name: json['name'] as String,
       email: json['email'] as String,
       imageUrl: json['imageUrl'] as String?,
-      goalList: (json['goalList'] as List<dynamic>?)
-          ?.map((e) => GoalModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      // goalList: (json['goalList'] as List<dynamic>?)
+      //     ?.map((e) => GoalModel.fromJson(e as Map<String, dynamic>))
+      //     .toList(),
       friendUidList: (json['friendUidList'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
