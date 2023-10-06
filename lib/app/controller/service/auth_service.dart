@@ -5,6 +5,7 @@ import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/local/db/storage_util.dart';
 import 'package:one_day_one_something/app/data/local/db/util.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService with StorageUtil {
   //회원가입
@@ -16,8 +17,14 @@ class AuthService with StorageUtil {
       final uid = credential.user!.uid;
       userModel.uid = uid;
       credential.user!.updateDisplayName(userModel.name);
-
       saveString(UID_KEY, uid);
+
+      await FirebaseFirestore.instance.collection('Users').doc(uid).set({
+        'name': userModel.name,
+        'email': userModel.email,
+        'nickname': userModel.nickname
+        // Add more fields as needed
+      });
       return FirebaseCode.SUCCESS;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
