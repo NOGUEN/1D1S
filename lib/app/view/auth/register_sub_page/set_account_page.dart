@@ -93,6 +93,19 @@ class SetAccountPage extends BaseView<RegisterController> {
       controller: controller.nicknameEditingController,
       titleText: "닉네임",
       hintText: "닉네임을 입력해주세요",
+      onChanged: (p0) {
+        controller.nicknameValue.value = p0;
+      },
+    );
+  }
+  Widget nameText(){
+    return ODOSTextField(
+      controller: controller.nameEditingController,
+      titleText: "이름",
+      hintText: "이름을 입력해주세요",
+      onChanged: (p0) {
+        controller.nameValue.value = p0;
+      },
     );
   }
 

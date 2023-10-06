@@ -13,14 +13,14 @@ class AuthService with StorageUtil {
     try {
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
           email: userModel.email, password: password);
-
       final uid = credential.user!.uid;
       userModel.uid = uid;
-      credential.user!.updateDisplayName(userModel.name);
+      // credential.user!.updateDisplayName(userModel.name);
       saveString(UID_KEY, uid);
 
-      await FirebaseFirestore.instance.collection('Users').doc(uid).set({
-        'name': userModel.name,
+      //user가 가입했을 시에 authenticate database 뿐만아니라 firestore database에도 user 정보를 추가해준다.
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+        // 'name': userModel.name,
         'email': userModel.email,
         'nickname': userModel.nickname
         // Add more fields as needed
@@ -44,6 +44,7 @@ class AuthService with StorageUtil {
   //로그인
   Future<int> login(String email, String password) async {
     try {
+      // User 가 가입했을때 authenticate 부분을 통해서 로그인
       UserCredential credential = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       saveString(UID_KEY, credential.user!.uid);

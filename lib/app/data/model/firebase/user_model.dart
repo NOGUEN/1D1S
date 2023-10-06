@@ -8,7 +8,7 @@ part 'user_model.g.dart';
 class UserModel {
   String? uid;
   String nickname;
-  String name;
+  // String name;
   String email;
   String? imageUrl;
   List<GoalModel>? goalList;
@@ -18,7 +18,7 @@ class UserModel {
   UserModel({
     this.uid,
     required this.nickname,
-    required this.name,
+    // required this.name,
     required this.email,
     this.imageUrl,
     this.goalList,
@@ -38,7 +38,7 @@ class UserModel {
     return UserModel(
         uid: data?['uid'],
         nickname: data?['nickname'],
-        name: data?['name'],
+        // name: data?['name'],
         email: data?['email']);
   }
 
@@ -46,7 +46,7 @@ class UserModel {
     return {
       if (uid != null) "uid": uid,
       "nickname": nickname,
-      "name": name,
+      // "name": name,
       "email": email,
       if (imageUrl != null) "imageUrl": imageUrl,
       if (goalList != null) "goalList": goalList,
