@@ -22,7 +22,9 @@ class AuthService with StorageUtil {
       await FirebaseFirestore.instance.collection('users').doc(uid).set({
         // 'name': userModel.name,
         'email': userModel.email,
-        'nickname': userModel.nickname
+        'nickname': userModel.nickname,
+        'created_at': FieldValue.serverTimestamp(),
+        'reminder': false,
         // Add more fields as needed
       });
       return FirebaseCode.SUCCESS;
