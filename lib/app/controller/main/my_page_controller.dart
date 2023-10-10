@@ -7,7 +7,7 @@ class MyPageController extends BaseController{
   RxString userName="".obs;
   RxString userProfileImage="".obs;
   RxInt longestStreakNumber=0.obs;
-  RxInt successfulGoalNumber=0.obs;
+  RxInt numberOfFriends=0.obs;
   RxString aboutMe="".obs;
 
   @override
@@ -15,11 +15,11 @@ class MyPageController extends BaseController{
     userName.value= '고라니';
     userProfileImage.value= 'images/image_user_profile_gorani.jpg';
     longestStreakNumber.value= 20;
-    successfulGoalNumber.value= 5;
-    aboutMe.value= '꾸어엉 꾸엉꾸엉';
+    numberOfFriends.value= 5;
+    aboutMe.value= '꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉 꾸어엉 꾸엉꾸엉';
     cardlist = [
       {
-        "goalColor": AppColors.redOrigin,
+        "goalColor": AppColors.goalPinkBackground,
         "doneWeek": [true, false, true, false, false, true, true],
         "consecutive_days": 3,
         "my_goal": "목표이름1",
@@ -27,7 +27,7 @@ class MyPageController extends BaseController{
         "totalDay": 123
       },
       {
-        "goalColor": AppColors.orangeOrigin,
+        "goalColor": AppColors.goalYellowBackground,
         "doneWeek": [true, false, true, false, false, true, true],
         "consecutive_days": 4,
         "my_goal": "목표이름2",
@@ -35,7 +35,7 @@ class MyPageController extends BaseController{
         "totalDay": 171
       },
       {
-        "goalColor": AppColors.greenOrigin,
+        "goalColor": AppColors.goalGreenBackground,
         "doneWeek": [true, false, true, false, false, true, true],
         "consecutive_days": 5,
         "my_goal": "목표이름3",
@@ -43,7 +43,7 @@ class MyPageController extends BaseController{
         "totalDay": 127
       },
       {
-        "goalColor": AppColors.blueOrigin,
+        "goalColor": AppColors.goalBlueBackground,
         "doneWeek": [true, false, true, false, false, true, true],
         "consecutive_days": 6,
         "my_goal": "목표이름4",

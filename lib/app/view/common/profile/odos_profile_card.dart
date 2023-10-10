@@ -5,12 +5,14 @@ import 'package:one_day_one_something/app/routes/app_pages.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_day_one_something/app/view/theme/app_theme.dart';
 
 class ODOSProfileCard extends StatelessWidget {
   final String userName;
   final String userProfileImage;
   final int longestStreakNumber;
-  final int successfulGoalNumber;
+  final int numberOfFriends;
   final String aboutMe;
 
   const ODOSProfileCard({
@@ -18,7 +20,7 @@ class ODOSProfileCard extends StatelessWidget {
     required this.userName,
     required this.userProfileImage,
     required this.longestStreakNumber,
-    required this.successfulGoalNumber,
+    required this.numberOfFriends,
     required this.aboutMe
   });
 
@@ -34,23 +36,24 @@ class ODOSProfileCard extends StatelessWidget {
   }
 
   Widget profileInfoContainer(){
-    return SizedBox(
-      height: 150,
+    return Container(
+      height: 140.h,
+      padding: EdgeInsets.symmetric(vertical: 20.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           profileImage(userProfileImage),
           Container(
-            height: 100,
-            margin: EdgeInsets.only(right: 15),
+            height: 100.h,
+            margin: EdgeInsets.only(left: 12.5.w),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 profileHead(userName),
                 maxStreak(longestStreakNumber),
-                successfulGoal(successfulGoalNumber)
+                friends(numberOfFriends)
               ],
             ),
           ),
@@ -67,18 +70,13 @@ class BaseProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 361,
-      height: 279,
+      width: 320.w,
+      height: 250.h,
       decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.black.withOpacity(0.1),
-                spreadRadius: 0.1,
-                blurRadius: 20
-            )
-          ]
+          borderRadius: BorderRadius.circular(8.w),
+          border: Border.all(color: AppColors.profileCardBorderColor, width: 3.w),
+          boxShadow: [odosShadow]
       ),
       child: Column(
         children: widgetList
@@ -93,13 +91,13 @@ Widget space({height}){
 
 Widget profileImage(String userProfileImage){
   return Container(  // *Profile Image*
-    margin: EdgeInsets.only(left: 15),
+    margin: EdgeInsets.only(left: 14.w),
     child: CircleAvatar(
       backgroundColor: AppColors.black,
-      radius: 60.0, //외부 원의 반지름
+      radius: 50.0.h, //외부 원의 반지름
       child: CircleAvatar(
         backgroundImage: AssetImage(userProfileImage),
-        radius: 57.0, //내부 원의 반지름
+        radius: 48.0.h, //내부 원의 반지름
       ),
     ),
   );
@@ -120,51 +118,53 @@ Widget maxStreak(int longestStreakNumber){
     children: [
       Text('최고 스트릭', style: profileCardRecordHead),
       Container(
-          width: 47,
-          margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+          width: 47.w,
+          margin: EdgeInsets.only(left: 7.7.w),
           child: Text('$longestStreakNumber일', style: profileCardRecordContent)
       ),
       Image.asset(
         'images/icon_fire.png',
-        width: 16,
-        height: 16,
+        width: 16.h,
+        height: 16.h,
       )
     ],
   );
 }
 
-Widget successfulGoal(int successfulGoalNumber){
-  return Row(  // *Successful Goal*
-    children: [
-      Text('성공한 목표', style: profileCardRecordHead),
-      Container(
-          margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
-          child: Text('$successfulGoalNumber개', style: profileCardRecordContent)
-      )
-    ],
+Widget friends(int numberOfFriends){
+  return 
+    TextButton(  // *Successful Goal*
+      style: TextButton.styleFrom(
+        minimumSize: Size.zero,
+        padding: EdgeInsets.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      onPressed: (){},
+      child:
+        Text('친구 $numberOfFriends명 >', style: profileCardRecordHead),
   );
 }
 
 Widget dividingLine(){
   return Container(
-    margin: EdgeInsets.all(10),
-    width: double.infinity,
-    height: 1.0,
-    color: Color(0xffc8c8c8),
+    width: 302.w,
+    height: 1.0.h,
+    color: Color(0xFFc8c8c8),
   );
 }
 
 Widget aboutMeContainer(String aboutMe){
   return Container(
-    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+    padding: EdgeInsets.fromLTRB(17.7.w, 15.h, 17.7.w, 0),
+    height: 95.h,
     child: Column(
       children: [
         Container(
-          margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
           alignment: Alignment.topLeft,
           child:  // *Profile Head*
           Text('자기소개', style: profileCardAboutMeHead),
         ),
+        space(height: 8.h),
         Container(
           alignment: Alignment.centerLeft,
           child: Text(
@@ -180,11 +180,11 @@ Widget aboutMeContainer(String aboutMe){
 
 Widget editButton() {
   return Container(
-    width: 35,
-    height: 35,
+    width: 35.w,
+    height: 35.h,
     alignment: Alignment.center,
     child: IconButton(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8.h),
         onPressed: (){Get.toNamed(Routes.UPDATE_PROFILE);},
         icon: SvgPicture.asset(
           AppString.goal,

@@ -57,25 +57,29 @@ class GoalPage extends BaseView<MainController> {
                   style: head2,
                 ),
                 ODOSGoalList(
-                    imoji: "images/icon_fire.png",
-                    circleColor: AppColors.greenBackground,
-                    my_goal: "목표",
-                    percent: .375),
+                  goalColor: AppColors.goalPinkBackground,
+                  my_goal: "목표 이름",
+                  consecutive_days: 10,
+                  total_days: 30,
+                  isBookmarked: true),
                 ODOSGoalList(
-                    imoji: "images/icon_fire.png",
-                    circleColor: AppColors.orangeBackground,
-                    my_goal: "목표",
-                    percent: .5),
+                  goalColor: AppColors.goalYellowBackground,
+                  my_goal: "목표 이름",
+                  consecutive_days: 15,
+                  total_days: 30,
+                  isBookmarked: false),
                 ODOSGoalList(
-                    imoji: "images/icon_fire.png",
-                    circleColor: AppColors.redBackground,
-                    my_goal: "목표",
-                    percent: .75),
+                  goalColor: AppColors.goalGreenBackground,
+                  my_goal: "목표 이름",
+                  consecutive_days: 20,
+                  total_days: 30,
+                  isBookmarked: false),
                 ODOSGoalList(
-                    imoji: "images/icon_fire.png",
-                    circleColor: AppColors.blueBackground,
-                    my_goal: "목표",
-                    percent: 1),
+                  goalColor: AppColors.goalBlueBackground,
+                  my_goal: "목표 이름",
+                  consecutive_days: 30,
+                  total_days: 30,
+                  isBookmarked: false),
                 ODOSAddButton(buttonColor: Colors.black),
                 TextButton(
                   onPressed: () {
@@ -84,10 +88,11 @@ class GoalPage extends BaseView<MainController> {
                         builder: (context) {
                           return Dialog(
                               child: ODOSGoalList(
-                                  imoji: "images/icon_fire.png",
-                                  circleColor: AppColors.redBackground,
-                                  my_goal: "목표",
-                                  percent: 1));
+                                goalColor: AppColors.redBackground,
+                                my_goal: "목표",
+                                consecutive_days: 30,
+                                total_days: 30,
+                                isBookmarked: false));
                         });
                   },
                   child: Text('hi'),

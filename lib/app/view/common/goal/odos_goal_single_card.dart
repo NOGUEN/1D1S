@@ -7,15 +7,13 @@ import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_circle.dart';
 
 class ODOSGoalCard extends StatelessWidget {
-  final Color goalColor;
   final List<bool> doneWeek;
   final int consecutive_days;
   final int totalDay;
   final String my_goal;
   final String imoji;
   const ODOSGoalCard(
-      {required this.goalColor,
-      required this.doneWeek,
+      {required this.doneWeek,
       required this.consecutive_days,
       required this.my_goal,
       required this.imoji,
@@ -74,8 +72,8 @@ class ODOSGoalCard extends StatelessWidget {
                       ),
                       SizedBox(height: 18),
                       ODOSWeekButton(
-                        circleColor: goalColor,
                         doneWeek: [true, false, true, false, false, true, true],
+                        goalColor: AppColors.defaultBackground
                       ),
                       SizedBox(height: 34),
                       Text(
@@ -87,7 +85,6 @@ class ODOSGoalCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ODOSProgressCircle(
-                            circleColor: goalColor,
                             percent: (consecutive_days / totalDay).toDouble(),
                             //TODO: 소숫점 예외처리
                           ),
