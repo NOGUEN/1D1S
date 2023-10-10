@@ -7,7 +7,7 @@ part of 'user_model.dart';
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-      uid: json['uid'] as String,
+      uid: json['uid'] as String?,
       nickname: json['nickname'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
@@ -16,7 +16,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
           ?.map((e) => GoalModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       friendUidList: (json['friendUidList'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => FriendModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       friendTrackList: (json['friendTrackList'] as List<dynamic>?)
           ?.map((e) => TrackModel.fromJson(e as Map<String, dynamic>))
