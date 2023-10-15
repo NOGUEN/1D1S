@@ -10,7 +10,6 @@ class UserModel {
   String nickname;
   // String name;
   String email;
-  int signUpTime;
   String? imageUrl;
   List<GoalModel>? goalList;
   List<String>? friendUidList;
@@ -21,7 +20,6 @@ class UserModel {
     required this.nickname,
     // required this.name,
     required this.email,
-    required this.signUpTime,
     this.imageUrl,
     this.goalList,
     this.friendUidList,

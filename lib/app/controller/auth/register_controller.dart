@@ -121,8 +121,7 @@ class RegisterController extends BaseController
       // nickname: nicknameEditingController.text,
       // name: nicknameEditingController.text,
       nickname: nicknameValue.value,
-      email: emailValue.value,
-      signUpTime: timestamp
+      email: emailValue.value
     );
 
     registerResult.value = await authService.register(
