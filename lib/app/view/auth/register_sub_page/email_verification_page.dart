@@ -46,14 +46,12 @@ class EmailVerificationPage extends BaseView<RegisterController> {
   Widget body(BuildContext context) {
     return Obx(
       () {
-        late FirebaseCode registerResult;
         if(controller.isEmailVerified.value){
-          performRegister();
           // registerResult = await controller.register();
-          // controller.tabController
-          //     .animateTo((controller.tabController.index + 1) % 3);
-          // controller.currentTabIndex.value = 2;
-          // controller.isEmailVerified.value = false;
+          controller.tabController
+               .animateTo((controller.tabController.index + 1) % 4);
+          controller.currentTabIndex.value = 2;
+          controller.isEmailVerified.value = false;
         }
         return BaseRegisterPage(
           widgetList: [

@@ -60,26 +60,32 @@ class ODOSSystemList extends StatelessWidget {
 }
 
 class ODOSSystemListCell extends StatelessWidget {
-  const ODOSSystemListCell({super.key, required this.menuString});
+  const ODOSSystemListCell({super.key, required this.menuString, required this.onPressed});
   final String menuString;
+  final VoidCallback onPressed;
   final EdgeInsets listPadding = const EdgeInsets.fromLTRB(20, 10, 0, 5);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Row(children: [
-        Padding(
-          padding: listPadding,
-          child: const Icon(Icons.abc),
+    return InkWell(
+      onTap: onPressed, // Row를 클릭하면 onPressed 함수가 호출됩니다.
+      child: SizedBox(
+        child: Row(
+          children: [
+            Padding(
+              padding: listPadding,
+              child: const Icon(Icons.abc),
+            ),
+            Padding(
+              padding: listPadding,
+              child: Text(
+                menuString,
+                style: inputContentTextStyle,
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: listPadding,
-          child: Text(
-            menuString,
-            style: inputContentTextStyle,
-          ),
-        )
-      ]),
+      ),
     );
   }
 }

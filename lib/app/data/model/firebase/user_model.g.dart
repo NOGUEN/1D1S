@@ -11,6 +11,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       nickname: json['nickname'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
+      signUpTime: json['signUpTime'] as int,
       imageUrl: json['imageUrl'] as String?,
       goalList: (json['goalList'] as List<dynamic>?)
           ?.map((e) => GoalModel.fromJson(e as Map<String, dynamic>))
@@ -28,6 +29,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'nickname': instance.nickname,
       'name': instance.name,
       'email': instance.email,
+
       'imageUrl': instance.imageUrl,
       'goalList': instance.goalList,
       'friendUidList': instance.friendUidList,

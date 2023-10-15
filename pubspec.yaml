@@ -55,6 +55,7 @@ dependencies:
   image_picker: ^1.0.2
   flutter_screenutil: ^5.9.0
   firebase_dynamic_links: ^5.3.6
+  cloud_firestore: ^4.9.3
 
 dev_dependencies:
   flutter_test:

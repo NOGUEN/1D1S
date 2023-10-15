@@ -40,6 +40,12 @@ class AuthService with StorageUtil {
       UserCredential credential = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       saveString(UID_KEY, credential.user!.uid);
+      User? user = credential.user;
+      await user!.reload();
+      // user = FirebaseAuth.instance.currentUser;
+      if(user!.emailVerified == false){
+        return FAIL_THREE;
+      }
       return SUCCESS;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -59,5 +65,23 @@ class AuthService with StorageUtil {
   //로그아웃
   void logout() async {
     await firebaseAuth.signOut();
+  }
+
+  //회원탈퇴
+  Future<FirebaseCode> deleteAccount() async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user != null) {
+        await user.delete();
+        // 사용자 계정 삭제 성공 시 로컬 저장된 UID 삭제
+        removeString(UID_KEY);
+        return FirebaseCode.SUCCESS;
+      } else {
+        return FirebaseCode.ERROR;
+      }
+    } catch (e) {
+      log(e.toString());
+      return FirebaseCode.ERROR;
+    }
   }
 }

@@ -41,21 +41,19 @@ class SetProfilePage extends BaseView<RegisterController> {
         Color buttonColor;
         void Function() onPressed;
 
-        if ((controller.emailValue.value.isNotEmpty &&
-                controller.passwordValue.value.isNotEmpty) &&
-            controller.passwordValue.value ==
-                controller.validpasswordValue.value) {
+        if (controller.nicknameValue.value.isNotEmpty) {
           buttonColor = AppColors.black;
-          onPressed = () {
+          onPressed = () async {
+            await controller.addProfile();
             controller.tabController
-                .animateTo((controller.tabController.index + 1) % 3);
-            controller.currentTabIndex.value = 2;
+                .animateTo((controller.tabController.index + 1) % 4);
+            controller.currentTabIndex.value = 3;
           };
         } else {
           buttonColor = AppColors.gray500;
           onPressed = () {
             controller.tabController
-                .animateTo((controller.tabController.index + 1) % 3);
+                .animateTo((controller.tabController.index) % 4);
             controller.currentTabIndex.value = 2;
           };
         }
@@ -113,6 +111,9 @@ class SetProfilePage extends BaseView<RegisterController> {
             controller: controller.nicknameEditingController,
             titleText: AppString.str_nickname,
             hintText: AppString.str_nickname_hint,
+            onChanged: (p0) {
+              controller.nicknameValue.value = p0;
+            },
           ),
         )
       ],

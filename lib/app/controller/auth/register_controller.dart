@@ -8,6 +8,7 @@ import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
 import 'package:one_day_one_something/app/routes/app_pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 class RegisterController extends BaseController
     with GetTickerProviderStateMixin {
   final emailEditingController = TextEditingController();
@@ -17,13 +18,14 @@ class RegisterController extends BaseController
   AuthService authService = AuthService();
   late TabController tabController;
   var isEmailVerified = false.obs;
-  // Timer? timer;
+  late Timer timer;
   var emailValue = ''.obs;
   var passwordValue = ''.obs;
   var validpasswordValue = ''.obs;
   var currentTabIndex = 0.obs;
   var profileImageNumber = 0.obs;
-
+  var nicknameValue = ''.obs;
+  var userId = ''.obs;
   var emailEnabled = false.obs;
   var passwordEnabled = false.obs;
   var registerResult = FirebaseCode.ERROR.obs;
@@ -35,6 +37,14 @@ class RegisterController extends BaseController
   void onInit() {
     super.onInit();
     tabController = TabController(vsync: this, length: 4);
+    timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
+      await FirebaseAuth.instance.currentUser?.reload();
+      final user = FirebaseAuth.instance.currentUser;
+      if (user?.emailVerified ?? false) {
+        timer.cancel();
+        isEmailVerified.value = true;
+      }
+    });
   }
 
   void emailValidation(String value) {
@@ -104,18 +114,25 @@ class RegisterController extends BaseController
     });
   }
   Future<FirebaseCode> register() async {
+    var timestamp = DateTime.now().millisecondsSinceEpoch ~/ 60000;
     final userModel = UserModel(
       nickname: nicknameEditingController.text,
       name: nicknameEditingController.text,
       email: emailValue.value,
+      signUpTime: timestamp
     );
 
     registerResult.value = await authService.register(
       userModel,
       passwordValue.value,
     );
-
+    userId.value = userModel.uid ?? '';
     return registerResult.value;
+  }
+
+  Future<void> addProfile() async {
+    final usersCollection = FirebaseFirestore.instance.collection('users');
+    return await usersCollection.doc(userId.value).update({'nickname': nicknameValue.value, 'profileImageNumber': profileImageNumber.value});
   }
 
   @override
@@ -124,8 +141,7 @@ class RegisterController extends BaseController
     passwordEditingController.dispose();
     nicknameEditingController.dispose();
     validPasswordEditingController.dispose();
-    nicknameEditingController.dispose();
-    // timer?.cancel();
+    timer.cancel();
     super.dispose();
   }
 }
