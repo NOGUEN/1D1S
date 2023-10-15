@@ -24,19 +24,7 @@ class EmailVerificationPage extends BaseView<RegisterController> {
       await user.delete();
     }
   }
-  Future<void> performRegister() async {
-    // isEmailVerified가 true이므로 register를 수행합니다.
-    try {
-      await controller.register();
-      controller.tabController
-          .animateTo((controller.tabController.index + 1) % 3);
-      controller.currentTabIndex.value = 2;
-      controller.isEmailVerified.value = false;
-    } catch (e) {
-      // 오류 처리
-      print('Register Error: $e');
-    }
-  }
+
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return null;
@@ -47,11 +35,12 @@ class EmailVerificationPage extends BaseView<RegisterController> {
     return Obx(
       () {
         if(controller.isEmailVerified.value){
-          // registerResult = await controller.register();
-          controller.tabController
-               .animateTo((controller.tabController.index + 1) % 4);
-          controller.currentTabIndex.value = 2;
-          controller.isEmailVerified.value = false;
+          Future.delayed(Duration.zero, () {
+            controller.tabController
+                .animateTo((controller.tabController.index + 1) % 4);
+            controller.currentTabIndex.value = 1;
+            controller.isEmailVerified.value = false;
+          });
         }
         return BaseRegisterPage(
           widgetList: [

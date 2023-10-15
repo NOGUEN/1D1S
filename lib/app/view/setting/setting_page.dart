@@ -85,7 +85,7 @@ class SettingPage extends BaseView<SettingController> {
       list: [
         ODOSSystemListCell(menuString: "버전", onPressed:(){}),
         ODOSSystemListCell(menuString: "로그아웃", onPressed:(){authService.logout();Get.offAndToNamed(Routes.LOGIN);}),
-        ODOSSystemListCell(menuString: "회원 탈퇴", onPressed:(){authService.deleteAccount();Get.offAndToNamed(Routes.LOGIN);}),
+        ODOSSystemListCell(menuString: "회원 탈퇴", onPressed:(){authService.deleteAccount();Get.offAndToNamed(Routes.LOGIN);}, isConfirm: true),
       ],
       categoryString: "서비스",
     );

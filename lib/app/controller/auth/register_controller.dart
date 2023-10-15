@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -134,7 +135,7 @@ class RegisterController extends BaseController
 
   Future<void> addProfile() async {
     final usersCollection = FirebaseFirestore.instance.collection('users');
-    return await usersCollection.doc(userId.value).update({'nickname': nicknameValue.value, 'profileImageNumber': profileImageNumber.value});
+    await usersCollection.doc(userId.value).update({'nickname': nicknameValue.value, 'profileImageNumber': profileImageNumber.value});
   }
 
   @override

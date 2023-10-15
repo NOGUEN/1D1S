@@ -47,14 +47,14 @@ class SetProfilePage extends BaseView<RegisterController> {
             await controller.addProfile();
             controller.tabController
                 .animateTo((controller.tabController.index + 1) % 4);
-            controller.currentTabIndex.value = 3;
+            controller.currentTabIndex.value = 2;
           };
         } else {
           buttonColor = AppColors.gray500;
           onPressed = () {
             controller.tabController
                 .animateTo((controller.tabController.index) % 4);
-            controller.currentTabIndex.value = 2;
+            controller.currentTabIndex.value = 1;
           };
         }
 

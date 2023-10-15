@@ -53,8 +53,8 @@ class SetAccountPage extends BaseView<RegisterController> {
             if (registerResult == FirebaseCode.SUCCESS) {
               firebaseAuth.currentUser?.sendEmailVerification();
               controller.tabController
-                  .animateTo((controller.tabController.index + 1) % 4);
-              controller.currentTabIndex.value = 1;
+                  .animateTo((controller.tabController.index+1) % 4);
+              controller.currentTabIndex.value = 0;
             } else if (registerResult == FirebaseCode.EMAIL_ALREADY_IN_USE) {
               showToast("이미 가입된 이메일입니다.");
             }
