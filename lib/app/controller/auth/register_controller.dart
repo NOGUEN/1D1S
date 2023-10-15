@@ -27,7 +27,6 @@ class RegisterController extends BaseController
   var validpasswordValue = ''.obs;
   var currentTabIndex = 0.obs;
   var profileImageNumber = 0.obs;
-  var nicknameValue = ''.obs;
   var userId = ''.obs;
   var emailEnabled = false.obs;
   var passwordEnabled = false.obs;
