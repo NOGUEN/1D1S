@@ -1,22 +1,23 @@
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MyPageController extends BaseController{
-  List<dynamic> cardlist=[].obs;
-  RxString userName="".obs;
-  RxString userProfileImage="".obs;
-  RxInt longestStreakNumber=0.obs;
-  RxInt successfulGoalNumber=0.obs;
-  RxString aboutMe="".obs;
+class MyPageController extends BaseController {
+  List<dynamic> cardlist = [].obs;
+  RxString userName = "".obs;
+  RxString userProfileImage = "".obs;
+  RxInt longestStreakNumber = 0.obs;
+  RxInt successfulGoalNumber = 0.obs;
+  RxString aboutMe = "".obs;
 
   @override
   void onInit() {
-    userName.value= '고라니';
-    userProfileImage.value= 'images/image_user_profile_gorani.jpg';
-    longestStreakNumber.value= 20;
-    successfulGoalNumber.value= 5;
-    aboutMe.value= '꾸어엉 꾸엉꾸엉';
+    userName.value = '고라니';
+    userProfileImage.value = 'images/image_user_profile_gorani.jpg';
+    longestStreakNumber.value = 20;
+    successfulGoalNumber.value = 5;
+    aboutMe.value = '꾸어엉 꾸엉꾸엉';
     cardlist = [
       {
         "goalColor": AppColors.redOrigin,

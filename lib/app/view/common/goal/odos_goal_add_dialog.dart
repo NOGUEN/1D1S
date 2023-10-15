@@ -8,7 +8,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_icon_picker.dart
 
 class CustomDialogBox extends StatefulWidget {
   const CustomDialogBox({super.key});
-
+  
   @override
   State<StatefulWidget> createState() => _CustomDialogBoxState();
 }

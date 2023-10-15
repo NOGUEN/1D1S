@@ -3,7 +3,8 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
 class ODOSTextGaolField extends StatelessWidget {
-  const ODOSTextGaolField({super.key});
+
+  ODOSTextGaolField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class ODOSTextGaolField extends StatelessWidget {
         width: 280,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             TextField(
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(

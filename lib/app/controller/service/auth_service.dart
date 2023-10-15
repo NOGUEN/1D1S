@@ -5,6 +5,7 @@ import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/local/db/storage_util.dart';
 import 'package:one_day_one_something/app/data/local/db/util.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService with StorageUtil {
   //회원가입
@@ -12,12 +13,20 @@ class AuthService with StorageUtil {
     try {
       final credential = await firebaseAuth.createUserWithEmailAndPassword(
           email: userModel.email, password: password);
-
       final uid = credential.user!.uid;
       userModel.uid = uid;
-      credential.user!.updateDisplayName(userModel.name);
-
+      // credential.user!.updateDisplayName(userModel.name);
       saveString(UID_KEY, uid);
+
+      //user가 가입했을 시에 authenticate database 뿐만아니라 firestore database에도 user 정보를 추가해준다.
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+        // 'name': userModel.name,
+        'email': userModel.email,
+        'nickname': userModel.nickname,
+        'created_at': FieldValue.serverTimestamp(),
+        'reminder': false,
+        // Add more fields as needed
+      });
       return FirebaseCode.SUCCESS;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -37,6 +46,7 @@ class AuthService with StorageUtil {
   //로그인
   Future<int> login(String email, String password) async {
     try {
+      // User 가 가입했을때 authenticate 부분을 통해서 로그인
       UserCredential credential = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       saveString(UID_KEY, credential.user!.uid);

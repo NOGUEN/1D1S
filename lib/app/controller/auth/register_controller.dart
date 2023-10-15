@@ -15,11 +15,14 @@ class RegisterController extends BaseController
   final passwordEditingController = TextEditingController();
   final validPasswordEditingController = TextEditingController();
   final nicknameEditingController = TextEditingController();
+  final nameEditingController = TextEditingController();
   AuthService authService = AuthService();
   late TabController tabController;
   var isEmailVerified = false.obs;
   late Timer timer;
   var emailValue = ''.obs;
+  var nicknameValue = ''.obs;
+  var nameValue = ''.obs;
   var passwordValue = ''.obs;
   var validpasswordValue = ''.obs;
   var currentTabIndex = 0.obs;
@@ -116,8 +119,9 @@ class RegisterController extends BaseController
   Future<FirebaseCode> register() async {
     var timestamp = DateTime.now().millisecondsSinceEpoch ~/ 60000;
     final userModel = UserModel(
-      nickname: nicknameEditingController.text,
-      name: nicknameEditingController.text,
+      // nickname: nicknameEditingController.text,
+      // name: nicknameEditingController.text,
+      nickname: nicknameValue.value,
       email: emailValue.value,
       signUpTime: timestamp
     );
@@ -142,6 +146,8 @@ class RegisterController extends BaseController
     nicknameEditingController.dispose();
     validPasswordEditingController.dispose();
     timer.cancel();
+    nameEditingController.dispose();
+
     super.dispose();
   }
 }
