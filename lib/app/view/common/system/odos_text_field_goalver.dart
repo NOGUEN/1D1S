@@ -3,8 +3,8 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
 class ODOSTextGaolField extends StatelessWidget {
-
-  ODOSTextGaolField({super.key});
+  void Function(String)? onChanged;
+  ODOSTextGaolField({this.onChanged,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,7 @@ class ODOSTextGaolField extends StatelessWidget {
                 contentPadding: EdgeInsets.fromLTRB(0, 8, 0, 0),
               ),
               style: inputContentTextStyle,
+              onChanged: onChanged,
             ),
           ],
         ));

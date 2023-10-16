@@ -5,6 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field_goalver.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_color_palette.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_icon_picker.dart';
+import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
+import 'package:one_day_one_something/app/controller/auth/register_controller.dart';
+import 'package:get/get.dart';
+import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
+import 'package:one_day_one_something/app/view/theme/app_string.dart';
+import 'package:one_day_one_something/app/view/theme/app_values.dart';
+import 'package:one_day_one_something/app/core/base/base_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CustomDialogBox extends StatefulWidget {
   const CustomDialogBox({super.key});
@@ -13,7 +23,15 @@ class CustomDialogBox extends StatefulWidget {
   State<StatefulWidget> createState() => _CustomDialogBoxState();
 }
 
+class GoalController {
+  var goalTitle = ''.obs;
+  var changedDay = 0.obs;
+  var goalColor = 0.obs;
+  var imojiindex = 0.obs;
+}
+
 class _CustomDialogBoxState extends State<CustomDialogBox> {
+  GoalController goalController = GoalController();
   static final List<Color> circleColors = [
     AppColors.defaultBackground,
     AppColors.redBackground,
@@ -27,8 +45,29 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
   int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
   int _selectedDayValue = 2;
   List<String> dayList = ["5", "7", "10", "20", "30", "50", "100"];
+  void saveDataToFirestore() {
+      // Access a Cloud Firestore instance
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      CollectionReference users = firestore.collection('users');
+      final userid = FirebaseAuth.instance.currentUser!.uid;
+      
+      DocumentReference userDocRef = users.doc(userid);
+      // Collection reference
+      CollectionReference goals = userDocRef.collection('goals');
+
+      // Add a document to the collection
+      goals.add({
+        'goalTitle': goalController.goalTitle.value,
+        'changedDay': goalController.changedDay.value,
+        'goalColor': goalController.goalColor.value,
+        'imojiindex': goalController.imojiindex.value,
+        })
+      .then((value) => print("Goal added to Firestore"))
+      .catchError((error) => print("Failed to add goal: $error"));
+    }
   @override
   Widget build(BuildContext context) {
+    
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(3),
@@ -65,7 +104,12 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 "새 목표",
                 style: goalNewcardDialog,
               ),
-              ODOSTextGaolField(),
+              ODOSTextGaolField(
+                onChanged: (newValue) {
+            // 입력값이 변경될 때마다 goalTitle 업데이트
+            goalController.goalTitle.value = newValue;
+          },
+              ),
               SizedBox(
                 height: 8,
               ),
@@ -105,6 +149,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                             onSelectedItemChanged: (int value) {
                               setState(() {
                                 _selectedDayValue = value;
+                                goalController.changedDay.value = value;
                               });
                             },
                           ),
@@ -162,6 +207,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     onColorSelected: (index) {
                       setState(() {
                         selectedColorIndex = index;
+                        goalController.goalColor.value = index;
                       });
                     },
                   ),
@@ -178,7 +224,13 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     style: inputGoalAddHintTextStyle,
                     textAlign: TextAlign.start,
                   ),
-                  IconPicker()
+                  IconPicker(
+                    onIconSelected: (index) {
+                      setState(() {
+                        goalController.imojiindex.value = index;
+                      });
+                    },
+                  )
                 ],
               ),
               Align(
@@ -187,6 +239,8 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
+                      // Save data to Firestore when the button is pressed
+                      saveDataToFirestore();
                       Navigator.of(context).pop();
                     },
                     child: Text(
