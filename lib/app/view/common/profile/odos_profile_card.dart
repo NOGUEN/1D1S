@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_day_one_something/app/routes/app_pages.dart';
+import 'package:one_day_one_something/app/view/common/profile/profile_image.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
@@ -43,7 +44,12 @@ class ODOSProfileCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          profileImage(userProfileImage),
+          SizedBox(width: 15.w,),
+          profileImage(
+            userProfileImage: userProfileImage,
+            outerCircleRadius: 60.r,
+            innerCircleRadius: 56.r
+          ),
           Container(
             height: 100.h,
             margin: EdgeInsets.only(left: 12.5.w),
@@ -89,20 +95,6 @@ Widget space({height}){
   return SizedBox(height: height);
 }
 
-Widget profileImage(String userProfileImage){
-  return Container(  // *Profile Image*
-    margin: EdgeInsets.only(left: 14.w),
-    child: CircleAvatar(
-      backgroundColor: AppColors.black,
-      radius: 50.0.h, //외부 원의 반지름
-      child: CircleAvatar(
-        backgroundImage: AssetImage(userProfileImage),
-        radius: 48.0.h, //내부 원의 반지름
-      ),
-    ),
-  );
-}
-
 Widget profileHead(String userName){
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -132,7 +124,7 @@ Widget maxStreak(int longestStreakNumber){
 }
 
 Widget friends(int numberOfFriends){
-  return 
+  return
     TextButton(  // *Successful Goal*
       style: TextButton.styleFrom(
         minimumSize: Size.zero,
