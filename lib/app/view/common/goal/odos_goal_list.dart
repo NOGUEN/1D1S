@@ -10,18 +10,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 class ODOSGoalList extends StatelessWidget {
+  final String goalId;
   final Color goalColor;
   final String my_goal;
   final int consecutive_days;
   final int total_days;
   final bool isBookmarked;
+  final Widget recordDialogBox;
   const ODOSGoalList(
       {super.key,
+      required this.goalId,
       required this.goalColor,
       required this.my_goal,
       required this.consecutive_days,
       required this.total_days,
-      required this.isBookmarked});
+      required this.isBookmarked,
+      required this.recordDialogBox});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +56,7 @@ class ODOSGoalList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             currentStreak(consecutive_days: consecutive_days),
-            addRecordButton(context: context),
+            addRecordButton(context: context, recordDialogBox: recordDialogBox),
           ],
         ),
       ],
@@ -164,7 +168,7 @@ Widget currentStreak({consecutive_days}){
   );
 }
 
-Widget addRecordButton({ context}){
+Widget addRecordButton({context, required Widget recordDialogBox}){
   return Container(  //기록 추가 button
     width: 100.w,
     height: 30.h,
@@ -177,7 +181,7 @@ Widget addRecordButton({ context}){
         showDialog(
             context: context,
             builder: (BuildContext context) {
-              return recordDialogBox();
+              return recordDialogBox;
             }
         );
       },
