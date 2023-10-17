@@ -1,19 +1,18 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:one_day_one_something/app/data/local/db/storage_util.dart';
 import 'package:one_day_one_something/app/data/model/enum/friends_request_code.dart';
 
+import '../../data/firebase/firebase_const.dart';
 import '../../data/model/firebase/friend_model.dart';
 
-class FriendsService with StorageUtil{
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+class FriendsService with StorageUtil {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   // 모든 친구 확인
-  Future<List<FriendModel>> readFriends(FriendsRequestCode? code) async {
-    String? currentUserId = _auth.currentUser?.uid;
+  Future<List<FriendModel>> readFriends({FriendsRequestCode? code}) async {
+    String? currentUserId = firebaseAuth.currentUser?.uid;
 
     if (currentUserId == null) {
       throw Exception("User is not logged in");
@@ -38,42 +37,49 @@ class FriendsService with StorageUtil{
     }
 
     return friendsSnapshot.docs
-        .map((doc) =>
-        FriendModel.fromJson({
-          'uid': doc.id,
-          'code': doc['state'],
-        }))
+        .map((doc) => FriendModel.fromJson({
+              'uid': doc.id,
+              'code': doc['state'],
+            }))
         .toList();
   }
 
   // 친구 요청 보내기
   Future<void> sendFriendRequest({required String friendsUid}) async {
     try {
-      String? currentUserId = _auth.currentUser?.uid;
+      String? currentUserId = firebaseAuth.currentUser?.uid;
 
       if (currentUserId == null) {
         throw Exception("User is not logged in");
       }
 
       await _db.runTransaction((transaction) async {
-        // 보낸 사용자의 friendslist 업데이트
+        // 친구 요청을 보낸 사용자의 friendslist
         DocumentReference senderRef = _db
             .collection('users')
             .doc(currentUserId)
             .collection('friendslist')
             .doc(friendsUid);
 
-        transaction.set(senderRef, {'state': FriendsRequestCode.SENT.index});
-
-        // 받는 사용자의 friendslist 업데이트
+        // 친구 요청을 받는 사용자의 friendslist
         DocumentReference recipientRef = _db
             .collection('users')
             .doc(friendsUid)
             .collection('friendslist')
             .doc(currentUserId);
 
-        transaction.set(
-            recipientRef, {'state': FriendsRequestCode.RECEIVED.index});
+        //Transaction 잘 될거라 가정하고 sender로만 데이터가 있는지 없는지 체크
+        DocumentSnapshot senderSnapshot = await transaction.get(senderRef);
+        if (!senderSnapshot.exists ||
+            (senderSnapshot['state'] ?? -1) == FriendsRequestCode.IDLE.index &&
+                (senderSnapshot['denied'] ?? 3) < 2) {
+          // 만약 데이터가 존재하지 않으면 바로 요청 가능
+          // 또는 거절 횟수가 2회 미만인 경우 요청 가능
+          transaction.set(
+              senderRef, {'state': FriendsRequestCode.SENT.index, 'denied': 0});
+          transaction.set(recipientRef,
+              {'state': FriendsRequestCode.RECEIVED.index, 'denied': 0});
+        }
       });
     } catch (e) {
       log("Failed to send friend request: $e");
