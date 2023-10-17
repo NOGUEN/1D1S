@@ -142,5 +142,33 @@ class FriendsService with StorageUtil {
   }
 
   // 친구 삭제
-  Future<void> deleteFriend() async {}
+  Future<void> deleteFriend({required String friendUid}) async {
+    try {
+      String? currentUserId = firebaseAuth.currentUser?.uid;
+
+      if (currentUserId == null) {
+        throw Exception("User is not logged in");
+      }
+
+      await _db.runTransaction((transaction) async {
+        DocumentReference senderRef = _db
+            .collection('users')
+            .doc(currentUserId)
+            .collection('friendslist')
+            .doc(friendUid);
+
+        DocumentReference recipientRef = _db
+            .collection('users')
+            .doc(friendUid)
+            .collection('friendslist')
+            .doc(currentUserId);
+
+        transaction.delete(senderRef);
+        transaction.delete(recipientRef);
+      });
+    } catch (e) {
+      log("Failed to delete friend: $e");
+      rethrow;
+    }
+  }
 }
