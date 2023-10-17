@@ -23,3 +23,5 @@ BoxShadow odosShadow = BoxShadow(
   spreadRadius: 0.1,
   blurRadius: 20,
 );
+
+enum FriendsRequestCode { SENT, RECEIVED, ACCEPT }

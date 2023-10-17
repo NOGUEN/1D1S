@@ -180,3 +180,19 @@ TextStyle goalListStackDay = TextStyle(
   fontSize: 20.sp,
   fontWeight: AppFontWeights.bold,
 );
+
+TextStyle listCellTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
+);
+TextStyle listCellRefuseButtonTextStyle = TextStyle(
+  color: Color(0xFFFF0000),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
+);
+TextStyle listCellDisabledButtonTextStyle = TextStyle(
+  color: AppColors.black.withOpacity(0.3),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
+);
