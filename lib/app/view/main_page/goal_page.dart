@@ -82,7 +82,9 @@ class GoalPage extends BaseView<MainController> {
                 double percent;
 
                 if (eachgoal['goal_streak'] != 0) {
-                  percent = eachgoal['goal_streak'] / eachgoal['goal_days'];
+                  percent = (eachgoal['goal_streak'] / eachgoal['goal_days'])
+                      .toStringAsFixed(1)
+                      .toDouble();
                 } else {
                   percent = 0.0; // or set to any default value if needed
                 }
