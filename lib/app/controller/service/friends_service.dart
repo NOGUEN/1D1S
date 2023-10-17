@@ -70,15 +70,19 @@ class FriendsService with StorageUtil {
 
         //Transaction 잘 될거라 가정하고 sender로만 데이터가 있는지 없는지 체크
         DocumentSnapshot senderSnapshot = await transaction.get(senderRef);
-        if (!senderSnapshot.exists ||
-            (senderSnapshot['state'] ?? -1) == FriendsRequestCode.IDLE.index &&
-                (senderSnapshot['denied'] ?? 3) < 2) {
+        if (!senderSnapshot.exists ) {
           // 만약 데이터가 존재하지 않으면 바로 요청 가능
-          // 또는 거절 횟수가 2회 미만인 경우 요청 가능
           transaction.set(
               senderRef, {'state': FriendsRequestCode.SENT.index, 'denied': 0});
           transaction.set(recipientRef,
               {'state': FriendsRequestCode.RECEIVED.index, 'denied': 0});
+        } else if ((senderSnapshot['state'] ?? -1) == FriendsRequestCode.IDLE.index &&
+            (senderSnapshot['denied'] ?? 3) < 2) {
+          // 또는 거절 횟수가 2회 미만인 경우 요청 가능
+          transaction.set(
+              senderRef, {'state': FriendsRequestCode.SENT.index, 'denied': senderSnapshot['denied']});
+          transaction.set(recipientRef,
+              {'state': FriendsRequestCode.RECEIVED.index, 'denied': senderSnapshot['denied']});
         }
       });
     } catch (e) {
@@ -88,7 +92,54 @@ class FriendsService with StorageUtil {
   }
 
   // 친구 요청에 대한 응답 : 수락 또는 거절
-  Future<void> responseFriendRequest() async {}
+  Future<void> responseFriendRequest(
+      {required String friendsUid, required bool isAccepted}) async {
+    try {
+      String? currentUserId = firebaseAuth.currentUser?.uid;
+
+      if (currentUserId == null) {
+        throw Exception("User is not logged in");
+      }
+
+      await _db.runTransaction((transaction) async {
+        DocumentReference senderRef = _db
+            .collection('users')
+            .doc(currentUserId)
+            .collection('friendslist')
+            .doc(friendsUid);
+
+        DocumentReference recipientRef = _db
+            .collection('users')
+            .doc(friendsUid)
+            .collection('friendslist')
+            .doc(currentUserId);
+
+        if (isAccepted) {
+          // 친구 요청 승인 시, ACCEPT로 상태 변경
+          transaction
+              .update(senderRef, {'state': FriendsRequestCode.ACCEPT.index});
+          transaction
+              .update(recipientRef, {'state': FriendsRequestCode.ACCEPT.index});
+        } else {
+          //Transaction 잘 될거라 가정하고 sender로만 데이터가 있는지 없는지 체크
+          DocumentSnapshot senderSnapshot = await transaction.get(senderRef);
+
+          // 친구 요청 거절 시, IDLE 상태로 변경하고, denied + 1
+          transaction.set(senderRef, {
+            'state': FriendsRequestCode.IDLE.index,
+            'denied': senderSnapshot['denied'] + 1
+          });
+          transaction.set(recipientRef, {
+            'state': FriendsRequestCode.IDLE.index,
+            'denied': senderSnapshot['denied'] + 1
+          });
+        }
+      });
+    } catch (e) {
+      log("Failed to respond friend request: $e");
+      rethrow;
+    }
+  }
 
   // 친구 삭제
   Future<void> deleteFriend() async {}
