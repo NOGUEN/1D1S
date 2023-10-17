@@ -10,9 +10,10 @@ import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart
 List<String> emojis = [
   'images/icon_add.png',
   'images/icon_blue_book.png',
-  'images/fire.png',
+  'images/icon_fire.png',
   // Add more emoji URLs or paths as needed
 ];
+
 class ODOSGoalList extends StatelessWidget {
   final int emojiIndex;
   final String my_goal;
@@ -32,10 +33,13 @@ class ODOSGoalList extends StatelessWidget {
       height: 70,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [circleColor, Color.lerp(AppColors.defaultBackground, circleColor, pow(percent, 6).toDouble())!],
+          colors: [
+            circleColor,
+            Color.lerp(AppColors.defaultBackground, circleColor,
+                pow(percent, 6).toDouble())!
+          ],
           begin: Alignment.centerLeft,
           end: Alignment(percent, 0),
-
         ),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
