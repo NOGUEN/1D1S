@@ -1,13 +1,12 @@
-import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:one_day_one_something/app/view/common/goal/odos_popup_menu_button.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_miniver.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_day_one_something/app/view/theme/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ODOSGoalList extends StatelessWidget {
   final String goalId;
@@ -117,7 +116,7 @@ Widget buttonContainer({isBookmarked}){
     child: Row(
       children: [
         isBookmarked ? starButton() : SizedBox.shrink(),
-        moreVertButton(),
+        ODOSPopupMenuButton()
       ],
     ),
   );
@@ -131,31 +130,14 @@ Widget starButton(){
       child: IconButton(
         padding: EdgeInsets.all(0),
         color: AppColors.white,
-        icon: Icon(
-          Icons.star,
-          size: 20.h,
+        icon: SvgPicture.asset(
+          'assets/star_icon.svg',
+          width: 19.w,
+          height: 19.w,
+          color: Colors.white,
         ),
         onPressed: () {
           // star 버튼을 눌렀을 때 동작
-        },
-      )
-  );
-}
-
-Widget moreVertButton(){
-  return Container(
-      width: 24.w,
-      height: 20.h,
-      // color: Colors.red,
-      child: IconButton(
-        padding: EdgeInsets.all(0),
-        color: AppColors.white,
-        icon: Icon(
-          Icons.more_vert,
-          size: 20.h,
-        ),
-        onPressed: () {
-          // more_vert 버튼을 눌렀을 때 동작
         },
       )
   );
