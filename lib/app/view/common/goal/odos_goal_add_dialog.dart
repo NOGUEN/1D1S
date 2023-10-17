@@ -55,7 +55,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
       
       DocumentReference userDocRef = users.doc(userid);
       // Collection reference
-      CollectionReference goals = userDocRef.collection('goals');
+      CollectionReference goals = userDocRef.collection('goallist');
 
       // Add a document to the collection
       goals.add({

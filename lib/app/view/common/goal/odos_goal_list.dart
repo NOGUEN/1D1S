@@ -7,14 +7,20 @@ import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_progress_miniver.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart';
 
+List<String> emojis = [
+  'images/icon_add.png',
+  'images/icon_blue_book.png',
+  'images/fire.png',
+  // Add more emoji URLs or paths as needed
+];
 class ODOSGoalList extends StatelessWidget {
-  final String imoji;
+  final int emojiIndex;
   final String my_goal;
   final Color circleColor;
   final double percent;
   const ODOSGoalList(
       {super.key,
-      required this.imoji,
+      required this.emojiIndex,
       required this.circleColor,
       required this.my_goal,
       required this.percent});
@@ -51,7 +57,7 @@ class ODOSGoalList extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Image.asset(
-              imoji,
+              emojis[emojiIndex],
               width: 25,
               height: 25,
               fit: BoxFit.cover,
