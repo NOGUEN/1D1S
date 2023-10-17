@@ -11,7 +11,7 @@ class ODOSTextGaolField extends StatelessWidget {
         width: 280,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             TextField(
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(

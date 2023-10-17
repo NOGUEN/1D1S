@@ -17,20 +17,35 @@ const TextStyle inputHintTextStyle = TextStyle(
   fontWeight: AppFontWeights.regular,
 );
 
-const TextStyle inputGoalAddHintTextStyle = TextStyle(
+TextStyle inputGoalAddHintTextStyle = TextStyle(
   color: AppColors.black,
-  fontSize: 18,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 20.sp,
+  fontWeight: AppFontWeights.extrabold,
 );
 const TextStyle inputGoalAddConfirmTextStyle = TextStyle(
   color: Colors.blue,
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
-const TextStyle RecordAddConfirmTextStyle = TextStyle(
+TextStyle RecordAddConfirmTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 19,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 20.sp,
+  fontWeight: AppFontWeights.extrabold,
+);
+TextStyle RecordAddInputContentHintTextStyle = TextStyle(
+  color: Color(0xFFB1B1B1),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.extrabold,
+);
+TextStyle RecordAddDropdownTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.heavy,
+);
+TextStyle RecordAddDropdownSelectedItemTextStyle = TextStyle(
+  color: AppColors.white,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.heavy,
 );
 const TextStyle inputContentTextStyle = TextStyle(
   color: AppColors.black,
@@ -103,10 +118,10 @@ TextStyle goalCardconsecutive = TextStyle(
   fontSize: 35.sp,
   fontWeight: AppFontWeights.bold,
 );
-const TextStyle goalNewcardDialog = TextStyle(
+TextStyle goalNewcardDialog = TextStyle(
   color: AppColors.black,
-  fontSize: 24,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.extrabold,
 );
 TextStyle profileCardHead = TextStyle(
   color: AppColors.black,
