@@ -8,7 +8,9 @@ import 'package:one_day_one_something/app/view/common/goal/odos_icon_picker.dart
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 
 class recordDialogBox extends StatefulWidget {
-  const recordDialogBox({super.key});
+  final String my_goal;
+
+  const recordDialogBox({super.key, required this.my_goal});
 
   @override
   State<StatefulWidget> createState() => _recordDialogBoxState();
@@ -69,7 +71,7 @@ class _recordDialogBoxState extends State<recordDialogBox> {
             children: <Widget>[
               SizedBox(height: 11),
               Text(
-                "내 목표",
+                widget.my_goal, // Use my_goal parameter here
                 style: goalNewcardDialog,
               ),
               SizedBox(

@@ -135,24 +135,6 @@ class GoalPage extends BaseView<MainController> {
                         ),
                         ...goalWidgets,
                         ODOSAddButton(buttonColor: Colors.black),
-                        TextButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return Dialog(
-                                  child: ODOSGoalList(
-                                    emojiIndex: 2,
-                                    circleColor: AppColors.getColorByIndex(0),
-                                    my_goal: "목표",
-                                    percent: 1,
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: Text('hi'),
-                        ),
                       ],
                     ),
                   ),

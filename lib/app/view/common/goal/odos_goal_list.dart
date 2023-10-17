@@ -84,7 +84,7 @@ class ODOSGoalList extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return recordDialogBox();
+                      return recordDialogBox(my_goal: my_goal);
                     });
                 // Add your onPressed function here
               },
