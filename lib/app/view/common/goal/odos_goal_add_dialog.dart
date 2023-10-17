@@ -24,10 +24,12 @@ class CustomDialogBox extends StatefulWidget {
 }
 
 class GoalController {
-  var goalTitle = ''.obs;
-  var changedDay = 0.obs;
-  var goalColor = 0.obs;
-  var imojiindex = 0.obs;
+  var goalname = ''.obs;
+  var gaoldays = 0.obs;
+  var goalcolor = 0.obs;
+  var goalemoji = 0.obs;
+  var goalcomplete = false.obs;
+  var goalstreak = 0.obs;
 }
 
 class _CustomDialogBoxState extends State<CustomDialogBox> {
@@ -57,10 +59,12 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
 
       // Add a document to the collection
       goals.add({
-        'goalTitle': goalController.goalTitle.value,
-        'changedDay': goalController.changedDay.value,
-        'goalColor': goalController.goalColor.value,
-        'imojiindex': goalController.imojiindex.value,
+        'goal_name': goalController.goalname.value,
+        'goal_days': goalController.gaoldays.value,
+        'goal_color': goalController.goalcolor.value,
+        'goal_emoji': goalController.goalemoji.value,
+        'goal_complete': false,
+        'goal_streak':0
         })
       .then((value) => print("Goal added to Firestore"))
       .catchError((error) => print("Failed to add goal: $error"));
@@ -107,7 +111,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
               ODOSTextGaolField(
                 onChanged: (newValue) {
             // 입력값이 변경될 때마다 goalTitle 업데이트
-            goalController.goalTitle.value = newValue;
+            goalController.goalname.value = newValue;
           },
               ),
               SizedBox(
@@ -149,7 +153,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                             onSelectedItemChanged: (int value) {
                               setState(() {
                                 _selectedDayValue = value;
-                                goalController.changedDay.value = value;
+                                goalController.gaoldays.value = value;
                               });
                             },
                           ),
@@ -207,7 +211,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     onColorSelected: (index) {
                       setState(() {
                         selectedColorIndex = index;
-                        goalController.goalColor.value = index;
+                        goalController.goalcolor.value = index;
                       });
                     },
                   ),
@@ -227,7 +231,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                   IconPicker(
                     onIconSelected: (index) {
                       setState(() {
-                        goalController.imojiindex.value = index;
+                        goalController.goalemoji.value = index;
                       });
                     },
                   )
