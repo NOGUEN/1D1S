@@ -19,12 +19,14 @@ class ODOSGoalList extends StatelessWidget {
   final String my_goal;
   final Color circleColor;
   final double percent;
+  final String d_id;
   const ODOSGoalList(
       {super.key,
       required this.emojiIndex,
       required this.circleColor,
       required this.my_goal,
-      required this.percent});
+      required this.percent,
+      required this.d_id});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,10 @@ class ODOSGoalList extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return recordDialogBox(my_goal: my_goal);
+                      return recordDialogBox(
+                        my_goal: my_goal,
+                        doc_id: d_id,
+                        );
                     });
                 // Add your onPressed function here
               },

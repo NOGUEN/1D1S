@@ -6,22 +6,53 @@ import 'package:one_day_one_something/app/view/common/system/odos_text_field_goa
 import 'package:one_day_one_something/app/view/common/goal/odos_color_palette.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_icon_picker.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
+import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class recordDialogBox extends StatefulWidget {
   final String my_goal;
+  final String doc_id;
 
-  const recordDialogBox({super.key, required this.my_goal});
+  const recordDialogBox({super.key, required this.my_goal, required this.doc_id});
 
   @override
   State<StatefulWidget> createState() => _recordDialogBoxState();
 }
 
+class RecordController {
+  var record_date = DateTime.now().toString().obs;
+  var record_note = ''.obs;
+}
+
 class _recordDialogBoxState extends State<recordDialogBox> {
+  RecordController recordController = RecordController();
   int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
   int _selectedDayValue = 2;
   DateTime selectedDate = DateTime.now();
   DateTime date = DateTime.now();
+  void saveDataToFirestore() {
+      // Access a Cloud Firestore instance
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      CollectionReference users = firestore.collection('users');
+      final userid = FirebaseAuth.instance.currentUser!.uid;
+      
+      DocumentReference userDocRef = users.doc(userid);
+      // Collection reference
+      CollectionReference records = userDocRef
+        .collection('goallist')
+        .doc(widget.doc_id)
+        .collection('record_list');
+        
 
+      // Add a document to the collection
+      records.add({
+        'record_date': recordController.record_date.value,
+        'record_note': recordController.record_note.value,
+        })
+      .then((value) => print("Record added to Firestore"))
+      .catchError((error) => print("Failed to add record: $error"));
+    }
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -100,6 +131,7 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                               date = selectedDate;
                             });
                           }
+                          recordController.record_date.value = selectedDate.toString();
                         },
                         child: Container(
                           // padding: EdgeInsets.only(bottom: 8.0),  // 텍스트와 밑줄 사이의 간격을 조정합니다.
@@ -170,6 +202,9 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                       hintStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none,
                     ),
+                    onChanged: (value){
+                      recordController.record_note.value = value.toString();
+                    },
                   ),
                 ),
               ),
@@ -190,6 +225,7 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                     ),
                     child: TextButton(
                       onPressed: () {
+                        saveDataToFirestore();
                         Navigator.of(context).pop();
                       },
                       child: Text(

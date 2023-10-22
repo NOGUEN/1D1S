@@ -95,6 +95,7 @@ class GoalPage extends BaseView<MainController> {
                       AppColors.getColorByIndex(eachgoal['goal_color']),
                   my_goal: eachgoal['goal_name'],
                   percent: percent,
+                  d_id: eachgoal.id,
                 );
 
                 goalWidgets.add(goalwidget);
