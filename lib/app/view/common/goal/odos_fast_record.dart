@@ -27,6 +27,9 @@ class _recordDialogBoxState extends State<recordDialogBox> {
   void saveDataToFirestore() {
     recordController.saveDataToFirestore(widget.doc_id, date);
   }
+  void increasestreak() {
+    recordController.increaseStreak(widget.doc_id);
+  }
   int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
   int _selectedDayValue = 2;
   DateTime selectedDate = DateTime.now();
@@ -204,6 +207,7 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                     child: TextButton(
                       onPressed: () {
                         saveDataToFirestore();
+                        increasestreak();
                         Navigator.of(context).pop();
                       },
                       child: Text(
