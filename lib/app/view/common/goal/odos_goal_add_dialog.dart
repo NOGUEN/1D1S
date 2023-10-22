@@ -15,6 +15,7 @@ import 'package:one_day_one_something/app/view/theme/app_values.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:one_day_one_something/app/controller/service/getgoal_service.dart';
 
 class CustomDialogBox extends StatefulWidget {
   const CustomDialogBox({super.key});
@@ -23,14 +24,7 @@ class CustomDialogBox extends StatefulWidget {
   State<StatefulWidget> createState() => _CustomDialogBoxState();
 }
 
-class GoalController {
-  var goalname = ''.obs;
-  var gaoldays = 0.obs;
-  var goalcolor = 0.obs;
-  var goalemoji = 0.obs;
-  var goalcomplete = false.obs;
-  var goalstreak = 0.obs;
-}
+
 
 class _CustomDialogBoxState extends State<CustomDialogBox> {
   GoalController goalController = GoalController();
@@ -48,26 +42,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
   int _selectedDayValue = 2;
   List<String> dayList = ["5", "7", "10", "20", "30", "50", "100"];
   void saveDataToFirestore() {
-      // Access a Cloud Firestore instance
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
-      CollectionReference users = firestore.collection('users');
-      final userid = FirebaseAuth.instance.currentUser!.uid;
-      
-      DocumentReference userDocRef = users.doc(userid);
-      // Collection reference
-      CollectionReference goals = userDocRef.collection('goallist');
-
-      // Add a document to the collection
-      goals.add({
-        'goal_name': goalController.goalname.value,
-        'goal_days': goalController.gaoldays.value,
-        'goal_color': goalController.goalcolor.value,
-        'goal_emoji': goalController.goalemoji.value,
-        'goal_complete': false,
-        'goal_streak':0
-        })
-      .then((value) => print("Goal added to Firestore"))
-      .catchError((error) => print("Failed to add goal: $error"));
+      goalController.saveDataToFirestore();
     }
   @override
   Widget build(BuildContext context) {
@@ -86,7 +61,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
     return Stack(
       children: <Widget>[
         Container(
-          // width: 551,
           height: 315,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
@@ -243,7 +217,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
-                      // Save data to Firestore when the button is pressed
                       saveDataToFirestore();
                       Navigator.of(context).pop();
                     },
