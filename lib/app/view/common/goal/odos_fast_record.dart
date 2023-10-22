@@ -9,6 +9,7 @@ import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:one_day_one_something/app/controller/service/record_service.dart';
 
 class recordDialogBox extends StatefulWidget {
   final String my_goal;
@@ -20,39 +21,16 @@ class recordDialogBox extends StatefulWidget {
   State<StatefulWidget> createState() => _recordDialogBoxState();
 }
 
-class RecordController {
-  var record_date = DateTime.now().toString().obs;
-  var record_note = ''.obs;
-}
 
 class _recordDialogBoxState extends State<recordDialogBox> {
   RecordController recordController = RecordController();
+  void saveDataToFirestore() {
+    recordController.saveDataToFirestore(widget.doc_id, date);
+  }
   int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
   int _selectedDayValue = 2;
   DateTime selectedDate = DateTime.now();
   DateTime date = DateTime.now();
-  void saveDataToFirestore() {
-      // Access a Cloud Firestore instance
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
-      CollectionReference users = firestore.collection('users');
-      final userid = FirebaseAuth.instance.currentUser!.uid;
-      
-      DocumentReference userDocRef = users.doc(userid);
-      // Collection reference
-      CollectionReference records = userDocRef
-        .collection('goallist')
-        .doc(widget.doc_id)
-        .collection('record_list');
-        
-
-      // Add a document to the collection
-      records.add({
-        'record_date': recordController.record_date.value,
-        'record_note': recordController.record_note.value,
-        })
-      .then((value) => print("Record added to Firestore"))
-      .catchError((error) => print("Failed to add record: $error"));
-    }
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
