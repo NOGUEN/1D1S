@@ -99,48 +99,52 @@ class GoalPage extends BaseView<MainController> {
                 goalWidgets.add(goalwidget);
               }
             }
-            return Expanded(
-              child: ListView(
-                clipBehavior: Clip.none,
-                padding: EdgeInsets.all(20),
-                children: [
-                  Center(
-                    child: Wrap(
-                      direction: Axis.vertical,
-                      spacing: 20,
-                      children: [
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(right: 8),
-                                child: CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: Colors.white,
-                                    backgroundImage:
-                                        AssetImage(imagepath[userProfile])),
+            return Row(
+              children: [
+                Expanded(
+                  child: ListView(
+                    clipBehavior: Clip.none,
+                    padding: EdgeInsets.all(20),
+                    children: [
+                      Center(
+                        child: Wrap(
+                          direction: Axis.vertical,
+                          spacing: 20,
+                          children: [
+                            Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(right: 8),
+                                    child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: Colors.white,
+                                        backgroundImage:
+                                            AssetImage(imagepath[userProfile])),
+                                  ),
+                                  Text(
+                                    '$userNickname\'s 목표', // Use the user's nickname
+                                    style: profileCardHead,
+                                  )
+                                ],
                               ),
-                              Text(
-                                '$userNickname\'s 목표', // Use the user's nickname
-                                style: profileCardHead,
-                              )
-                            ],
-                          ),
+                            ),
+                            ODOSCalander(dateOffset: 6, dateNum: 31),
+                            Text(
+                              "내 목표",
+                              style: head2,
+                            ),
+                            ...goalWidgets,
+                            ODOSAddButton(buttonColor: Colors.black),
+                          ],
                         ),
-                        ODOSCalander(dateOffset: 6, dateNum: 31),
-                        Text(
-                          "내 목표",
-                          style: head2,
-                        ),
-                        ...goalWidgets,
-                        ODOSAddButton(buttonColor: Colors.black),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           },
         );
