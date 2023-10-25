@@ -27,6 +27,7 @@ List<String> imagepath = [
 
   // Add more emoji URLs or paths as needed
 ];
+List<int> dayEnum = [5, 7, 10, 20, 30, 50, 100];
 
 class GoalPage extends BaseView<MainController> {
   @override
@@ -82,10 +83,21 @@ class GoalPage extends BaseView<MainController> {
                 double percent;
 
                 if (eachgoal['goal_streak'] != 0) {
-                  percent = (eachgoal['goal_streak'] / eachgoal['goal_days']);
+                  percent = (eachgoal['goal_streak'] /
+                      dayEnum[eachgoal['goal_days']]);
                 } else {
                   percent = 0.0; // or set to any default value if needed
                 }
+                print("emojiIndex");
+                print(eachgoal['goal_emoji']);
+                print("circleColor");
+                print(AppColors.getColorByIndex(eachgoal['goal_color']));
+                print("my_goal");
+                print(eachgoal['goal_name']);
+                print("percent");
+                print(percent);
+                print("d_id");
+                print("eachgoal.id");
 
                 final goalwidget = ODOSGoalList(
                   emojiIndex: eachgoal['goal_emoji'],
