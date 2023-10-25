@@ -15,21 +15,23 @@ class recordDialogBox extends StatefulWidget {
   final String my_goal;
   final String doc_id;
 
-  const recordDialogBox({super.key, required this.my_goal, required this.doc_id});
+  const recordDialogBox(
+      {super.key, required this.my_goal, required this.doc_id});
 
   @override
   State<StatefulWidget> createState() => _recordDialogBoxState();
 }
-
 
 class _recordDialogBoxState extends State<recordDialogBox> {
   RecordController recordController = RecordController();
   void saveDataToFirestore() {
     recordController.saveDataToFirestore(widget.doc_id, date);
   }
+
   void increasestreak() {
     recordController.increaseStreak(widget.doc_id);
   }
+
   int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
   int _selectedDayValue = 2;
   DateTime selectedDate = DateTime.now();
@@ -112,7 +114,8 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                               date = selectedDate;
                             });
                           }
-                          recordController.record_date.value = selectedDate.toString();
+                          recordController.record_date.value =
+                              selectedDate.toString();
                         },
                         child: Container(
                           // padding: EdgeInsets.only(bottom: 8.0),  // 텍스트와 밑줄 사이의 간격을 조정합니다.
@@ -183,7 +186,7 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                       hintStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none,
                     ),
-                    onChanged: (value){
+                    onChanged: (value) {
                       recordController.record_note.value = value.toString();
                     },
                   ),
