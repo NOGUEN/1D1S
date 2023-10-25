@@ -88,16 +88,6 @@ class GoalPage extends BaseView<MainController> {
                 } else {
                   percent = 0.0; // or set to any default value if needed
                 }
-                print("emojiIndex");
-                print(eachgoal['goal_emoji']);
-                print("circleColor");
-                print(AppColors.getColorByIndex(eachgoal['goal_color']));
-                print("my_goal");
-                print(eachgoal['goal_name']);
-                print("percent");
-                print(percent);
-                print("d_id");
-                print("eachgoal.id");
 
                 final goalwidget = ODOSGoalList(
                   emojiIndex: eachgoal['goal_emoji'],
