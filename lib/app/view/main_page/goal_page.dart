@@ -85,6 +85,8 @@ class GoalPage extends BaseView<MainController> {
 
                 goalWidgets.add(goalwidget);
               }
+              goalWidgets.sort((a, b) =>
+                  b.percent.compareTo(a.percent)); //percent 높은 순으로 정렬.
             }
             return Row(
               children: [
