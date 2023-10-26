@@ -109,9 +109,9 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                             firstDate: DateTime(2000),
                             lastDate: DateTime.now(),
                           );
-                          if (selectedDate != null) {
+                          if (true) {
                             setState(() {
-                              date = selectedDate;
+                              date = selectedDate!;
                             });
                           }
                           recordController.record_date.value =

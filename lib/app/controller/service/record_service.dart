@@ -16,24 +16,13 @@ class RecordController {
     DocumentReference userDocRef = users.doc(userid);
     CollectionReference records =
         userDocRef.collection('goallist').doc(docId).collection('record_list');
-    if (record_date.value == "null") {
-      records
-          .add({
-            'record_date': DateTime.now()
-                .toString(), //NULL이면 오늘 시간으로 넣기 단, NULL은 선택하려고 들어갔다가 아무 선택하지 않고 돌아온 경우에 생긴다.
-            'record_note': record_note.value,
-          })
-          .then((value) => print("Record added to Firestore"))
-          .catchError((error) => print("Failed to add record: $error"));
-    } else {
-      records
-          .add({
-            'record_date': record_date.value,
-            'record_note': record_note.value,
-          })
-          .then((value) => print("Record added to Firestore"))
-          .catchError((error) => print("Failed to add record: $error"));
-    }
+    records
+        .add({
+          'record_date': record_date.value,
+          'record_note': record_note.value,
+        })
+        .then((value) => print("Record added to Firestore"))
+        .catchError((error) => print("Failed to add record: $error"));
   }
 
   void increaseStreak(String docId) async {
