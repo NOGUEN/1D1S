@@ -65,7 +65,7 @@ class SettingPage extends BaseView<SettingController> {
   Widget accountSetting(){
     return ODOSSystemList(
       list: [
-        ODOSSystemListCell(menuString: "비밀번호 재설정", onPressed:(){}),
+        ODOSSystemListCell(menuString: "비밀번호 재설정", onPressed:(){authService.updatePassword();showToast("비밀번호 재설정 이메일이 전송되었습니다.");}),
       ],
       categoryString: "계정 설정",
     );

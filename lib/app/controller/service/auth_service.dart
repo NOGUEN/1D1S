@@ -85,6 +85,14 @@ class AuthService with StorageUtil {
         await user.delete();
         // 사용자 계정 삭제 성공 시 로컬 저장된 UID 삭제
         removeString(UID_KEY);
+
+        final FirebaseFirestore firestore = FirebaseFirestore.instance;
+        final CollectionReference usersCollection = firestore.collection('users');
+        final QuerySnapshot userSnapshot = await usersCollection.where('email', isEqualTo: user.email).get();
+        for (QueryDocumentSnapshot userDoc in userSnapshot.docs){
+          await userDoc.reference.delete();
+        }
+
         return FirebaseCode.SUCCESS;
       } else {
         return FirebaseCode.ERROR;
@@ -94,4 +102,28 @@ class AuthService with StorageUtil {
       return FirebaseCode.ERROR;
     }
   }
+
+  //비밀번호 재설정
+  Future<FirebaseCode> updatePassword() async{
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user != null){
+        String? email = user.email;
+        if(email != null){
+          await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+          return FirebaseCode.SUCCESS;
+        }
+        else{
+          return FirebaseCode.ERROR;
+        }
+      }
+      else{
+        return FirebaseCode.ERROR;
+      }
+    } catch (e) {
+      log(e.toString());
+      return FirebaseCode.ERROR;
+    }
+  }
+
 }
