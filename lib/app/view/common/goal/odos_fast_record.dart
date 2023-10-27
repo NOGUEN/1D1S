@@ -24,6 +24,10 @@ class recordDialogBox extends StatefulWidget {
 
 class _recordDialogBoxState extends State<recordDialogBox> {
   RecordController recordController = RecordController();
+  Future<bool> todaydatepossible() {
+    return recordController.todaydatepossible(widget.doc_id, date);
+  }
+
   void saveDataToFirestore() {
     recordController.saveDataToFirestore(widget.doc_id, date);
   }
@@ -208,9 +212,11 @@ class _recordDialogBoxState extends State<recordDialogBox> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextButton(
-                      onPressed: () {
-                        saveDataToFirestore();
-                        increasestreak();
+                      onPressed: () async {
+                        if (await todaydatepossible()) {
+                          saveDataToFirestore();
+                          increasestreak();
+                        }
                         Navigator.of(context).pop();
                       },
                       child: Text(

@@ -6,6 +6,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RecordController {
   var record_date = DateTime.now().toString().obs;
   var record_note = ''.obs;
+  Future<bool> todaydatepossible(String docId, DateTime date) async {
+    String formattedDate =
+        "${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}"; // YYYY-MM-DD 형식으로 날짜 변환
+    var records = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('goallist') // 원하는 컬렉션 이름으로 변경하세요.
+        .doc(docId)
+        .collection('record_list')
+        .where('record_date', isEqualTo: formattedDate)
+        .get();
+
+    // 이미 기록이 있으면 메시지를 표시하고, 없으면 기록을 저장합니다.
+    if (records.docs.isNotEmpty) {
+      Get.snackbar("Error", "오늘의 기록은 이미 추가되었습니다!"); // 오류 메시지 표시
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   void saveDataToFirestore(String docId, DateTime date) {
     //새롭게 데이터 추가
@@ -16,9 +36,11 @@ class RecordController {
     DocumentReference userDocRef = users.doc(userid);
     CollectionReference records =
         userDocRef.collection('goallist').doc(docId).collection('record_list');
+    String formatteddate = record_date.value.substring(0, 10);
+    //이부분 record_date.value가 아닌 formattedDate로 변경이 필요함.
     records
         .add({
-          'record_date': record_date.value,
+          'record_date': formatteddate,
           'record_note': record_note.value,
         })
         .then((value) => print("Record added to Firestore"))
