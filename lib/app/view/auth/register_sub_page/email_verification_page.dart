@@ -5,7 +5,7 @@ import 'package:one_day_one_something/app/controller/auth/register_controller.da
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
-import 'package:get/get.dart';
+
 class EmailVerificationPage extends BaseView<RegisterController> {
   bool isEmailVerified = false;
   Timer? timer;
@@ -13,15 +13,10 @@ class EmailVerificationPage extends BaseView<RegisterController> {
   checkEmailVerified() async {
     await FirebaseAuth.instance.currentUser?.reload();
 
-    var user = FirebaseAuth.instance.currentUser;
-    isEmailVerified = user!.emailVerified;
+    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
 
     if (isEmailVerified) {
       timer?.cancel();
-      // 이메일이 인증된 후의 로직
-    } else if (user.metadata.creationTime == user.metadata.lastSignInTime) {
-      // 이메일 인증이 되지 않은 경우, 계정 삭제
-      await user.delete();
     }
   }
 
@@ -32,56 +27,44 @@ class EmailVerificationPage extends BaseView<RegisterController> {
 
   @override
   Widget body(BuildContext context) {
-    return Obx(
-      () {
-        if(controller.isEmailVerified.value){
-          Future.delayed(Duration.zero, () {
-            controller.tabController
-                .animateTo((controller.tabController.index + 1) % 4);
-            controller.currentTabIndex.value = 1;
-            controller.isEmailVerified.value = false;
-          });
-        }
-        return BaseRegisterPage(
-          widgetList: [
-            space(height: 35),
-            space(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              child: Center(
-                child: Text(
-                  'We have sent you a Email on  ${firebaseAuth.currentUser?.email}',
-                  textAlign: TextAlign.center,
-                ),
-              ),
+    return BaseRegisterPage(
+      widgetList: [
+        space(height: 35),
+        space(height: 30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          child: Center(
+            child: Text(
+              'We have sent you a Email on  ${firebaseAuth.currentUser?.email}',
+              textAlign: TextAlign.center,
             ),
-            space(height: 16),
-            const Center(child: CircularProgressIndicator()),
-            space(height: 8),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32.0),
-              child: Center(
-                child: Text(
-                  'Verifying email....',
-                  textAlign: TextAlign.center,
-                ),
-              ),
+          ),
+        ),
+        space(height: 16),
+        const Center(child: CircularProgressIndicator()),
+        space(height: 8),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32.0),
+          child: Center(
+            child: Text(
+              'Verifying email....',
+              textAlign: TextAlign.center,
             ),
-            space(height: 57),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              child: ElevatedButton(
-                child: const Text('Resend'),
-                onPressed: () {
-                  try {} catch (e) {
-                    debugPrint('$e');
-                  }
-                },
-              ),
-            ),
-          ],
-        );
-      }
+          ),
+        ),
+        space(height: 57),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          child: ElevatedButton(
+            child: const Text('Resend'),
+            onPressed: () {
+              try {} catch (e) {
+                debugPrint('$e');
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 

@@ -25,12 +25,10 @@ class LoginController extends BaseController {
   Future<void> login() async {
     loginResult.value =
         await authService.login(emailValue.value, passwordValue.value);
-    showToast(loginResult.value.toString());
+
     if (loginResult.value == SUCCESS) {
       showToast("로그인 성공 : ${emailValue.value}");
       Get.offAndToNamed(Routes.MAIN);
-    } else if(loginResult.value == FAIL_THREE){
-      showToast("이메일 인증 후 로그인을 다시 시도해주세요.");
     } else {
       showToast("로그인 실패 : ${emailValue.value}");
     }

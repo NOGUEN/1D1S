@@ -4,77 +4,34 @@ import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../core/base/base_view.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:one_day_one_something/app/controller/service/record_service.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/base/base_view.dart';
 
 class recordDialogBox extends StatefulWidget {
-  final String my_goal;
-  final String doc_id;
-
-  const recordDialogBox(
-      {super.key, required this.my_goal, required this.doc_id});
-
-// class recordDialogBox extends StatefulWidget {
-//   final String selectedGoalId;
-//   final List goalList;
-//   const recordDialogBox({
-//     super.key,
-//     required this.selectedGoalId,
-//     required this.goalList
-//   });
-// >>>>>>> main
+  final String selectedGoalId;
+  final List goalList;
+  const recordDialogBox({
+    super.key,
+    required this.selectedGoalId,
+    required this.goalList
+  });
 
   @override
   State<recordDialogBox> createState() => _recordDialogBoxState();
 }
 
-class _recordDialogBoxState extends State<recordDialogBox> {
-  RecordController recordController = RecordController();
-  Future<bool> todaydatepossible() {
-    return recordController.todaydatepossible(widget.doc_id, date);
-  }
+class _recordDialogBoxState extends State<recordDialogBox>{
 
-  void saveDataToFirestore() {
-    recordController.saveDataToFirestore(widget.doc_id, date);
-  }
+  //추가 버튼 click시 firebase에 전달할 state들
+  Rx<String> selectedGoalId="".obs;
+  Rx<DateTime> date = DateTime.now().obs;
+  final recordContentEditingController = TextEditingController();
 
-  void increasestreak() {
-    recordController.increaseStreak(widget.doc_id);
-  }
-
-  int selectedColorIndex = 0; // 선택한 색상의 인덱스를 로컬 변수로 추가
-  int _selectedDayValue = 2;
-  DateTime selectedDate = DateTime.now();
-  DateTime date = DateTime.now();
-  void _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2021),
-      lastDate: DateTime(2023),
-    );
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-// class _recordDialogBoxState extends State<recordDialogBox>{
-
-//   //추가 버튼 click시 firebase에 전달할 state들
-//   Rx<String> selectedGoalId="".obs;
-//   Rx<DateTime> date = DateTime.now().obs;
-//   final recordContentEditingController = TextEditingController();
-
-//   @override
-//   void initState(){
-//     super.initState();
-//     selectedGoalId=widget.selectedGoalId.obs;
+  @override
+  void initState(){
+    super.initState();
+    selectedGoalId=widget.selectedGoalId.obs;
   }
 
   @override
@@ -135,177 +92,38 @@ class _recordDialogBoxState extends State<recordDialogBox> {
             padding: EdgeInsets.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              SizedBox(height: 11),
-              Text(
-                widget.my_goal, // Use my_goal parameter here
-                style: goalNewcardDialog,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "    날짜",
-                    style: inputGoalAddHintTextStyle,
-                    textAlign: TextAlign.start,
-                  ),
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () async {
-                          final selectedDate = await showDatePicker(
-                            context: context,
-                            initialDate: date,
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime.now(),
-                          );
-                          if (true) {
-                            setState(() {
-                              date = selectedDate!;
-                            });
-                          }
-                          recordController.record_date.value =
-                              selectedDate.toString();
-                        },
-                        child: Container(
-                          // padding: EdgeInsets.only(bottom: 8.0),  // 텍스트와 밑줄 사이의 간격을 조정합니다.
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.black, // 원하는 밑줄 색상을 선택하세요.
-                                width: 2.0, // 밑줄의 두께를 조정하세요.
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                " ${date.year}.${date.month.toString().padLeft(2, '0')}.${date.day.toString().padLeft(2, '0')}",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: AppFontWeights.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.black,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "    세부 기록",
-                    style: inputGoalAddHintTextStyle,
-                    textAlign: TextAlign.start,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  // Adjust margin as needed
-                  height: 130,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextFormField(
-                    style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 8), // Adjust vertical padding
-                      hintText: "기록을 입력해주세요",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      border: InputBorder.none,
-                    ),
-                    onChanged: (value) {
-                      recordController.record_note.value = value.toString();
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 160,
-                  height: 35,
-                  child: Container(
-                    margin: EdgeInsets.zero, // margin을 0으로 설정합니다.
-                    padding: EdgeInsets.zero,
-                    decoration: BoxDecoration(
-//           onPressed: () async {
-//             final selectedDate = await showDatePicker(
-//               context: context,
-//               initialDate: date.value,
-//               firstDate: DateTime(2000),
-//               lastDate: DateTime.now(),
-//             );
-//             if (selectedDate != null) {
-//               date.value = selectedDate;
-//             }
-//           },
-//           child: Row(
-//             children: [
-//               Obx(
-//                 () {
-//                   return Text(
-//                     " ${date.value.year}.${date.value.month
-//                         .toString()
-//                         .padLeft(2, '0')}.${date.value.day
-//                         .toString()
-//                         .padLeft(2, '0')}",
-//                     style: TextStyle(
+          onPressed: () async {
+            final selectedDate = await showDatePicker(
+              context: context,
+              initialDate: date.value,
+              firstDate: DateTime(2000),
+              lastDate: DateTime.now(),
+            );
+            if (selectedDate != null) {
+              date.value = selectedDate;
+            }
+          },
+          child: Row(
+            children: [
+              Obx(
+                () {
+                  return Text(
+                    " ${date.value.year}.${date.value.month
+                        .toString()
+                        .padLeft(2, '0')}.${date.value.day
+                        .toString()
+                        .padLeft(2, '0')}",
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 18.sp,
                       fontWeight: AppFontWeights.bold,
                     ),
-                    child: TextButton(
-                      onPressed: () async {
-                        if (await todaydatepossible()) {
-                          saveDataToFirestore();
-                          increasestreak();
-                        }
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        "기록",
-                        style: RecordAddConfirmTextStyle,
-                      ),
-                    ),
-                  ),
-                ),
-//                   );
-//                 }
-//               ),
-//               Icon(
-//                 Icons.arrow_drop_down,
-//                 color: Colors.black,
+                  );
+                }
+              ),
+              Icon(
+                Icons.arrow_drop_down,
+                color: Colors.black,
               ),
             ],
           ),
