@@ -7,6 +7,7 @@ import 'package:one_day_one_something/app/view/common/goal/odos_progress_miniver
 import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:one_day_one_something/app/view/theme/app_theme.dart';
 
 class ODOSGoalList extends StatelessWidget {
   final String goalId;
@@ -81,14 +82,8 @@ class BaseGoalList extends StatelessWidget {
         padding: EdgeInsets.only(left: 15.w, top: 14.h, right: 20.w, bottom: 11.h),
         decoration: BoxDecoration(
           color: goalColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.black.withOpacity(0.1),
-                offset: Offset(0, 0),
-                spreadRadius: 0.1,
-                blurRadius: 20)
-          ],
+          borderRadius: BorderRadius.circular(10.r),
+          boxShadow: [odosShadow],
         ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,9 +151,12 @@ Widget addRecordButton({context, required Widget recordDialogBox}){
     height: 30.h,
     decoration: BoxDecoration(
       color: AppColors.black.withOpacity(0.3),
-      borderRadius: BorderRadius.circular(15.h),
+      borderRadius: BorderRadius.circular(15.r),
     ),
     child: TextButton(
+      style: ButtonStyle(
+        padding: MaterialStatePropertyAll(EdgeInsets.zero),
+      ),
       onPressed: () {
         showDialog(
             context: context,
@@ -169,7 +167,7 @@ Widget addRecordButton({context, required Widget recordDialogBox}){
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text("기록 추가 ", style: goalListAddRecordButton),
           Text("+", style: goalListAddRecordButtonIcon)

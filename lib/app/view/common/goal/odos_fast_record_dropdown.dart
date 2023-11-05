@@ -37,7 +37,7 @@ class ODOSSelectGoalDropdown extends StatelessWidget {
               padding: EdgeInsets.only(left: 20.w, top: 15.h, bottom: 15.h),
               decoration: BoxDecoration(
                   color: e["goalColor"],
-                  borderRadius: BorderRadius.circular(8.w)
+                  borderRadius: BorderRadius.circular(8.r)
               ),
               child: Text("To > " + e["my_goal"].toString(),
                   style: RecordAddDropdownSelectedItemTextStyle)
