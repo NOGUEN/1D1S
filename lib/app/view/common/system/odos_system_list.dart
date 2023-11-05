@@ -60,65 +60,26 @@ class ODOSSystemList extends StatelessWidget {
 }
 
 class ODOSSystemListCell extends StatelessWidget {
-  const ODOSSystemListCell({super.key, required this.menuString, required this.onPressed, this.isConfirm = false,});
+  const ODOSSystemListCell({super.key, required this.menuString});
   final String menuString;
-  final VoidCallback onPressed;
-  final bool isConfirm;
   final EdgeInsets listPadding = const EdgeInsets.fromLTRB(20, 10, 0, 5);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        if (isConfirm) {
-          final bool? result = await showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('확인'),
-                content: Text("정말로 탈퇴하시겠습니까?"),
-                actions: [
-                  TextButton(
-                    child: Text("예"),
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    }
-                  ),
-                  TextButton(
-                    child: Text("아니오"),
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    }
-                  )
-                ]
-              );
-            }
-          );
-          if(result == true){
-            onPressed();
-          }
-        }
-        else{
-          onPressed();
-        }
-      },
-      child: SizedBox(
-        child: Row(
-          children: [
-            Padding(
-              padding: listPadding,
-              child: const Icon(Icons.abc),
-            ),
-            Padding(
-              padding: listPadding,
-              child: Text(
-                menuString,
-                style: inputContentTextStyle,
-              ),
-            ),
-          ],
+    return SizedBox(
+      child: Row(children: [
+        Padding(
+          padding: listPadding,
+          child: const Icon(Icons.abc),
         ),
-      ),
+        Padding(
+          padding: listPadding,
+          child: Text(
+            menuString,
+            style: inputContentTextStyle,
+          ),
+        )
+      ]),
     );
   }
 }

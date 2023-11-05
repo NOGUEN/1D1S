@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
-import 'package:one_day_one_something/app/view/common/goal/odos_goal_add_dialog.dart';
 
 class IconPicker extends StatefulWidget {
-  final ValueSetter<int> onIconSelected;
-  IconPicker({required this.onIconSelected});
   @override
   _IconPickerState createState() => _IconPickerState();
 }
@@ -37,9 +34,7 @@ class _IconPickerState extends State<IconPicker> {
                   onTap: () {
                     setState(() {
                       selectedIconIndex = index;
-                      
                     });
-                    widget.onIconSelected(selectedIconIndex);
                     Navigator.of(context).pop();
                   },
                   child: ClipRRect(

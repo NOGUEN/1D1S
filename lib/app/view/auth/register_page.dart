@@ -108,7 +108,7 @@ class RegisterPage extends BaseView<RegisterController> {
                           ),
                           duration: const Duration(milliseconds: 300),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 );

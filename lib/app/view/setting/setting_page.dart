@@ -7,10 +7,8 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
 import 'package:one_day_one_something/app/view/theme/app_values.dart';
-import 'package:one_day_one_something/app/controller/service/auth_service.dart';
-import 'package:one_day_one_something/app/routes/app_pages.dart';
+
 class SettingPage extends BaseView<SettingController> {
-  AuthService authService = AuthService();
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
@@ -63,18 +61,18 @@ class SettingPage extends BaseView<SettingController> {
   }
 
   Widget accountSetting(){
-    return ODOSSystemList(
+    return const ODOSSystemList(
       list: [
-        ODOSSystemListCell(menuString: "비밀번호 재설정", onPressed:(){}),
+        ODOSSystemListCell(menuString: "비밀번호 재설정"),
       ],
       categoryString: "계정 설정",
     );
   }
 
   Widget notificationSetting(){
-    return ODOSSystemList(
+    return const ODOSSystemList(
       list: [
-        ODOSSystemListCell(menuString: "리마인드 재설정", onPressed:(){}),
+        ODOSSystemListCell(menuString: "리마인드 재설정"),
       ],
       categoryString: "알림 설정",
     );
@@ -83,9 +81,9 @@ class SettingPage extends BaseView<SettingController> {
   Widget serviceSetting(){
     return ODOSSystemList(
       list: [
-        ODOSSystemListCell(menuString: "버전", onPressed:(){}),
-        ODOSSystemListCell(menuString: "로그아웃", onPressed:(){authService.logout();Get.offAndToNamed(Routes.LOGIN);}),
-        ODOSSystemListCell(menuString: "회원 탈퇴", onPressed:(){authService.deleteAccount();Get.offAndToNamed(Routes.LOGIN);}, isConfirm: true),
+        ODOSSystemListCell(menuString: "버전"),
+        ODOSSystemListCell(menuString: "로그아웃"),
+        ODOSSystemListCell(menuString: "회원 탈퇴"),
       ],
       categoryString: "서비스",
     );

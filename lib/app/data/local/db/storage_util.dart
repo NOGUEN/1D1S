@@ -10,8 +10,4 @@ mixin StorageUtil {
   String? getString(String key) {
     return _storage.read(key);
   }
-
-  Future<void> removeString(String key) async {
-    await _storage.remove(key);
-  }
 }
