@@ -29,8 +29,6 @@ class SetAccountPage extends BaseView<RegisterController> {
   Widget body(BuildContext context) {
     return BaseRegisterPage(widgetList: [
       space(height: 30),
-      nicknameText(),
-      space(height: 20),
       emailText(),
       space(height: 40),
       passwordText(),
@@ -55,8 +53,8 @@ class SetAccountPage extends BaseView<RegisterController> {
             if (registerResult == FirebaseCode.SUCCESS) {
               firebaseAuth.currentUser?.sendEmailVerification();
               controller.tabController
-                  .animateTo((controller.tabController.index + 1) % 3);
-              controller.currentTabIndex.value = 1;
+                  .animateTo((controller.tabController.index+1) % 4);
+              controller.currentTabIndex.value = 0;
             } else if (registerResult == FirebaseCode.EMAIL_ALREADY_IN_USE) {
               showToast("이미 가입된 이메일입니다.");
             }
@@ -64,7 +62,7 @@ class SetAccountPage extends BaseView<RegisterController> {
         } else {
           buttonColor = AppColors.gray500;
           onPressed = () {
-            controller.currentTabIndex.value = 1;
+            controller.currentTabIndex.value = 0;
           };
         }
 
@@ -88,14 +86,6 @@ class SetAccountPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget nicknameText(){
-    return ODOSTextField(
-      controller: controller.nicknameEditingController,
-      titleText: "닉네임",
-      hintText: "닉네임을 입력해주세요",
-    );
-  }
-
   Widget emailText(){
     return ODOSTextField(
       controller: controller.emailEditingController,
@@ -116,6 +106,8 @@ class SetAccountPage extends BaseView<RegisterController> {
       needHide: true,
       onChanged: (p0) {
         controller.passwordValue.value = p0;
+        controller.passwordValidationReverse(p0);
+        showToast(controller.passwordValue.value);
       },
     );
   }
@@ -129,6 +121,7 @@ class SetAccountPage extends BaseView<RegisterController> {
       onChanged: (p0) {
         controller.validpasswordValue.value = p0;
         controller.passwordValidation(p0);
+        showToast(controller.validpasswordValue.value);
       },
     );
   }

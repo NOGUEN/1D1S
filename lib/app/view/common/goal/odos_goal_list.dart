@@ -8,79 +8,47 @@ import 'package:one_day_one_something/app/view/common/goal/odos_fast_record.dart
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+List<String> emojis = [
+  'images/icon_add.png',
+  'images/icon_blue_book.png',
+  'images/icon_fire.png',
+  // Add more emoji URLs or paths as needed
+];
+
 class ODOSGoalList extends StatelessWidget {
-  final String goalId;
-  final Color goalColor;
+  final int emojiIndex;
   final String my_goal;
-  final int consecutive_days;
-  final int total_days;
-  final bool isBookmarked;
-  final Widget recordDialogBox;
+  final Color circleColor;
+  final double percent;
+  final String d_id;
   const ODOSGoalList(
       {super.key,
-      required this.goalId,
-      required this.goalColor,
+      required this.emojiIndex,
+      required this.circleColor,
       required this.my_goal,
-      required this.consecutive_days,
-      required this.total_days,
+      required this.percent,
+      required this.d_id
       required this.isBookmarked,
-      required this.recordDialogBox});
-
-  @override
-  Widget build(BuildContext context) {
-    return BaseGoalList(
-      goalColor: goalColor,
-      widgetList: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ODOSProgressMiniCircle(
-                    percent: (consecutive_days /
-                        total_days)
-                        .toDouble(),
-                    //TODO: 소숫점 예외처리,
-                  ),
-                  SizedBox(width: 17.w),
-                  goalTitle(my_goal: my_goal)
-                ],
-              ),
-              buttonContainer(isBookmarked: isBookmarked)
-            ]
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            currentStreak(consecutive_days: consecutive_days),
-            addRecordButton(context: context, recordDialogBox: recordDialogBox),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class BaseGoalList extends StatelessWidget {
-  final List<Widget> widgetList;
-  final Color goalColor;
-
-  const BaseGoalList({
-    super.key,
-    required this.widgetList,
-    required this.goalColor
-  });
-
+      required this.recordDialogBox
+       });
+  
   @override
   Widget build(BuildContext context) {
     return Container(
+//       decoration: BoxDecoration(
+//         gradient: LinearGradient(
+//           colors: [
+//             circleColor,
+//             Color.lerp(AppColors.defaultBackground, circleColor,
+//                 pow(percent, 6).toDouble())!
+//           ],
+//           begin: Alignment.centerLeft,
+//           end: Alignment(percent, 0),
         width: 320.w,
         height: 120.h,
         padding: EdgeInsets.only(left: 15.w, top: 14.h, right: 20.w, bottom: 11.h),
         decoration: BoxDecoration(
-          color: goalColor,
+          color: circleColor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -171,6 +139,57 @@ Widget addRecordButton({context, required Widget recordDialogBox}){
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+//           ODOSProgressMiniCircle(
+//             circleColor: circleColor,
+//             percent: percent,
+//           ),
+//           Container(
+//             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+//             child: Image.asset(
+//               emojis[emojiIndex],
+//               width: 25,
+//               height: 25,
+//               fit: BoxFit.cover,
+//             ),
+//           ),
+//           Expanded(
+//             child: Text(
+//               my_goal,
+//               overflow: TextOverflow.fade,
+//               maxLines: 1,
+//               softWrap: false,
+//               style: goalListHead,
+//             ),
+//           ),
+//           SizedBox(
+//             width: 60,
+//             height: 60,
+//             child: IconButton(
+//               onPressed: () {
+//                 showDialog(
+//                     context: context,
+//                     builder: (BuildContext context) {
+//                       return recordDialogBox(
+//                         my_goal: my_goal,
+//                         doc_id: d_id,
+//                         );
+//                     });
+//                 // Add your onPressed function here
+//               },
+//               icon: Image.asset(
+//                 'images/icon_add.png',
+//                 width: 60,
+//                 height: 60,
+//               ),
+//             ),
+//           ),
+//           IconButton(
+//             color: AppColors.gray500,
+//             icon: Icon(Icons.arrow_forward_ios),
+//             onPressed: () {
+//               // > 버튼을 눌렀을 때 동작
+//             },
+//           ),
           Text("기록 추가 ", style: goalListAddRecordButton),
           Text("+", style: goalListAddRecordButtonIcon)
         ],
