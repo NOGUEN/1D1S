@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_day_one_something/app/view/theme/app_theme.dart';
 
 class ODOSTrackCard extends StatelessWidget {
   final Color trackColor;
-  final String trackIcon;
   final String userProfileImage;
   final String userName;
 
   const ODOSTrackCard(
       {super.key,
       required this.trackColor,
-      required this.trackIcon,
       required this.userProfileImage,
       required this.userName});
 
@@ -20,7 +20,7 @@ class ODOSTrackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseTrackCard(
       widgetList: [
-        trackTitle(trackIcon: trackIcon),
+        trackTitle(),
         trackProfile(
           userProfileImage: userProfileImage,
           userName: userName
@@ -43,22 +43,17 @@ class BaseTrackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      width: 150,
-      height: 100,
+      padding: EdgeInsets.only(left:23.w, top: 18.h, right: 23.w, bottom: 15.h),
+      margin: EdgeInsets.only(right: 12.w),
+      width: 150.w,
+      height: 100.h,
       decoration: BoxDecoration(
           color: trackColor,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-                color: AppColors.black.withOpacity(0.1),
-                spreadRadius: 2,
-                blurRadius: 20
-            )
-          ]
+          borderRadius: BorderRadius.circular(8.h),
+          boxShadow: [odosShadow]
       ),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: widgetList
       )
@@ -66,22 +61,8 @@ class BaseTrackCard extends StatelessWidget {
   }
 }
 
-Widget trackTitle({trackIcon}){
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-      Container(
-        margin: EdgeInsets.fromLTRB(2, 0, 10, 0),
-        child: Image.asset(
-          trackIcon,
-          width: 25,
-          height: 25,
-          fit: BoxFit.cover,
-        ),
-      ),
-      Text('오늘의 기록', style: trackCardHead)
-    ],
-  );
+Widget trackTitle(){
+  return Text('오늘의 기록', style: trackCardHead);
 }
 
 Widget trackProfile({userProfileImage, userName}){
@@ -89,12 +70,12 @@ Widget trackProfile({userProfileImage, userName}){
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+        margin: EdgeInsets.fromLTRB(0, 0, 10.w, 0),
         child: ClipOval(
           child: Image.asset(
             userProfileImage,
-            width: 25,
-            height: 25,
+            width: 25.w,
+            height: 25.w,
           ),
         ),
       ),

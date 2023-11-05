@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //app_theme이외의 텍스트 스타일이 필요할 때 여기 정의해주세요
 const TextStyle appTitleTextStyle = TextStyle(
@@ -16,20 +17,35 @@ const TextStyle inputHintTextStyle = TextStyle(
   fontWeight: AppFontWeights.regular,
 );
 
-const TextStyle inputGoalAddHintTextStyle = TextStyle(
+TextStyle inputGoalAddHintTextStyle = TextStyle(
   color: AppColors.black,
-  fontSize: 18,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 20.sp,
+  fontWeight: AppFontWeights.extrabold,
 );
 const TextStyle inputGoalAddConfirmTextStyle = TextStyle(
   color: Colors.blue,
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
-const TextStyle RecordAddConfirmTextStyle = TextStyle(
+TextStyle RecordAddConfirmTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 19,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 20.sp,
+  fontWeight: AppFontWeights.extrabold,
+);
+TextStyle RecordAddInputContentHintTextStyle = TextStyle(
+  color: Color(0xFFB1B1B1),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.extrabold,
+);
+TextStyle RecordAddDropdownTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.heavy,
+);
+TextStyle RecordAddDropdownSelectedItemTextStyle = TextStyle(
+  color: AppColors.white,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.heavy,
 );
 const TextStyle inputContentTextStyle = TextStyle(
   color: AppColors.black,
@@ -67,77 +83,73 @@ const TextStyle head3 = TextStyle(
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle trackCardHead = TextStyle(
-  color: AppColors.black,
-  fontSize: 18,
-  fontWeight: AppFontWeights.bold,
+TextStyle trackCardHead = TextStyle(
+  color: AppColors.white,
+  fontSize: 18.sp,
+  fontWeight: AppFontWeights.heavy,
 );
 
 const TextStyle trackCardContent = TextStyle(
-  color: AppColors.black,
+  color: AppColors.white,
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle trackCardProfile = TextStyle(
-  color: AppColors.black,
-  fontSize: 16,
+TextStyle trackCardProfile = TextStyle(
+  color: AppColors.white,
+  fontSize: 16.sp,
   fontWeight: AppFontWeights.medium,
 );
 
-const TextStyle goalListHead = TextStyle(
-  color: AppColors.black,
-  fontSize: 20,
-  fontWeight: AppFontWeights.bold,
-);
-const TextStyle goalCardmainTitle = TextStyle(
-  color: AppColors.black,
-  fontSize: 24,
+
+TextStyle goalCardmainTitle = TextStyle(
+  color: AppColors.white,
+  fontSize: 24.sp,
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle goalCardsubTitle = TextStyle(
-  color: AppColors.black,
-  fontSize: 16,
+TextStyle goalCardsubTitle = TextStyle(
+  color: AppColors.white,
+  fontSize: 16.sp,
   fontWeight: AppFontWeights.bold,
 );
-const TextStyle goalCardconsecutive = TextStyle(
-  color: AppColors.black,
-  fontSize: 35,
+TextStyle goalCardconsecutive = TextStyle(
+  color: AppColors.white,
+  fontSize: 35.sp,
   fontWeight: AppFontWeights.bold,
 );
-const TextStyle goalNewcardDialog = TextStyle(
+TextStyle goalNewcardDialog = TextStyle(
   color: AppColors.black,
-  fontSize: 24,
-  fontWeight: AppFontWeights.bold,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.extrabold,
 );
-const TextStyle profileCardHead = TextStyle(
+TextStyle profileCardHead = TextStyle(
   color: AppColors.black,
-  fontSize: 30,
+  fontSize: 30.sp,
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle profileCardRecordHead = TextStyle(
+TextStyle profileCardRecordHead = TextStyle(
   color: AppColors.black,
-  fontSize: 16,
+  fontSize: 16.sp,
   fontWeight: AppFontWeights.regular,
 );
 
-const TextStyle profileCardRecordContent = TextStyle(
+TextStyle profileCardRecordContent = TextStyle(
   color: AppColors.black,
-  fontSize: 16,
+  fontSize: 16.sp,
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle profileCardAboutMeHead = TextStyle(
+TextStyle profileCardAboutMeHead = TextStyle(
   color: AppColors.black,
-  fontSize: 20,
+  fontSize: 20.sp,
   fontWeight: AppFontWeights.bold,
 );
 
-const TextStyle profileCardAboutMeContent = TextStyle(
+TextStyle profileCardAboutMeContent = TextStyle(
   color: AppColors.black,
-  fontSize: 20,
+  fontSize: 20.sp,
   fontWeight: AppFontWeights.regular,
 );
 
@@ -145,4 +157,42 @@ const TextStyle everyoneSGoalButtonTextStyle = TextStyle(
   color: AppColors.black,
   fontSize: 25,
   fontWeight: AppFontWeights.bold,
+);
+
+TextStyle goalListAddRecordButton = TextStyle(
+  color: AppColors.white,
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.bold,
+);
+TextStyle goalListAddRecordButtonIcon = TextStyle(
+  color: AppColors.white,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.bold,
+  height: 1.sp
+);
+TextStyle goalListHead = TextStyle(
+  color: AppColors.white,
+  fontSize: 24.sp,
+  fontWeight: AppFontWeights.bold,
+);
+TextStyle goalListStackDay = TextStyle(
+  color: AppColors.white,
+  fontSize: 20.sp,
+  fontWeight: AppFontWeights.bold,
+);
+
+TextStyle listCellTextStyle = TextStyle(
+  color: AppColors.black,
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
+);
+TextStyle listCellRefuseButtonTextStyle = TextStyle(
+  color: Color(0xFFFF0000),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
+);
+TextStyle listCellDisabledButtonTextStyle = TextStyle(
+  color: AppColors.black.withOpacity(0.3),
+  fontSize: 16.sp,
+  fontWeight: AppFontWeights.regular,
 );

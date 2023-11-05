@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ODOSWeekButton extends StatelessWidget {
-  final Color circleColor;
   final List<bool> doneWeek;
+  final Color goalColor;
 
   const ODOSWeekButton({
-    required this.circleColor,
     required this.doneWeek,
+    required this.goalColor
   });
 
   @override
@@ -26,14 +27,14 @@ class ODOSWeekButton extends StatelessWidget {
 
     return Column(
       children: [
-        Text(dayName, style: TextStyle(fontSize: 12, color: Colors.black)),
+        Text(dayName, style: TextStyle(fontSize: 12.sp, color: AppColors.white)),
         SizedBox(height: 10),
         Container(
           width: 28.04,
           height: 28.74,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: isDone ? circleColor : circleColor.withOpacity(0.4),
+            color: isDone ? AppColors.white.withOpacity(0.8) : AppColors.white.withOpacity(0.3),
             boxShadow: isDone
                 ? [
                   BoxShadow(
@@ -49,9 +50,9 @@ class ODOSWeekButton extends StatelessWidget {
               ? Center(
                   child: SvgPicture.asset(
                     'assets/check_icon.svg', // 체크 아이콘 이미지 파일 경로
-                    width: 10.86,
-                    height: 8.04,
-                    color: Colors.white,
+                    width: 10.86.w,
+                    height: 8.04.h,
+                    color: goalColor
                   ),
                 )
               : SizedBox.shrink(),

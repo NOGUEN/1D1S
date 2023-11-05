@@ -50,4 +50,12 @@ abstract class AppColors {
   static const Color blueOrigin = Color(0xFF8888FF);
   static const Color purpleOrigin = Color(0xFFD488FF);
   static const Color defaultOrigin = Color(0xFFFFFFFF);
+
+  static const Color goalPinkBackground = Color(0xFFFF5A82);
+  static const Color goalYellowBackground = Color(0xFFFFAD0D);
+  static const Color goalGreenBackground = Color(0xFF51C54F);
+  static const Color goalBlueBackground = Color(0xFF6070FF);
+  static const Color goalPurpleBackground = Color(0xFFBB4DFE);
+
+  static const Color profileCardBorderColor=Color(0xFFAAAAAA);
 }

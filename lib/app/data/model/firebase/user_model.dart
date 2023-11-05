@@ -1,3 +1,4 @@
+import 'package:one_day_one_something/app/data/model/firebase/friend_model.dart';
 import 'package:one_day_one_something/app/data/model/firebase/goal_model.dart';
 import 'package:one_day_one_something/app/data/model/firebase/track_model.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -12,7 +13,7 @@ class UserModel {
   String email;
   String? imageUrl;
   List<GoalModel>? goalList;
-  List<String>? friendUidList;
+  List<FriendModel>? friendUidList;
   List<TrackModel>? friendTrackList;
 
   UserModel({
