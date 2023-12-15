@@ -3,9 +3,9 @@
 abstract class AppString {
   static const str_1D1S = "1D1S";
   static const str_home = "홈";
-  static const str_goal = "목표";
+  static const str_social = "소셜";
   static const str_setting = "설정";
-  static const str_mypage = "마이페이지";
+  static const str_more = "더보기";
   static const str_email = "이메일";
   static const str_email_hint = "이메일";
   static const str_password = "비밀번호";
@@ -43,9 +43,10 @@ abstract class AppString {
   static const roomName = "roomName";
 
   static const home = "images/icon_home.svg";
-  static const goal = "images/icon_pen.svg";
-  static const mypage = "images/icon_person.svg";
+  static const more = "images/icon_more.svg";
+  static const social = "images/icon_person.svg";
   static const setting = "images/icon_setting.svg";
+  static const edit = "images/icon_pen.svg";
   static final profile =
       List.generate(8, (index) => "images/profile_$index.png");
 }

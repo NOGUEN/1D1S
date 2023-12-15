@@ -20,6 +20,22 @@ import '../common/system/odos_appbar.dart';
 import '../common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
+  @override
+  Widget pageScaffold(BuildContext context) {
+    return Scaffold(
+      //sets ios status bar color
+      resizeToAvoidBottomInset: false,
+      backgroundColor: pageBackgroundColor(),
+      key: globalKey,
+      appBar: appBar(context),
+      floatingActionButton: floatingActionButton(),
+      body: pageContent(context),
+      bottomNavigationBar: bottomNavigationBar(),
+      bottomSheet: bottomSheet(),
+      drawer: drawer(),
+    );
+  }
+
   ScrollController scrollController = ScrollController(initialScrollOffset: 0);
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
@@ -44,7 +60,7 @@ class MainPage extends BaseView<MainController> {
   }
 
   final Container homePage = Container();
-  GoalPage? goalPage;
+  SocialPage? socialPage;
   MyPage? myPage;
   Container? settingPage;
 
@@ -57,8 +73,8 @@ class MainPage extends BaseView<MainController> {
         );
       case MenuCode.SOCIAL:
         // return goalView;
-        goalPage ??= GoalPage();
-        return goalPage!;
+        socialPage ??= SocialPage();
+        return socialPage!;
       case MenuCode.MORE:
         // return goalView;
         myPage ??= MyPage();

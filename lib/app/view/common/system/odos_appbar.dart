@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
   MainController mainController;
   ScrollController scrollController;
   Rx<double> scrollPosition = 0.0.obs;
-  double appBarHeight = 183.h;
+  Rx<double> appBarHeight = 185.h.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +33,27 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Obx(
       () {
         if (mainController.selectedMenuCode == MenuCode.HOME) {
+          appBarHeight.value = 185.h + MediaQuery.of(context).padding.top;
           replaceWidget = homeAppBar();
+
           if (scrollPosition.value > 0) {
-            appBarHeight = 105.h + MediaQuery.of(context).padding.top;
+            if (appBarHeight != 105.h + MediaQuery.of(context).padding.top) {
+              appBarHeight.value = 105.h + MediaQuery.of(context).padding.top;
+            }
           } else {
-            appBarHeight = 185.h + MediaQuery.of(context).padding.top;
+            if (appBarHeight != 185.h + MediaQuery.of(context).padding.top) {
+              appBarHeight.value = 185.h + MediaQuery.of(context).padding.top;
+            }
           }
         } else if (mainController.selectedMenuCode == MenuCode.SOCIAL) {
+          appBarHeight.value = 130.h + MediaQuery.of(context).padding.top;
           replaceWidget = socialAppBar();
-          appBarHeight = 130.h + MediaQuery.of(context).padding.top;
         } else if (mainController.selectedMenuCode == MenuCode.MORE) {
+          appBarHeight.value = 50.h + MediaQuery.of(context).padding.top;
           replaceWidget = moreAppBar();
-          appBarHeight = 60.h + MediaQuery.of(context).padding.top;
         }
         return Container(
-          height: appBarHeight,
+          height: appBarHeight.value,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16.r),
@@ -60,7 +67,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
                 offset: const Offset(0, 0),
               ),
             ],
-            color: Colors.white,
+            color: Colors.red,
           ),
           child: replaceWidget,
         );
@@ -152,7 +159,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(appBarHeight);
+  Size get preferredSize => Size.fromHeight(appBarHeight.value);
 }
 
 class _AppBarTitleContent extends StatelessWidget {

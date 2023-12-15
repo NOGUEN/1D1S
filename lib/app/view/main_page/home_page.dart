@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:one_day_one_something/app/controller/main/home_page_controller.dart';
 import 'package:one_day_one_something/app/view/common/list_cells/odos_friend_list_cell.dart';
 import 'package:one_day_one_something/app/view/common/list_cells/odos_friend_request_alarm.dart';
@@ -10,23 +12,16 @@ import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
-class HomePage extends BaseView<HomePageController> {
-  ScrollController scrollController;
+class HomePage extends GetView<HomePageController> {
+  final ScrollController scrollController;
 
-  HomePage({required this.scrollController});
-
-  @override
-  PreferredSizeWidget? appBar(BuildContext context) {
-    return null;
-  }
+  const HomePage({
+    super.key,
+    required this.scrollController,
+  });
 
   @override
-  Color pageBackgroundColor() {
-    return AppColors.white;
-  }
-
-  @override
-  Widget body(BuildContext context) {
+  Widget build(BuildContext context) {
     return BaseHomePage(
       everyoneSGoalList: controller.everyoneSGoalList,
       everyoneSTrackList: controller.everyoneSTrackList,
@@ -50,56 +45,54 @@ class BaseHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       key: UniqueKey(),
-      child: ListView(
+      child: SingleChildScrollView(
         controller: scrollController,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendRequestAlarm(
-                friendName: '고라니',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSStreakAlarm(streakNumber: 50),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: null,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: FriendsRequestCode.SENT,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: FriendsRequestCode.ACCEPT,
-              ),
-              everyoneSTrackList.isEmpty
-                  ? Center(
-                      child: Text(
-                        AppString.str_empty_track_list,
-                        style: everyoneSGoalButtonTextStyle,
-                      ),
-                    )
-                  : ODOSTrackCardList(
-                      everyoneSTrackList: everyoneSTrackList,
-                    )
-            ],
-          ),
-        ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            ODOSFriendRequestAlarm(
+              friendName: '고라니',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ODOSStreakAlarm(streakNumber: 50),
+            SizedBox(
+              height: 10,
+            ),
+            ODOSFriendListCell(
+              friendName: '고라니',
+              friendsRequestCode: null,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ODOSFriendListCell(
+              friendName: '고라니',
+              friendsRequestCode: FriendsRequestCode.SENT,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ODOSFriendListCell(
+              friendName: '고라니',
+              friendsRequestCode: FriendsRequestCode.ACCEPT,
+            ),
+            everyoneSTrackList.isEmpty
+                ? Center(
+                    child: Text(
+                      AppString.str_empty_track_list,
+                      style: everyoneSGoalButtonTextStyle,
+                    ),
+                  )
+                : ODOSTrackCardList(
+                    everyoneSTrackList: everyoneSTrackList,
+                  )
+          ],
+        ),
       ),
     );
   }

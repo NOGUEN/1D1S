@@ -67,13 +67,13 @@ class ODOSBottomNavigationBar extends StatelessWidget {
         menuCode: MenuCode.HOME,
       ),
       const BottomNavItem(
-        navTitle: AppString.str_goal,
-        iconSVGName: AppString.goal,
+        navTitle: AppString.str_social,
+        iconSVGName: AppString.social,
         menuCode: MenuCode.SOCIAL,
       ),
       const BottomNavItem(
-        navTitle: AppString.str_mypage,
-        iconSVGName: AppString.mypage,
+        navTitle: AppString.str_more,
+        iconSVGName: AppString.more,
         menuCode: MenuCode.MORE,
       ),
     ];

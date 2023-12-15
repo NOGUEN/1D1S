@@ -20,7 +20,8 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 640),
+      useInheritedMediaQuery: true,
+      designSize: const Size(360, 640),
       builder: (buildContext, widget) => GetMaterialApp(
         title: _envConfig.appName,
         debugShowCheckedModeBanner: false,
