@@ -40,7 +40,7 @@ class _recordDialogBoxState extends State<recordDialogBox>{
     return AlertDialog(
       insetPadding: EdgeInsets.all(0.0),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(3.r),
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -151,7 +151,7 @@ class _recordDialogBoxState extends State<recordDialogBox>{
       height: 120.h,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black, width: 2),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: TextFormField(
         controller: recordContentEditingController,
@@ -176,7 +176,7 @@ class _recordDialogBoxState extends State<recordDialogBox>{
         height: 40.h,
         decoration: BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: TextButton(
           onPressed: () {
@@ -215,7 +215,7 @@ class BaseRecordDialogBox extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8.w),
+          borderRadius: BorderRadius.circular(8.r),
           boxShadow: [
             BoxShadow(
               color: AppColors.black.withOpacity(0.25),

@@ -26,7 +26,7 @@ class GoalMulticard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 315.6.h,
+      height: 335.5.h,
       child: ScrollSnapList(
           itemBuilder: _buildListItem,
           itemCount: cardlist.length,
@@ -58,7 +58,7 @@ class GoalMulticard extends StatelessWidget {
         currentStreakAndProgressRate(
             consecutive_days: eachcard["consecutive_days"],
             totalDay: eachcard["totalDay"],
-        )
+        ),
       ],
       goalColor: eachcard["goalColor"]
     );
@@ -79,31 +79,28 @@ class BaseGoalMultiCard extends StatelessWidget {
     return Container(
       width: 280.w,
       height: 295.5.h,
-      margin: EdgeInsets.symmetric(vertical: 24.h),
-      decoration: BoxDecoration(
-          boxShadow: [odosShadow]
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
-                width: 280.w,
-                height: 265.5.h,
-                decoration: BoxDecoration(
-                  color: goalColor,
-                  borderRadius: BorderRadius.circular(10.h),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: widgetList,
-                ),
-              )
-            ],
+      padding: EdgeInsets.symmetric(vertical: 20.h),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.r),
+            clipBehavior: Clip.none,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
+              width: 280.w,
+              decoration: BoxDecoration(
+                color: goalColor,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [odosShadow]
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: widgetList,
+              ),
+            )
           ),
-        )
+        ],
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:one_day_one_something/app/view/theme/app_values.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_add_dialog.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ODOSAddButton extends StatelessWidget {
   final Color buttonColor;
@@ -20,7 +21,7 @@ class ODOSAddButton extends StatelessWidget {
       height: 70,
       decoration: BoxDecoration(
         color: AppColors.defaultBackground,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
         boxShadow: [
           BoxShadow(
             color: AppColors.black.withOpacity(0.25),

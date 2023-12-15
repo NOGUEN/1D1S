@@ -47,8 +47,8 @@ class ODOSProfileCard extends StatelessWidget {
           SizedBox(width: 15.w,),
           profileImage(
             userProfileImage: userProfileImage,
-            outerCircleRadius: 60.r,
-            innerCircleRadius: 56.r
+            outerCircleRadius: 50.r,
+            innerCircleRadius: 48.r
           ),
           Container(
             height: 100.h,
@@ -77,7 +77,6 @@ class BaseProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 320.w,
-      height: 250.h,
       decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(8.w),
@@ -148,7 +147,7 @@ Widget dividingLine(){
 Widget aboutMeContainer(String aboutMe){
   return Container(
     padding: EdgeInsets.fromLTRB(17.7.w, 15.h, 17.7.w, 0),
-    height: 95.h,
+    height: 110.h,
     child: Column(
       children: [
         Container(
