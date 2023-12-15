@@ -1,16 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/main/main_controller.dart';
 import 'package:one_day_one_something/app/data/model/enum/menu_code.dart';
-import 'package:one_day_one_something/app/routes/app_pages.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
-
-import '../../theme/app_string.dart';
-import '../../theme/app_values.dart';
 
 class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
   ODOSAppBar({
@@ -73,12 +70,12 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SafeArea(child: _AppBarTitleContent()),
+          const SafeArea(child: _AppBarTitleContent()),
           SizedBox(height: 5.h),
-          _HomeAppBarContent(),
+          const _HomeAppBarContent(),
           if (scrollPosition.value <= 0) SizedBox(height: 5.h),
           if (scrollPosition.value <= 0) Divider(thickness: 2.h),
-          if (scrollPosition.value <= 0) _UserInfo(),
+          if (scrollPosition.value <= 0) const _UserInfo(),
         ],
       ),
     );
@@ -89,7 +86,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SafeArea(child: _AppBarTitleContent()),
+          const SafeArea(child: _AppBarTitleContent()),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: ODOSSearchTextField(
@@ -103,7 +100,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   child: Text(
                     '모두의 스트릭',
@@ -113,12 +110,12 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 VerticalDivider(
                   thickness: 2.w,
                   color: AppColors.black,
                 ),
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   child: Text(
                     '친구의 스트릭',
@@ -128,7 +125,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -138,7 +135,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget moreAppBar() {
-    return SizedBox(
+    return const SizedBox(
       child: Column(
         children: [
           SafeArea(child: _AppBarTitleContent()),
@@ -156,7 +153,7 @@ class ODOSAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class _AppBarTitleContent extends StatelessWidget {
-  const _AppBarTitleContent({super.key});
+  const _AppBarTitleContent();
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +162,7 @@ class _AppBarTitleContent extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 20.w),
-            child: Text(
+            child: const Text(
               '홈',
               style: TextStyle(
                 fontSize: 24,
@@ -173,13 +170,13 @@ class _AppBarTitleContent extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: EdgeInsets.only(right: 10.w),
             child: IconButton(
               padding: EdgeInsets.zero,
               onPressed: () {},
-              icon: Icon(Icons.notifications),
+              icon: const Icon(Icons.notifications),
             ),
           )
         ],
@@ -189,7 +186,7 @@ class _AppBarTitleContent extends StatelessWidget {
 }
 
 class _HomeAppBarContent extends StatelessWidget {
-  const _HomeAppBarContent({super.key});
+  const _HomeAppBarContent();
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +214,7 @@ class _HomeAppBarContent extends StatelessWidget {
 }
 
 class _UserInfo extends StatelessWidget {
-  const _UserInfo({super.key});
+  const _UserInfo();
 
   @override
   Widget build(BuildContext context) {
@@ -233,7 +230,7 @@ class _UserInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                child: Text(
+                child: const Text(
                   '고라니 님',
                   style: TextStyle(
                     fontSize: 24,
@@ -241,7 +238,7 @@ class _UserInfo extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-              Text('자기소개'),
+              const Text('자기소개'),
             ],
           ),
         ],

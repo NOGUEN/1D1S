@@ -1,4 +1,7 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/controller/main/home_page_controller.dart';
 import 'package:one_day_one_something/app/view/common/list_cells/odos_friend_list_cell.dart';
 import 'package:one_day_one_something/app/view/common/list_cells/odos_friend_request_alarm.dart';
@@ -56,39 +59,38 @@ class BaseHomePage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 10,
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: const ODOSFriendRequestAlarm(
+                  friendName: '고라니',
+                ),
               ),
-              ODOSFriendRequestAlarm(
-                friendName: '고라니',
+              Padding(
+                  padding: EdgeInsets.only(top: 10.h),
+                  child: const ODOSStreakAlarm(streakNumber: 50)),
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: const ODOSFriendListCell(
+                  friendName: '고라니',
+                  friendsRequestCode: FriendsRequestCode.RECEIVED,
+                ),
               ),
-              SizedBox(
-                height: 10,
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: const ODOSFriendListCell(
+                  friendName: '고라니',
+                  friendsRequestCode: FriendsRequestCode.SENT,
+                ),
               ),
-              ODOSStreakAlarm(streakNumber: 50),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: null,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: FriendsRequestCode.SENT,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ODOSFriendListCell(
-                friendName: '고라니',
-                friendsRequestCode: FriendsRequestCode.ACCEPT,
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: const ODOSFriendListCell(
+                  friendName: '고라니',
+                  friendsRequestCode: FriendsRequestCode.ACCEPT,
+                ),
               ),
               everyoneSTrackList.isEmpty
-                  ? Center(
+                  ? const Center(
                       child: Text(
                         AppString.str_empty_track_list,
                         style: everyoneSGoalButtonTextStyle,

@@ -16,27 +16,24 @@ class ODOSProfileCard extends StatelessWidget {
   final int numberOfFriends;
   final String aboutMe;
 
-  const ODOSProfileCard({
-    super.key,
-    required this.userName,
-    required this.userProfileImage,
-    required this.longestStreakNumber,
-    required this.numberOfFriends,
-    required this.aboutMe
-  });
+  const ODOSProfileCard(
+      {super.key,
+      required this.userName,
+      required this.userProfileImage,
+      required this.longestStreakNumber,
+      required this.numberOfFriends,
+      required this.aboutMe});
 
   @override
   Widget build(BuildContext context) {
-    return BaseProfileCard(
-      widgetList: [
-        profileInfoContainer(),
-        dividingLine(),
-        aboutMeContainer(aboutMe)
-      ]
-    );
+    return BaseProfileCard(widgetList: [
+      profileInfoContainer(),
+      dividingLine(),
+      aboutMeContainer(aboutMe)
+    ]);
   }
 
-  Widget profileInfoContainer(){
+  Widget profileInfoContainer() {
     return Container(
       height: 140.h,
       padding: EdgeInsets.symmetric(vertical: 20.h),
@@ -44,12 +41,13 @@ class ODOSProfileCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(width: 15.w,),
-          profileImage(
-            userProfileImage: userProfileImage,
-            outerCircleRadius: 50.r,
-            innerCircleRadius: 48.r
+          SizedBox(
+            width: 15.w,
           ),
+          profileImage(
+              userProfileImage: userProfileImage,
+              outerCircleRadius: 50.r,
+              innerCircleRadius: 48.r),
           Container(
             height: 100.h,
             margin: EdgeInsets.only(left: 12.5.w),
@@ -80,39 +78,34 @@ class BaseProfileCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(8.w),
-          border: Border.all(color: AppColors.profileCardBorderColor, width: 3.w),
-          boxShadow: [odosShadow]
-      ),
-      child: Column(
-        children: widgetList
-      ),
+          border:
+              Border.all(color: AppColors.profileCardBorderColor, width: 3.w),
+          boxShadow: [odosShadow]),
+      child: Column(children: widgetList),
     );
   }
 }
 
-Widget space({height}){
+Widget space({height}) {
   return SizedBox(height: height);
 }
 
-Widget profileHead(String userName){
+Widget profileHead(String userName) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Text(userName, style: profileCardHead),
-      editButton()
-    ],
+    children: [Text(userName, style: profileCardHead), editButton()],
   );
 }
 
-Widget maxStreak(int longestStreakNumber){
+Widget maxStreak(int longestStreakNumber) {
   return Row(
     children: [
       Text('최고 스트릭', style: profileCardRecordHead),
       Container(
           width: 47.w,
           margin: EdgeInsets.only(left: 7.7.w),
-          child: Text('$longestStreakNumber일', style: profileCardRecordContent)
-      ),
+          child:
+              Text('$longestStreakNumber일', style: profileCardRecordContent)),
       Image.asset(
         'images/icon_fire.png',
         width: 16.h,
@@ -122,29 +115,28 @@ Widget maxStreak(int longestStreakNumber){
   );
 }
 
-Widget friends(int numberOfFriends){
-  return
-    TextButton(  // *Successful Goal*
-      style: TextButton.styleFrom(
-        minimumSize: Size.zero,
-        padding: EdgeInsets.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      onPressed: (){},
-      child:
-        Text('친구 $numberOfFriends명 >', style: profileCardRecordHead),
+Widget friends(int numberOfFriends) {
+  return TextButton(
+    // *Successful Goal*
+    style: TextButton.styleFrom(
+      minimumSize: Size.zero,
+      padding: EdgeInsets.zero,
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    ),
+    onPressed: () {},
+    child: Text('친구 $numberOfFriends명 >', style: profileCardRecordHead),
   );
 }
 
-Widget dividingLine(){
+Widget dividingLine() {
   return Container(
     width: 302.w,
     height: 1.0.h,
-    color: Color(0xFFc8c8c8),
+    color: const Color(0xFFc8c8c8),
   );
 }
 
-Widget aboutMeContainer(String aboutMe){
+Widget aboutMeContainer(String aboutMe) {
   return Container(
     padding: EdgeInsets.fromLTRB(17.7.w, 15.h, 17.7.w, 0),
     height: 110.h,
@@ -152,14 +144,14 @@ Widget aboutMeContainer(String aboutMe){
       children: [
         Container(
           alignment: Alignment.topLeft,
-          child:  // *Profile Head*
-          Text('자기소개', style: profileCardAboutMeHead),
+          child: // *Profile Head*
+              Text('자기소개', style: profileCardAboutMeHead),
         ),
         space(height: 8.h),
         Container(
           alignment: Alignment.centerLeft,
           child: Text(
-            aboutMe,  //자기소개는 36자 이하로
+            aboutMe, //자기소개는 36자 이하로
             style: profileCardAboutMeContent,
             textAlign: TextAlign.start,
           ),
@@ -176,11 +168,13 @@ Widget editButton() {
     alignment: Alignment.center,
     child: IconButton(
         padding: EdgeInsets.all(8.h),
-        onPressed: (){Get.toNamed(Routes.UPDATE_PROFILE);},
+        onPressed: () {
+          Get.toNamed(Routes.UPDATE_PROFILE);
+        },
         icon: SvgPicture.asset(
           AppString.goal,
-          colorFilter: ColorFilter.mode(Color(0xffababab), BlendMode.srcIn),
-        )
-    ),
+          colorFilter:
+              const ColorFilter.mode(Color(0xffababab), BlendMode.srcIn),
+        )),
   );
 }

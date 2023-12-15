@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/main/my_page_controller.dart';
@@ -37,32 +39,27 @@ class BaseMyPage extends StatelessWidget {
   final int longestStreakNumber;
   final int numberOfFriends;
   final String aboutMe;
-  const BaseMyPage({
-    super.key,
-    required this.cardlist,
-    required this.userName,
-    required this.userProfileImage,
-    required this.longestStreakNumber,
-    required this.numberOfFriends,
-    required this.aboutMe
-  });
+  const BaseMyPage(
+      {super.key,
+      required this.cardlist,
+      required this.userName,
+      required this.userProfileImage,
+      required this.longestStreakNumber,
+      required this.numberOfFriends,
+      required this.aboutMe});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children:[
-            ODOSProfileCard(
-                userName: userName,
-                userProfileImage: userProfileImage,
-                longestStreakNumber: longestStreakNumber,
-                numberOfFriends: numberOfFriends,
-                aboutMe: aboutMe
-            ).marginOnly(left: 20, right: 20, top: 21, bottom: 8),
-            GoalMulticard(cardlist: cardlist),
-          ]
-        )
-    );
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      ODOSProfileCard(
+              userName: userName,
+              userProfileImage: userProfileImage,
+              longestStreakNumber: longestStreakNumber,
+              numberOfFriends: numberOfFriends,
+              aboutMe: aboutMe)
+          .marginOnly(left: 20, right: 20, top: 21, bottom: 8),
+      GoalMulticard(cardlist: cardlist),
+    ]));
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
-import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import 'package:one_day_one_something/app/view/theme/app_values.dart';
 import 'package:one_day_one_something/app/view/common/goal/odos_goal_add_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,15 +24,15 @@ class ODOSAddButton extends StatelessWidget {
           BoxShadow(
             color: AppColors.black.withOpacity(0.25),
             spreadRadius: 0,
-            blurRadius: 4,
-            offset: Offset(0, 4),
+            blurRadius: 4.r,
+            offset: Offset(0, 4.h),
           ),
         ],
       ),
       child: DottedBorder(
         borderType: BorderType.RRect,
-        radius: Radius.circular(10),
-        dashPattern: [15, 15],
+        radius: Radius.circular(10.r),
+        dashPattern: [15.w, 15.h],
         color: Colors.grey,
         strokeWidth: 3,
         child: TextButton(
@@ -42,7 +40,7 @@ class ODOSAddButton extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return CustomDialogBox();
+                  return const CustomDialogBox();
                 });
           },
           child: Center(

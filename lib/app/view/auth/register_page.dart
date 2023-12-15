@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +57,7 @@ class RegisterPage extends BaseView<RegisterController> {
                       AnimatedPositioned(
                         top: controller.currentTabIndex.value == 0 ? 0 : 25,
                         left: 20,
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.fastOutSlowIn,
                         child: AnimatedContainer(
                           height:
@@ -68,7 +70,7 @@ class RegisterPage extends BaseView<RegisterController> {
                                 ? AppColors.black
                                 : AppColors.gray500,
                           ),
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                         ),
                       ),
                       AnimatedPositioned(

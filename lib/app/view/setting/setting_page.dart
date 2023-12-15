@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/main/setting_controller.dart';
@@ -54,13 +56,13 @@ class SettingPage extends BaseView<SettingController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
   }
 
-  Widget accountSetting(){
+  Widget accountSetting() {
     return const ODOSSystemList(
       list: [
         ODOSSystemListCell(menuString: "비밀번호 재설정"),
@@ -69,7 +71,7 @@ class SettingPage extends BaseView<SettingController> {
     );
   }
 
-  Widget notificationSetting(){
+  Widget notificationSetting() {
     return const ODOSSystemList(
       list: [
         ODOSSystemListCell(menuString: "리마인드 재설정"),
@@ -78,8 +80,8 @@ class SettingPage extends BaseView<SettingController> {
     );
   }
 
-  Widget serviceSetting(){
-    return ODOSSystemList(
+  Widget serviceSetting() {
+    return const ODOSSystemList(
       list: [
         ODOSSystemListCell(menuString: "버전"),
         ODOSSystemListCell(menuString: "로그아웃"),

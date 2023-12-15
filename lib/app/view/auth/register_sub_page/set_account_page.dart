@@ -1,16 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/auth/register_controller.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
-import 'package:one_day_one_something/app/data/model/enum/menu_code.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
-import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
 import 'package:one_day_one_something/app/view/theme/app_values.dart';
 
@@ -82,13 +80,13 @@ class SetAccountPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
   }
 
-  Widget nicknameText(){
+  Widget nicknameText() {
     return ODOSTextField(
       controller: controller.nicknameEditingController,
       titleText: "닉네임",
@@ -96,7 +94,7 @@ class SetAccountPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget emailText(){
+  Widget emailText() {
     return ODOSTextField(
       controller: controller.emailEditingController,
       titleText: AppString.str_email,
@@ -108,7 +106,7 @@ class SetAccountPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget passwordText(){
+  Widget passwordText() {
     return ODOSTextField(
       controller: controller.passwordEditingController,
       titleText: AppString.str_password,
@@ -120,7 +118,7 @@ class SetAccountPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget validPasswordText(){
+  Widget validPasswordText() {
     return ODOSTextField(
       controller: controller.validPasswordEditingController,
       titleText: AppString.str_check_password,

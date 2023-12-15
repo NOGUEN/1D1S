@@ -8,37 +8,31 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ODOSStreakAlarm extends StatelessWidget {
   final int streakNumber;
-  const ODOSStreakAlarm({
-    super.key,
-    required this.streakNumber
-  });
+  const ODOSStreakAlarm({super.key, required this.streakNumber});
 
   @override
   Widget build(BuildContext context) {
-    return BaseODOSStreakAlarm(
-      widgetList: [
-        SvgPicture.asset(
-          'assets/dab_icon.svg',
-          width: 19.w,
-          height: 19.w,
-          color: Color(0xFF9F9F9F),
-        ),
-        SizedBox(width: 18.w,),
-        Text(
-          '스트릭 ${streakNumber}일 달성!',
-          style: listCellTextStyle,
-        )
-      ]
-    );
+    return BaseODOSStreakAlarm(widgetList: [
+      SvgPicture.asset(
+        'assets/dab_icon.svg',
+        width: 19.w,
+        height: 19.w,
+        colorFilter: const ColorFilter.mode(Color(0xFF9F9F9F), BlendMode.color),
+      ),
+      SizedBox(
+        width: 18.w,
+      ),
+      Text(
+        '스트릭 $streakNumber일 달성!',
+        style: listCellTextStyle,
+      )
+    ]);
   }
 }
 
 class BaseODOSStreakAlarm extends StatelessWidget {
   final List<Widget> widgetList;
-  const BaseODOSStreakAlarm({
-    super.key,
-    required this.widgetList
-  });
+  const BaseODOSStreakAlarm({super.key, required this.widgetList});
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +44,7 @@ class BaseODOSStreakAlarm extends StatelessWidget {
           shape: BoxShape.rectangle,
           color: AppColors.white,
           borderRadius: BorderRadius.circular(8.w),
-          boxShadow: [odosShadow]
-      ),
+          boxShadow: [odosShadow]),
       child: Row(
         children: widgetList,
       ),

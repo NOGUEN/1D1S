@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
@@ -36,13 +38,13 @@ class ODOSTextField extends StatelessWidget {
         ),
         TextField(
           decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(
+            enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                 color: AppColors.gray300,
                 width: 2,
               ),
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                 color: AppColors.black,
                 width: 4,
@@ -50,7 +52,7 @@ class ODOSTextField extends StatelessWidget {
             ),
             hintText: hintText,
             hintStyle: inputHintTextStyle,
-            contentPadding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+            contentPadding: EdgeInsets.only(left: 16.w),
           ),
           style: inputContentTextStyle,
           textInputAction: action,
@@ -96,16 +98,16 @@ class ODOSSearchTextField extends StatelessWidget {
           color: AppColors.black,
           size: 24.h,
         ),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 184, 156, 156),
+            color: Color.fromARGB(255, 184, 156, 156),
             width: 2,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.black,
-            width: 4,
+            width: 4.w,
           ),
         ),
         hintText: hintText,

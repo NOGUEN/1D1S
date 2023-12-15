@@ -1,5 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 
 class IconPicker extends StatefulWidget {
@@ -25,7 +28,7 @@ class _IconPickerState extends State<IconPicker> {
           builder: (_) => SizedBox(
             height: 250,
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4, // Number of images in a row
               ),
               itemCount: icons.length,
@@ -62,7 +65,7 @@ class _IconPickerState extends State<IconPicker> {
             BoxShadow(
               color: Colors.grey.withOpacity(0.5), // Shadow color
               blurRadius: 4, // Shadow blur radius
-              offset: Offset(0, 2), // Shadow offset
+              offset: Offset(0, 2.h), // Shadow offset
             ),
           ],
         ),

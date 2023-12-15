@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'app_colors.dart';
@@ -27,22 +26,22 @@ const TextStyle inputGoalAddConfirmTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: AppFontWeights.bold,
 );
-TextStyle RecordAddConfirmTextStyle = TextStyle(
+TextStyle recordAddConfirmTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 20.sp,
   fontWeight: AppFontWeights.extrabold,
 );
-TextStyle RecordAddInputContentHintTextStyle = TextStyle(
-  color: Color(0xFFB1B1B1),
+TextStyle recordAddInputContentHintTextStyle = TextStyle(
+  color: const Color(0xFFB1B1B1),
   fontSize: 16.sp,
   fontWeight: AppFontWeights.extrabold,
 );
-TextStyle RecordAddDropdownTextStyle = TextStyle(
+TextStyle recordAddDropdownTextStyle = TextStyle(
   color: AppColors.black,
   fontSize: 24.sp,
   fontWeight: AppFontWeights.heavy,
 );
-TextStyle RecordAddDropdownSelectedItemTextStyle = TextStyle(
+TextStyle recordAddDropdownSelectedItemTextStyle = TextStyle(
   color: AppColors.white,
   fontSize: 24.sp,
   fontWeight: AppFontWeights.heavy,
@@ -100,7 +99,6 @@ TextStyle trackCardProfile = TextStyle(
   fontSize: 16.sp,
   fontWeight: AppFontWeights.medium,
 );
-
 
 TextStyle goalCardmainTitle = TextStyle(
   color: AppColors.white,
@@ -165,11 +163,10 @@ TextStyle goalListAddRecordButton = TextStyle(
   fontWeight: AppFontWeights.bold,
 );
 TextStyle goalListAddRecordButtonIcon = TextStyle(
-  color: AppColors.white,
-  fontSize: 24.sp,
-  fontWeight: AppFontWeights.bold,
-  height: 1.sp
-);
+    color: AppColors.white,
+    fontSize: 24.sp,
+    fontWeight: AppFontWeights.bold,
+    height: 1.sp);
 TextStyle goalListHead = TextStyle(
   color: AppColors.white,
   fontSize: 24.sp,
@@ -187,7 +184,7 @@ TextStyle listCellTextStyle = TextStyle(
   fontWeight: AppFontWeights.regular,
 );
 TextStyle listCellRefuseButtonTextStyle = TextStyle(
-  color: Color(0xFFFF0000),
+  color: const Color(0xFFFF0000),
   fontSize: 16.sp,
   fontWeight: AppFontWeights.regular,
 );

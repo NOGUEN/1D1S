@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/auth/register_controller.dart';
@@ -24,11 +26,7 @@ class WelcomPage extends BaseView<RegisterController> {
   @override
   Widget body(BuildContext context) {
     return BaseRegisterPage(
-      widgetList: [
-        space(height: 50),
-        welcomeText(),
-        welcomeIcon()
-      ],
+      widgetList: [space(height: 50), welcomeText(), welcomeIcon()],
     );
   }
 
@@ -68,7 +66,7 @@ class WelcomPage extends BaseView<RegisterController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
@@ -92,5 +90,4 @@ class WelcomPage extends BaseView<RegisterController> {
       ),
     );
   }
-
 }

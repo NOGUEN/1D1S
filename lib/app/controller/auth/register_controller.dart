@@ -4,7 +4,6 @@ import 'package:one_day_one_something/app/controller/service/auth_service.dart';
 import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';
 import 'package:one_day_one_something/app/data/model/firebase/user_model.dart';
-import 'package:one_day_one_something/app/routes/app_pages.dart';
 
 class RegisterController extends BaseController
     with GetTickerProviderStateMixin {

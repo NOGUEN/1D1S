@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,22 +53,22 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
-                offset: Offset(0, 5),
-                blurRadius: 7,
+                offset: Offset(0, 5.h),
+                blurRadius: 7.r,
               ),
             ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              SizedBox(height: 11),
+              SizedBox(height: 11.h),
               Text(
                 "새 목표",
                 style: goalNewcardDialog,
               ),
-              ODOSTextGaolField(),
+              const ODOSTextGaolField(),
               SizedBox(
-                height: 8,
+                height: 8.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,12 +113,12 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                       );
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 7),
+                      padding: EdgeInsets.symmetric(horizontal: 7.w),
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
                             color: AppColors.gray700,
-                            width: 1,
+                            width: 1.w,
                           ),
                         ),
                       ),
@@ -126,12 +127,12 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                         children: [
                           Text(
                             dayList[_selectedDayValue],
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                           ),
                           Transform.scale(
                             scale:
                                 1.5, // Increase the scale to make the icon taller
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_drop_down_sharp,
                               color: Colors.black,
                             ),
@@ -148,7 +149,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: 18,
+                    width: 18.w,
                   ),
                   Text(
                     "색상 ",
@@ -156,7 +157,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     textAlign: TextAlign.start,
                   ),
                   SizedBox(
-                    width: 7,
+                    width: 7.w,
                   ),
                   ODOSColorPalette(
                     onColorSelected: (index) {
@@ -168,7 +169,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 ],
               ),
               SizedBox(
-                height: 8,
+                height: 8.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -183,13 +184,13 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text(
+                    child: const Text(
                       "생성",
                       style: inputGoalAddConfirmTextStyle,
                     ),

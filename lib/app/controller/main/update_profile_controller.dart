@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class UpdateProfileController extends BaseController
     with GetTickerProviderStateMixin {
@@ -22,10 +21,9 @@ class UpdateProfileController extends BaseController
       image = XFile(pickedFile.path);
       imagePickerUsed.value = true;
       update();
-    } else {
-      print('No image selected.');
-    }
+    } else {}
   }
+
   @override
   void dispose() {
     nickNameEditingController.dispose();

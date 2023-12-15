@@ -1,6 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
-import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

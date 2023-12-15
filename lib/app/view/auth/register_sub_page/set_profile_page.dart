@@ -1,11 +1,11 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/controller/auth/register_controller.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
-import 'package:one_day_one_something/app/data/model/enum/menu_code.dart';
 import 'package:one_day_one_something/app/view/auth/register_page.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_common_text.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
@@ -74,18 +74,18 @@ class SetProfilePage extends BaseView<RegisterController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
   }
 
-  Widget profileImage(){
+  Widget profileImage() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Obx(
-              () {
+          () {
             return Container(
               width: 180,
               height: 180,
@@ -119,7 +119,7 @@ class SetProfilePage extends BaseView<RegisterController> {
     );
   }
 
-  Widget baseProfileText(){
+  Widget baseProfileText() {
     return const Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -136,7 +136,7 @@ class SetProfilePage extends BaseView<RegisterController> {
     );
   }
 
-  Widget baseProfileIcons(){
+  Widget baseProfileIcons() {
     return SizedBox(
       height: 350,
       width: double.infinity,
@@ -150,7 +150,7 @@ class SetProfilePage extends BaseView<RegisterController> {
         ),
         itemBuilder: (BuildContext context, int index) {
           return Obx(
-                () {
+            () {
               Color radiusColor;
               if (controller.profileImageNumber.value == index) {
                 radiusColor = AppColors.black;

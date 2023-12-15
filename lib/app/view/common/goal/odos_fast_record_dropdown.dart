@@ -1,7 +1,4 @@
-import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,21 +6,20 @@ class ODOSSelectGoalDropdown extends StatelessWidget {
   final List goalList;
   final String selectedGoalId;
   final Function setSelectedGoalValue;
-  const ODOSSelectGoalDropdown({
-    super.key,
-    required this.goalList,
-    required this.selectedGoalId,
-    required this.setSelectedGoalValue
-  });
+  const ODOSSelectGoalDropdown(
+      {super.key,
+      required this.goalList,
+      required this.selectedGoalId,
+      required this.setSelectedGoalValue});
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: selectedGoalId,
-      icon: SizedBox.shrink(),
+      icon: const SizedBox.shrink(),
       padding: EdgeInsets.zero,
       itemHeight: 60.h,
-      underline: SizedBox.shrink(),
+      underline: const SizedBox.shrink(),
       isExpanded: true,
       onChanged: (String? value) {
         // This is called when the user selects an item.
@@ -37,18 +33,16 @@ class ODOSSelectGoalDropdown extends StatelessWidget {
               padding: EdgeInsets.only(left: 20.w, top: 15.h, bottom: 15.h),
               decoration: BoxDecoration(
                   color: e["goalColor"],
-                  borderRadius: BorderRadius.circular(8.r)
-              ),
-              child: Text("To > " + e["my_goal"].toString(),
-                  style: RecordAddDropdownSelectedItemTextStyle)
-          );
+                  borderRadius: BorderRadius.circular(8.r)),
+              child: Text("To > ${e["my_goal"].toString()}",
+                  style: recordAddDropdownSelectedItemTextStyle));
         }).toList();
       },
       items: goalList.map((e) {
         return DropdownMenuItem(
-          value: e["goalId"].toString(),
-          child: Text(e["my_goal"].toString(), style: RecordAddDropdownTextStyle)
-        );
+            value: e["goalId"].toString(),
+            child: Text(e["my_goal"].toString(),
+                style: recordAddDropdownTextStyle));
       }).toList(),
     );
   }
@@ -56,13 +50,10 @@ class ODOSSelectGoalDropdown extends StatelessWidget {
 
 class BaseDropDownMenuItem extends StatelessWidget {
   final String value;
-  const BaseDropDownMenuItem({
-    super.key,
-    required this.value
-  });
+  const BaseDropDownMenuItem({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {
-    return Text(value, style: RecordAddDropdownTextStyle);
+    return Text(value, style: recordAddDropdownTextStyle);
   }
 }

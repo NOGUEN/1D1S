@@ -1,8 +1,9 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
 import 'package:one_day_one_something/app/controller/main/update_profile_controller.dart';
-import 'package:one_day_one_something/app/controller/main/main_controller.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:one_day_one_something/app/view/theme/app_string.dart';
@@ -10,6 +11,7 @@ import 'package:one_day_one_something/app/view/theme/app_values.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_text_field.dart';
 import 'package:one_day_one_something/app/view/common/system/odos_buttons.dart';
 import 'dart:io';
+
 class UpdateProfilePage extends BaseView<UpdateProfileController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
@@ -65,7 +67,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
   @override
   Widget? bottomNavigationBar() {
     return Obx(
-          () {
+      () {
         Color buttonColor;
         void Function() onPressed;
 
@@ -76,7 +78,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
           };
         } else {
           buttonColor = AppColors.gray500;
-          onPressed = (){
+          onPressed = () {
             // nothing
           };
         }
@@ -86,8 +88,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
               left: AppValues.screenPadding,
               top: 10.0,
               right: AppValues.screenPadding,
-              bottom: 10.0
-          ),
+              bottom: 10.0),
           child: ODOSConfirmButton(
             buttonColor: buttonColor,
             textColor: AppColors.white,
@@ -99,65 +100,59 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
   }
 
-  Widget editProfileImage(){
+  Widget editProfileImage() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: (){
+          onTap: () {
             controller.getImage();
           },
           child: Obx(
-                () {
-              return Container(
+            () {
+              return SizedBox(
                   width: 190,
                   height: 190,
-                  child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: controller.imagePickerUsed.value
-                              ? Image.file(
-                            File(controller.image!.path),
-                            width: 180,
-                            height: 180,
-                          )
-                              : Image(
-                            width: 180,
-                            height: 180,
-                            image: AssetImage(
-                              AppString.profile[
-                              controller.profileImageNumber.value
-                              ],
+                  child: Stack(alignment: Alignment.topCenter, children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: controller.imagePickerUsed.value
+                          ? Image.file(
+                              File(controller.image!.path),
+                              width: 180,
+                              height: 180,
+                            )
+                          : Image(
+                              width: 180,
+                              height: 180,
+                              image: AssetImage(
+                                AppString.profile[
+                                    controller.profileImageNumber.value],
+                              ),
                             ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                              width:70,
-                              height:70,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: AppColors.gray300, border: Border.all(color:AppColors.white, width: 5.0)),
-                              child: const Icon(
-                                  Icons.camera_alt,
-                                  color: AppColors.white,
-                                  size:35
-                              )
-                          ),
-                        )
-                      ]
-                  )
-
-              );
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: AppColors.gray300,
+                              border: Border.all(
+                                  color: AppColors.white, width: 5.0)),
+                          child: const Icon(Icons.camera_alt,
+                              color: AppColors.white, size: 35)),
+                    )
+                  ]));
             },
           ),
         ),
@@ -168,7 +163,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
     );
   }
 
-  Widget baseProfileText(){
+  Widget baseProfileText() {
     return const Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -185,7 +180,7 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
     );
   }
 
-  Widget baseProfileIcons(){
+  Widget baseProfileIcons() {
     return SizedBox(
       height: 180,
       width: double.infinity,
@@ -199,9 +194,10 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
         ),
         itemBuilder: (BuildContext context, int index) {
           return Obx(
-                () {
+            () {
               Color radiusColor;
-              if (controller.imagePickerUsed.value == false && controller.profileImageNumber.value == index) {
+              if (controller.imagePickerUsed.value == false &&
+                  controller.profileImageNumber.value == index) {
                 radiusColor = AppColors.black;
               } else {
                 radiusColor = Colors.transparent;
@@ -245,18 +241,17 @@ class UpdateProfilePage extends BaseView<UpdateProfileController> {
     );
   }
 
-  Widget nicknameTextField(){
+  Widget nicknameTextField() {
     return ODOSTextField(
-      controller: controller.nickNameEditingController,
-      titleText: AppString.str_nickname,
-      hintText: AppString.str_nickname_hint,
-      onChanged: (p0) {
-        controller.validNickNameValue.value = p0;
-      }
-    );
+        controller: controller.nickNameEditingController,
+        titleText: AppString.str_nickname,
+        hintText: AppString.str_nickname_hint,
+        onChanged: (p0) {
+          controller.validNickNameValue.value = p0;
+        });
   }
 
-  Widget aboutMeTextField(){
+  Widget aboutMeTextField() {
     return ODOSTextField(
       controller: controller.aboutMeController,
       titleText: AppString.str_about_me,
@@ -280,7 +275,7 @@ class BaseUpdateProfilePage extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Container(
         padding:
-        const EdgeInsets.symmetric(horizontal: AppValues.screenPadding),
+            const EdgeInsets.symmetric(horizontal: AppValues.screenPadding),
         width: double.infinity,
         child: SingleChildScrollView(
           child: Column(

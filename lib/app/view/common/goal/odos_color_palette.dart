@@ -1,7 +1,8 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
-import 'package:get/get.dart';
 
 class ODOSColorPalette extends StatefulWidget {
   final void Function(int) onColorSelected; // 선택한 색상의 인덱스를 전달하는 콜백 추가
@@ -41,7 +42,7 @@ class _ODOSColorPaletteState extends State<ODOSColorPalette> {
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),
               blurRadius: 3,
-              offset: Offset(0, 2),
+              offset: Offset(0, 2.h),
             ),
           ];
 
@@ -55,7 +56,7 @@ class _ODOSColorPaletteState extends State<ODOSColorPalette> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(3.0), // Adjust the spacing as needed
+            padding: EdgeInsets.all(3.sw), // Adjust the spacing as needed
             child: Container(
               width: 28.04,
               height: 28.74,

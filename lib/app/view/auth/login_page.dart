@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
@@ -39,13 +41,13 @@ class LoginPage extends BaseView<LoginController> {
     );
   }
 
-  Widget space({required double height}){
+  Widget space({required double height}) {
     return SizedBox(
       height: height,
     );
   }
 
-  Widget logoText(){
+  Widget logoText() {
     return const Text(
       AppString.str_1D1S,
       style: TextStyle(
@@ -55,7 +57,7 @@ class LoginPage extends BaseView<LoginController> {
     );
   }
 
-  Widget emailText(){
+  Widget emailText() {
     return ODOSTextField(
       controller: controller.emailEditingController,
       titleText: AppString.str_email,
@@ -67,7 +69,7 @@ class LoginPage extends BaseView<LoginController> {
     );
   }
 
-  Widget passwordText(){
+  Widget passwordText() {
     return ODOSTextField(
       controller: controller.passwordEditingController,
       titleText: AppString.str_password,
@@ -80,9 +82,9 @@ class LoginPage extends BaseView<LoginController> {
     );
   }
 
-  Widget confirmButton(){
+  Widget confirmButton() {
     return Obx(
-          () {
+      () {
         Color buttonColor;
         GestureTapCallback onPressedFunc;
         if (controller.emailValue.value.isNotEmpty &&
@@ -103,7 +105,7 @@ class LoginPage extends BaseView<LoginController> {
     );
   }
 
-  Widget goRegisterButton(){
+  Widget goRegisterButton() {
     return ODOSSubButton(
       textColor: AppColors.black,
       buttonText: AppString.str_go_register,

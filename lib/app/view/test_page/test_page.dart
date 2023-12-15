@@ -1,7 +1,8 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/controller/testpage/testpage_controller.dart';
 import 'package:one_day_one_something/app/core/base/base_view.dart';
-import 'package:one_day_one_something/app/view/common/system/odos_appbar.dart';
 
 class TestPage extends BaseView<TestPageController> {
   @override
@@ -11,7 +12,7 @@ class TestPage extends BaseView<TestPageController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    //return const ODOSAppBar();
+    return null;
   }
 
   @override

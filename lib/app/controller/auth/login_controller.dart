@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:one_day_one_something/app/controller/service/auth_service.dart';
 import 'package:one_day_one_something/app/core/base/base_controller.dart';
 import 'package:one_day_one_something/app/data/firebase/firebase_const.dart';

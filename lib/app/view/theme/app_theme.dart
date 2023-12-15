@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
@@ -19,7 +21,7 @@ final ThemeData appThemeData = ThemeData(
 
 BoxShadow odosShadow = BoxShadow(
   color: AppColors.black.withOpacity(0.1),
-  offset: Offset(0, 0),
+  offset: const Offset(0, 0),
   spreadRadius: 0.1,
   blurRadius: 20,
 );

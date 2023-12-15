@@ -1,83 +1,84 @@
+// ignore_for_file: camel_case_types
+
 import 'package:one_day_one_something/app/view/common/goal/odos_fast_record_dropdown.dart';
 import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_day_one_something/app/view/theme/app_fontweight.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../core/base/base_view.dart';
 
 class recordDialogBox extends StatefulWidget {
   final String selectedGoalId;
   final List goalList;
-  const recordDialogBox({
-    super.key,
-    required this.selectedGoalId,
-    required this.goalList
-  });
+  const recordDialogBox(
+      {super.key, required this.selectedGoalId, required this.goalList});
 
   @override
   State<recordDialogBox> createState() => _recordDialogBoxState();
 }
 
-class _recordDialogBoxState extends State<recordDialogBox>{
-
+class _recordDialogBoxState extends State<recordDialogBox> {
   //추가 버튼 click시 firebase에 전달할 state들
-  Rx<String> selectedGoalId="".obs;
+  Rx<String> selectedGoalId = "".obs;
   Rx<DateTime> date = DateTime.now().obs;
   final recordContentEditingController = TextEditingController();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    selectedGoalId=widget.selectedGoalId.obs;
+    selectedGoalId = widget.selectedGoalId.obs;
   }
 
   @override
   Widget build(BuildContext context) {
-
     return AlertDialog(
-      insetPadding: EdgeInsets.all(0.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(3.r),
-      ),
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      content: BaseRecordDialogBox(
-          widgetList: <Widget>[
-            SizedBox(height: 19.h,),
-            dialogTitle(),
-            SizedBox(height: 9.h,),
-            Obx(() => ODOSSelectGoalDropdown(
-              goalList: widget.goalList,
-              selectedGoalId: selectedGoalId.value,
-              setSelectedGoalValue: (String? value)=>{
-                selectedGoalId.value=value!
-              },
-            )),
-            SizedBox(height: 17.h,),
-            DateSelectButton(context),
-            SizedBox(height: 11.h),
-            contentText(),
-            SizedBox(height: 9.h,),
-            contentTextField(),
-            SizedBox(height: 12.h),
-            addButton(context),
-            SizedBox(height: 19.h,)
-          ]
-      )
-    );
+        insetPadding: const EdgeInsets.all(0.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(3.r),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        content: BaseRecordDialogBox(widgetList: <Widget>[
+          SizedBox(
+            height: 19.h,
+          ),
+          dialogTitle(),
+          SizedBox(
+            height: 9.h,
+          ),
+          Obx(() => ODOSSelectGoalDropdown(
+                goalList: widget.goalList,
+                selectedGoalId: selectedGoalId.value,
+                setSelectedGoalValue: (String? value) =>
+                    {selectedGoalId.value = value!},
+              )),
+          SizedBox(
+            height: 17.h,
+          ),
+          dateSelectButton(context),
+          SizedBox(height: 11.h),
+          contentText(),
+          SizedBox(
+            height: 9.h,
+          ),
+          contentTextField(),
+          SizedBox(height: 12.h),
+          addButton(context),
+          SizedBox(
+            height: 19.h,
+          )
+        ]));
   }
 
-  Widget dialogTitle(){
+  Widget dialogTitle() {
     return Text(
       "새 기록",
       style: goalNewcardDialog,
     );
   }
 
-  Widget DateSelectButton(BuildContext context) {
+  Widget dateSelectButton(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -105,23 +106,17 @@ class _recordDialogBoxState extends State<recordDialogBox>{
           },
           child: Row(
             children: [
-              Obx(
-                () {
-                  return Text(
-                    " ${date.value.year}.${date.value.month
-                        .toString()
-                        .padLeft(2, '0')}.${date.value.day
-                        .toString()
-                        .padLeft(2, '0')}",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.sp,
-                      fontWeight: AppFontWeights.bold,
-                    ),
-                  );
-                }
-              ),
-              Icon(
+              Obx(() {
+                return Text(
+                  " ${date.value.year}.${date.value.month.toString().padLeft(2, '0')}.${date.value.day.toString().padLeft(2, '0')}",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.sp,
+                    fontWeight: AppFontWeights.bold,
+                  ),
+                );
+              }),
+              const Icon(
                 Icons.arrow_drop_down,
                 color: Colors.black,
               ),
@@ -132,7 +127,7 @@ class _recordDialogBoxState extends State<recordDialogBox>{
     );
   }
 
-  Widget contentText(){
+  Widget contentText() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -145,7 +140,7 @@ class _recordDialogBoxState extends State<recordDialogBox>{
     );
   }
 
-  Widget contentTextField(){
+  Widget contentTextField() {
     return Container(
       width: 250.w,
       height: 120.h,
@@ -155,20 +150,18 @@ class _recordDialogBoxState extends State<recordDialogBox>{
       ),
       child: TextFormField(
         controller: recordContentEditingController,
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(
-              top: 12.h, left: 13.w
-          ),
+          contentPadding: EdgeInsets.only(top: 12.h, left: 13.w),
           hintText: "오늘 한 일을 기록해봐요.",
-          hintStyle: RecordAddInputContentHintTextStyle,
+          hintStyle: recordAddInputContentHintTextStyle,
           border: InputBorder.none,
         ),
       ),
     );
   }
 
-  Widget addButton(BuildContext context){
+  Widget addButton(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
@@ -181,16 +174,13 @@ class _recordDialogBoxState extends State<recordDialogBox>{
         child: TextButton(
           onPressed: () {
             //TODO: firebase에 기록 추가 기능
-            print(recordContentEditingController.text);
-            print(date);
-            print(selectedGoalId);
 
             Navigator.of(context).pop();
             // Get.back();
           },
           child: Text(
             "추가",
-            style: RecordAddConfirmTextStyle,
+            style: recordAddConfirmTextStyle,
           ),
         ),
       ),
@@ -200,15 +190,11 @@ class _recordDialogBoxState extends State<recordDialogBox>{
 
 class BaseRecordDialogBox extends StatelessWidget {
   final List<Widget> widgetList;
-  const BaseRecordDialogBox({
-    super.key,
-    required this.widgetList
-  });
+  const BaseRecordDialogBox({super.key, required this.widgetList});
 
   @override
   Widget build(BuildContext context) {
-    return
-      Container(
+    return Container(
         width: 300.w,
         height: 400.h,
         padding: EdgeInsets.symmetric(horizontal: 25.w),
@@ -219,19 +205,18 @@ class BaseRecordDialogBox extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.black.withOpacity(0.25),
-              offset: Offset(0, 0),
+              offset: const Offset(0, 0),
               spreadRadius: 0.5,
               blurRadius: 15,
             ),
           ],
         ),
-        child:SingleChildScrollView(
+        child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: widgetList,
           ),
-        )
-    );
+        ));
   }
 }
