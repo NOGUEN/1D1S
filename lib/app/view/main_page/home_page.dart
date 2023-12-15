@@ -11,6 +11,10 @@ import 'package:one_day_one_something/app/view/theme/app_colors.dart';
 import 'package:one_day_one_something/app/view/theme/app_text_theme.dart';
 
 class HomePage extends BaseView<HomePageController> {
+  ScrollController scrollController;
+
+  HomePage({required this.scrollController});
+
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return null;
@@ -25,7 +29,8 @@ class HomePage extends BaseView<HomePageController> {
   Widget body(BuildContext context) {
     return BaseHomePage(
       everyoneSGoalList: controller.everyoneSGoalList,
-      everyoneSTrackList: controller.everyoneSTrackList
+      everyoneSTrackList: controller.everyoneSTrackList,
+      scrollController: scrollController,
     );
   }
 }
@@ -33,43 +38,65 @@ class HomePage extends BaseView<HomePageController> {
 class BaseHomePage extends StatelessWidget {
   final List everyoneSGoalList;
   final List everyoneSTrackList;
-  const BaseHomePage(
-      {super.key,
-      required this.everyoneSGoalList,
-      required this.everyoneSTrackList});
+  final ScrollController scrollController;
+  const BaseHomePage({
+    super.key,
+    required this.everyoneSGoalList,
+    required this.everyoneSTrackList,
+    required this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       key: UniqueKey(),
       child: ListView(
+        controller: scrollController,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 10,),
-              ODOSFriendRequestAlarm(friendName: '고라니',),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
+              ODOSFriendRequestAlarm(
+                friendName: '고라니',
+              ),
+              SizedBox(
+                height: 10,
+              ),
               ODOSStreakAlarm(streakNumber: 50),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ODOSFriendListCell(
                 friendName: '고라니',
                 friendsRequestCode: null,
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ODOSFriendListCell(
                 friendName: '고라니',
                 friendsRequestCode: FriendsRequestCode.SENT,
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ODOSFriendListCell(
                 friendName: '고라니',
                 friendsRequestCode: FriendsRequestCode.ACCEPT,
               ),
-              everyoneSTrackList.isEmpty ?
-              Center(
-                child: Text(AppString.str_empty_track_list, style: everyoneSGoalButtonTextStyle,),
-              ) : ODOSTrackCardList(everyoneSTrackList: everyoneSTrackList,)
+              everyoneSTrackList.isEmpty
+                  ? Center(
+                      child: Text(
+                        AppString.str_empty_track_list,
+                        style: everyoneSGoalButtonTextStyle,
+                      ),
+                    )
+                  : ODOSTrackCardList(
+                      everyoneSTrackList: everyoneSTrackList,
+                    )
             ],
           ),
         ],

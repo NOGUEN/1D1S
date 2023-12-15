@@ -20,9 +20,13 @@ import '../common/system/odos_appbar.dart';
 import '../common/system/odos_bottom_navigationbar.dart';
 
 class MainPage extends BaseView<MainController> {
+  ScrollController scrollController = ScrollController(initialScrollOffset: 0);
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return const ODOSAppBar();
+    return ODOSAppBar(
+      mainController: controller,
+      scrollController: scrollController,
+    );
   }
 
   @override
@@ -48,12 +52,14 @@ class MainPage extends BaseView<MainController> {
     switch (menuCode) {
       case MenuCode.HOME:
         // return homeView;
-        return HomePage();
-      case MenuCode.GOAL:
+        return HomePage(
+          scrollController: scrollController,
+        );
+      case MenuCode.SOCIAL:
         // return goalView;
         goalPage ??= GoalPage();
         return goalPage!;
-      case MenuCode.MYPAGE:
+      case MenuCode.MORE:
         // return goalView;
         myPage ??= MyPage();
         return myPage!;

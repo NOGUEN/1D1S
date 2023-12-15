@@ -11,7 +11,7 @@ class TestPage extends BaseView<TestPageController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return const ODOSAppBar();
+    //return const ODOSAppBar();
   }
 
   @override
